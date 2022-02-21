@@ -1,3 +1,5 @@
+export PATH=/home/sanyaxo/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/home/sanyaxo/.cargo/bin:/usr/local/java/jdk-17.0.1/bin
+
 export LANG=en_US.UTF-8
 export ZSH="/home/sanyaxo/.oh-my-zsh"
 ZSH_THEME="gianu"

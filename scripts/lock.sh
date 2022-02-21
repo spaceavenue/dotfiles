@@ -8,6 +8,7 @@ WRONG='#880000bb'
 VERIFYING='#bb00bbbb'
 
 i3lock \
+--image=/home/sanyaxo/pictures/wallpapers/minecraft.png \
 --color=0b011d               \
 --insidever-color=$CLEAR     \
 --ringver-color=$VERIFYING   \

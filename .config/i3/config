@@ -14,11 +14,13 @@ font pango:Iosevka ss06 Extralight 12
 # start polybar
 exec --no-startup-id $HOME/scripts/polybar.sh
 
+#start dunst
+exec --no-startup-id dunst
 # autotiling script
 exec --no-startup-id $HOME/.local/bin/autotiling 
 
 # wallpaper
-exec --no-startup-id feh --bg-scale $HOME/pictures/wallpapers/minecraft2.jpg $HOME/pictures/wallpapers/minecraft2.jpg
+exec --no-startup-id feh --bg-scale --no-fehbg $HOME/pictures/wallpapers/minecraft2.jpg $HOME/pictures/wallpapers/minecraft2.jpg
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -54,6 +56,9 @@ bindsym $mod+Shift+f floating toggle
 
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
+
+# lock screen 
+bindsym $mod+Shift+l exec ~/scripts/lock.sh
 
 # exit i3
 bindsym $mod+Shift+e exit

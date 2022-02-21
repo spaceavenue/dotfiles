@@ -24,7 +24,7 @@ theme[inactive_fg]="#a875ff"
 theme[graph_text]="#ffffff"
 
 # Background color of the percentage meters
-theme[meter_bg]="#ffffff"
+theme[meter_bg]="#0b011d"
 
 # Misc colors for processes box including mini cpu graphs, details memory graph and details status text
 theme[proc_misc]="#f47aed"
