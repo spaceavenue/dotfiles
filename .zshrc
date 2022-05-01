@@ -1,5 +1,5 @@
-export PATH=/home/sanyaxo/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/home/sanyaxo/.cargo/bin:/usr/local/java/jdk-17.0.1/bin
-
+export PATH=:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/home/sanyaxo/.cargo/bin:/usr/local/java/jdk-17.0.1/bin:/home/sanyaxo/.local/bin
+export JAVA_HOME=/usr/local/java/jdk-17.0.1
 export LANG=en_US.UTF-8
 export ZSH="/home/sanyaxo/.oh-my-zsh"
 ZSH_THEME="gianu"
@@ -45,10 +45,20 @@ source $ZSH/oh-my-zsh.sh
 source $HOME/.zsh/alias.zsh
 
 # Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR='/usr/bin/nvim'
+else
+  export EDITOR='/usr/bin/nvim'
+fi
+
+good ()
+{
+        if [[ $1 == "girl" ]]; then
+                sudo ${@:2}
+        else
+                echo "good,, w-what 🥺,, pwease?"
+        fi
+}
+
 
 

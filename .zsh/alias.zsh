@@ -19,6 +19,7 @@ alias uwu=sudo
 alias kbunfuck='asusctl led-mode multi-static -a ffffff'
 alias cd..='cd ..'
 alias monitor2='xrandr --output HDMI-1-0 --mode 1920x1080 --right-of eDP-1'
+
 bindkey  "^[[H"    beginning-of-line
 bindkey  "^[[F"    end-of-line
 bindkey  "^[[3~"   delete-char

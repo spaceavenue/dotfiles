@@ -52,21 +52,9 @@
     scroll_on_keystroke = False
     scrollback_infinite = True
     palette = "#2e3436:#ff007a:#84ff39:#f3d56e:#7cb7ff:#c74ded:#00e8c6:#d3d7cf:#555753:#ff007a:#84ff39:#f3d56e:#7cb7ff:#c74ded:#00e8c6:#eeeeec"
-  [[Hardcore]]
-    icon_bell = False
-    background_color = "#19002f"
-    cursor_shape = underline
-    cursor_color = "#bbbbbb"
-    foreground_color = "#deddda"
-    show_titlebar = False
-    scrollbar_position = hidden
-    scroll_on_keystroke = False
-    scrollback_infinite = True
-    palette = "#1b1d1e:#f92672:#a6e22e:#fd971f:#66d9ef:#9e6ffe:#5e7175:#ccccc6:#505354:#ff669d:#beed5f:#e6db74:#66d9ef:#9e6ffe:#a3babf:#f8f8f2"
-    background_image = None
   [[Grape]]
     icon_bell = False
-    background_color = "#171423"
+    background_color = "#130e20"
     cursor_shape = underline
     cursor_color = "#a288f7"
     font = Iosevka Term SS06 Light Expanded 12
@@ -75,25 +63,10 @@
     scrollbar_position = hidden
     scroll_on_keystroke = False
     scrollback_infinite = True
-    palette = "#2d283f:#ed2261:#1fa91b:#8ddc20:#487df4:#8d35c9:#3bdeed:#9e9ea0:#59516a:#f0729a:#53aa5e:#b2dc87:#a9bcec:#ad81c2:#9de3eb:#a288f7"
-    use_system_font = False
-    background_image = None
-  [[1]]
-    audible_bell = True
-    icon_bell = False
-    background_darkness = 0.2
-    background_type = transparent
-    cursor_shape = underline
-    cursor_color = "#efbdde"
-    font = Iosevka Term SS06 Light Expanded 12
-    foreground_color = "#efbdde"
-    show_titlebar = False
-    scrollbar_position = hidden
-    scroll_on_keystroke = False
-    scrollback_infinite = True
-    palette = "#0c1119:#813d9c:#f6d32d:#62a0ea:#ff007c:#1c71d8:#0deef8:#dee2ed:#4defd5:#a875ff:#d5e865:#7ca4e6:#e22477:#8c0bf7:#16cfef:#f47aed"
+    palette = "#2d283f:#ed2261:#1fa91b:#8ddc20:#487df4:#8d35c9:#3bdeed:#9e9ea0:#59516a:#e86aa2:#53aa5e:#b2dc87:#a9bcec:#ad81c2:#9de3eb:#a288f7"
     use_system_font = False
     bold_is_bright = True
+    background_image = None
 [layouts]
   [[default]]
     [[[child1]]]
