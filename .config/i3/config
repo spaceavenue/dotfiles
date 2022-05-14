@@ -102,7 +102,7 @@ bindsym $mod+o exec $obs
 bindsym $mod+n exec $nautilus
 
 # screenshot
-bindsym --release Control+Shift+s exec maim -s -D -u | xclip -selection clipboard -t image/png 
+bindsym --release Control+Shift+s exec flameshot gui 
 
 # shift to second display
 bindsym $mod+Shift+p move workspace to output right
