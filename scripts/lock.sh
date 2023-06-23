@@ -4,11 +4,11 @@ BLANK='#00000000'
 CLEAR='#ffffff22'
 DEFAULT='#ff00ffcc'
 TEXT='#f47aedff'
-WRONG='#880000bb'
+WRONG='#ee0000ff'
 VERIFYING='#bb00bbbb'
 
 i3lock \
---image=/home/sanyaxo/pictures/wallpapers/minecraft.png \
+--image=/home/sanyaxo/pictures/celeste_wallpaper1.png \
 --color=0b011d               \
 --insidever-color=$CLEAR     \
 --ringver-color=$VERIFYING   \

@@ -1,5 +1,6 @@
-export PATH=:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/home/sanyaxo/.cargo/bin:/usr/local/java/jdk-17.0.1/bin:/home/sanyaxo/.local/bin
-export JAVA_HOME=/usr/local/java/jdk-17.0.1
+export PATH=:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/home/sanyaxo/.cargo/bin:/usr/local/java/jdk-18.0.1.1/bin:/home/sanyaxo/.local/bin
+export JAVA_HOME=/usr/local/java/jdk-18.0.1.1
+export app_java_home=$JAVA_HOME
 export LANG=en_US.UTF-8
 export ZSH="/home/sanyaxo/.oh-my-zsh"
 ZSH_THEME="gianu"
