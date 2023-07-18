@@ -1,7 +1,7 @@
 set $mod Mod4
 set $browser1 firefox
 set $browser2 tor-browser
-set $discord vencorddesktop
+set $discord /home/sanyaxo/.local/bin/vencorddesktop
 set $term terminator
 set $spot flatpak run --file-forwarding --command=sh com.spotify.Client -c 'eval "$(sed s#LD_PRELOAD=#LD_PRELOAD=$HOME/.spotify-adblock/spotify-adblock.so:#g /app/bin/spotify)"' @@u %U @@
 set $obs obs
