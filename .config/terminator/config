@@ -11,8 +11,8 @@
     icon_bell = False
     background_image = None
     cursor_shape = underline
-    cursor_fg_color = "#a288f7"
-    cursor_bg_color = "#9f9fa1"
+    cursor_fg_color = "#000000"
+    cursor_bg_color = "#aaaaaa"
     cursor_color_default = False
     font = Iosevka Term SS06 Light Expanded 12
     foreground_color = "#9f9fa1"
@@ -33,6 +33,8 @@
     palette = "#1b1d1e:#f92672:#a6e22e:#fd971f:#66d9ef:#9e6ffe:#5e7175:#ccccc6:#505354:#ff669d:#beed5f:#e6db74:#66d9ef:#9e6ffe:#a3babf:#f8f8f2"
     use_system_font = False
   [[Grape]]
+  [[New Profile]]
+    palette = "#000000:#aa0000:#00aa00:#aa5500:#0000aa:#aa00aa:#00aaaa:#aaaaaa:#555555:#ff5555:#55ff55:#ffff55:#5555ff:#ff55ff:#55ffff:#ffffff"
 [layouts]
   [[default]]
     [[[child1]]]
