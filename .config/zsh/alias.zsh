@@ -50,3 +50,7 @@ bindkey "^H"      backward-delete-word
 # [Ctrl + Right/Left Arrow -> move one word forward/backward]
 bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
+
+# [Up/Down keybinds for hitory substring search]
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
