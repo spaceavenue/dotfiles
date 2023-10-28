@@ -1,8 +1,8 @@
 # general enviornment variables
-export LANG=en_us.UTF-8
-export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:$HOME/.local/bin
+# export LANG=en_us.UTF-8
+export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/opt/:$HOME/.local/bin
 
-export CARGO_ENV=$HOME/.cargo/bin
+export CARGO_HOME=$HOME/.local/lib/cargo/
 export JAVA_HOME=/usr/local/java/jdk-20.0.1
 export app_java_home=$JAVA_HOME # for FTBApp
 
@@ -15,6 +15,8 @@ SAVEHIST=10000
 
 # disable less history (whys this a thing anyway)
 LESSHISTSIZE=0
+
+errfile=$XDG_DATA_HOME/x11/xsession-errors
 
 # preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
