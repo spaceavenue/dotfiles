@@ -6,7 +6,7 @@ export CARGO_HOME=$HOME/.local/lib/cargo/
 export JAVA_HOME=/usr/local/java/jdk-20.0.1
 export app_java_home=$JAVA_HOME # for FTBApp
 
-export PATH=$PATH:$JAVA_HOME:$CARGO_HOME
+export PATH=$PATH:$JAVA_HOME:$CARGO_HOME/bin
 
 # history file variables
 HISTFILE="$XDG_DATA_HOME/zsh/zsh_history"
