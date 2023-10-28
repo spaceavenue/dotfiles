@@ -4,13 +4,10 @@ set $browser2 firefox -P sanyaxo
 set $discord /home/sanyaxo/.local/bin/Discord
 set $discord2 /home/sanyaxo/.local/bin/vencorddesktop
 set $term terminator
-set $spot flatpak run --file-forwarding --command=sh com.spotify.Client -c 'eval "$(sed s#LD_PRELOAD=#LD_PRELOAD=$HOME/.spotify-adblock/spotify-adblock.so:#g /app/bin/spotify)"' @@u %U @@
+set $spot flatpak run com.spotify.Client
 set $thunar thunar
 
 font pango:Iosevka ss06 Extralight 12
-
-# start picom
-# exec --no-startup-id $HOME/scripts/picom.sh 
 
 # start polybar
 exec --no-startup-id $HOME/.local/bin/polybar.sh
