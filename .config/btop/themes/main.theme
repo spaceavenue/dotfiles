@@ -3,7 +3,7 @@
 theme[main_bg]=""
 
 # Main text color
-theme[main_fg]="#b00b69"
+theme[main_fg]="#f69cff"
 
 # Title color for boxes
 theme[title]="#a875ff"
@@ -18,7 +18,7 @@ theme[selected_bg]="#ffffff"
 theme[selected_fg]="#b00b69"
 
 # Color of inactive/disabled text
-theme[inactive_fg]="#a875ff"
+theme[inactive_fg]="#b00b69"
 
 # Color of text appearing on top of graphs, i.e uptime and current network graph scaling
 theme[graph_text]="#ffffff"
@@ -45,47 +45,47 @@ theme[proc_box]="#ffffff"
 theme[div_line]="#a875ff"
 
 # Temperature graph colors
-theme[temp_start]="#e360dc"
-theme[temp_mid]="#b00b69"
+theme[temp_start]="#b00b69"
+theme[temp_mid]="#e360dc"
 theme[temp_end]="#f69cff"
 
 # CPU graph colors
-theme[cpu_start]="#e360dc"
-theme[cpu_mid]="#f47aed"
+theme[cpu_start]="#b00b69"
+theme[cpu_mid]="#e360dc"
 theme[cpu_end]="#f69cff"
 
 # Mem/Disk free meter
-theme[free_start]="#e360dc"
-theme[free_mid]="#b00b69"
+theme[free_start]="#b00b69"
+theme[free_mid]="#e360dc"
 theme[free_end]="#f69cff"
 
 # Mem/Disk cached meter
-theme[cached_start]="#e360dc"
-theme[cached_mid]="#b00b69"
+theme[cached_start]="#b00b69"
+theme[cached_mid]="#e360dc"
 theme[cached_end]="#f69cff"
 
 # Mem/Disk available meter
-theme[available_start]="#e360dc"
-theme[available_mid]="#b00b69"
+theme[available_start]="#b00b69"
+theme[available_mid]="#e360dc"
 theme[available_end]="#f69cff"
 
 # Mem/Disk used meter
-theme[used_start]="#e360dc"
-theme[used_mid]="#b00b69"
+theme[used_start]="#b00b69"
+theme[used_mid]="#e360dc"
 theme[used_end]="#f69cff"
 
 # Download graph colors
-theme[download_start]="#e360dc"
-theme[download_mid]="#b00b69"
+theme[download_start]="#b00b69"
+theme[download_mid]="#e360dc"
 theme[download_end]="#f69cff"
 
 # Upload graph colors
-theme[upload_start]="#e360dc"
-theme[upload_mid]="#b00b69"
+theme[upload_start]="#b00b69"
+theme[upload_mid]="#e360dc"
 theme[upload_end]="#f69cff"
 
 # Process box color gradient for threads, mem and cpu usage
-theme[process_start]="#e360dc"
-theme[process_mid]="#b00b69"
-theme[process_end]="#f69cff"
+theme[process_start]="#f69cff"
+theme[process_mid]="#e360dc"
+theme[process_end]="#b00b69"
 
