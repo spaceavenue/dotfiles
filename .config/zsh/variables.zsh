@@ -3,6 +3,7 @@
 export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/opt/:$HOME/.local/bin
 
 export CARGO_HOME=$HOME/.local/lib/cargo/
+export RUSTUP_HOME=$HOME/.local/lib/rustup/
 export JAVA_HOME=/usr/local/java/jdk-20.0.1
 export app_java_home=$JAVA_HOME # for FTBApp
 

@@ -7,7 +7,7 @@ alias polymod='nvim ~/.config/polybar/modules.ini'
 alias b=btop
 alias sb='doas btop'
 alias config='/usr/bin/git --git-dir=/home/sanyaxo/dotfiles/ --work-tree=/home/sanyaxo'
-alias bt='bluetoothctl connect 7F:3E:63:3E:89:52'
+alias bt='bluetoothctl connect 84:D3:52:7B:08:88'
 alias btdc='bluetoothctl disconnect'
 alias nmgui='nm-connection-editor'  
 alias spd='speedtest-cli'
@@ -19,7 +19,9 @@ alias update-owo='doas dnf update -y --refresh'
 alias uwu=doas
 
 # convenience stuff
-alias l='ls -al --color=auto'
+# alias l='ls -al --color=auto'
+alias eza='eza -alhbrs modified'
+alias l='eza -alhbrs modified'
 alias cls='clear;ls -al --color=auto'
 alias lsblk='lsblk -pf'
 alias grep='grep --color=auto'
@@ -31,7 +33,7 @@ alias monitor2='xrandr --output HDMI-1-0 --mode 1920x1080 --right-of eDP-1'
 alias kbon='asusctl -k low'
 alias kboff='asusctl -k off'
 alias kbunfuck='asusctl led-mode static -z 1 -c ffffff'
-
+alias nvidia-settings='nvidia-settings --config=/home/sanyaxo/.config/.nvidia-settings-rc'
 # keybinds
 
 # [Home/End -> go to beginnng/end of line]
