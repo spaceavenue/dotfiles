@@ -1,0 +1,84 @@
+ipc_socket = true
+live_config_reload = true
+
+[bell]
+command = "None"
+duration = 0
+
+[colors.bright]
+black = "#59516a"
+blue = "#a9bcec"
+cyan = "#9de3eb"
+green = "#53aa5e"
+magenta = "#ad81c2"
+red = "#e86aa2"
+white = "#a288f7"
+yellow = "#b2dc87"
+
+[colors.cursor]
+cursor = "CellForeground"
+text = "CellBackground"
+
+[colors.normal]
+black = "#2d283f"
+blue = "#487df4"
+cyan = "#3bdeed"
+green = "#1fa91b"
+magenta = "#8d35c9"
+red = "#ed2261"
+white = "#9e9ea0"
+yellow = "#8ddc20"
+
+[colors.primary]
+background = "#000000"
+foreground = "#9f9fa1"
+
+[cursor]
+blink_interval = 750
+blink_timeout = 0
+thickness = 0.15
+unfocused_hollow = false
+
+[cursor.style]
+blinking = "On"
+shape = "Underline"
+
+[font]
+size = 12.0
+
+[font.bold]
+family = "Iosevka Term SS06"
+style = "Bold Extended"
+
+[font.bold_italic]
+family = "Iosevka Term SS06"
+style = "Bold Extended Italic"
+
+[font.italic]
+family = "Iosevka Term SS06"
+style = "Light Italic"
+
+[font.normal]
+family = "Iosevka Term SS06"
+style = "Light Extended"
+
+[mouse]
+hide_when_typing = false
+
+#[mouse.double_click]
+#threshold = 300
+
+#[mouse.triple_click]
+#threshold = 300
+
+[window]
+decorations = "none"
+dynamic_title = true
+#history = 10000
+opacity = 1.0
+startup_mode = "Windowed"
+title = "Alacritty"
+
+[window.class]
+general = "Alacritty"
+instance = "Alacritty"

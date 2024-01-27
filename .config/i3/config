@@ -3,7 +3,7 @@ set $browser1 firefox
 set $browser2 firefox -P sanyaxo
 set $discord /home/sanyaxo/.local/bin/Discord
 set $discord2 /home/sanyaxo/.local/bin/vencorddesktop
-set $term terminator
+set $term alacritty
 set $spot flatpak run com.spotify.Client
 set $thunar thunar
 
@@ -19,7 +19,7 @@ exec --no-startup-id dunst
 exec --no-startup-id $HOME/.local/bin/autotiling 
 
 # wallpaper
-exec --no-startup-id feh --bg-scale --no-fehbg $HOME/pictures/celeste_wallpaper1.png $HOME/pictures/celeste_wallpaper1.png
+exec --no-startup-id feh --bg-scale --no-fehbg $HOME/media/wallpaper/celeste_wallpaper1.png
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
