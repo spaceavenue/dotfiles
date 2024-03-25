@@ -10,12 +10,12 @@ alias config='/usr/bin/git --git-dir=/home/sanyaxo/dotfiles/ --work-tree=/home/s
 alias bt='bluetoothctl connect 84:D3:52:7B:08:88'
 alias btdc='bluetoothctl disconnect'
 alias nmgui='nm-connection-editor'  
-alias spd='speedtest-cli'
+# alias spd='speedtest-cli'
 
 # dnf stuff 
-alias ds='dnf search'
-alias di='dnf info'
-alias update-owo='doas dnf update -y --refresh'
+alias pacs='pacman -Ss'
+alias paci='pacman -Si'
+alias update-owo='doas pacman -Syu'
 alias uwu=doas
 
 # convenience stuff
