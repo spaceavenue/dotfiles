@@ -1,7 +1,7 @@
 set $mod Mod4
 set $browser1 firefox
 set $browser2 firefox -P sanyaxo
-set $discord /home/sanyaxo/.local/bin/Discord
+set $discord discord
 set $discord2 /home/sanyaxo/.local/bin/vencorddesktop
 set $term alacritty
 set $spot flatpak run com.spotify.Client
@@ -59,7 +59,7 @@ bindsym $mod+Shift+f floating toggle
 bindsym $mod+space focus mode_toggle
 
 # lock screen 
-bindsym $mod+Shift+l exec lock.sh
+bindsym $mod+Shift+l exec lock-screen
 
 # exit i3
 bindsym $mod+Shift+e exit
