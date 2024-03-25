@@ -44,22 +44,22 @@ blinking = "On"
 shape = "Underline"
 
 [font]
-size = 12.0
+size = 8
 
 [font.bold]
-family = "Iosevka Term SS06"
+family = "Iosevka SS06"
 style = "Bold Extended"
 
 [font.bold_italic]
-family = "Iosevka Term SS06"
+family = "Iosevka SS06"
 style = "Bold Extended Italic"
 
 [font.italic]
-family = "Iosevka Term SS06"
+family = "Iosevka SS06"
 style = "Light Italic"
 
 [font.normal]
-family = "Iosevka Term SS06"
+family = "Iosevka SS06"
 style = "Light Extended"
 
 [mouse]
