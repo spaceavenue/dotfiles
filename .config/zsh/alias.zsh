@@ -10,19 +10,27 @@ alias config='/usr/bin/git --git-dir=/home/sanyaxo/dotfiles/ --work-tree=/home/s
 alias bt='bluetoothctl connect 84:D3:52:7B:08:88'
 alias btdc='bluetoothctl disconnect'
 alias nmgui='nm-connection-editor'  
-# alias spd='speedtest-cli'
 
-# dnf stuff 
+# pacman stuff 
 alias pacs='pacman -Ss'
 alias paci='pacman -Si'
+alias dbs='pacman -Qs'
+alias dbi='pacman -Qi'
+alias summon='pacman -S'
+alias begone='pacman -Rs'
 alias update-owo='doas pacman -Syu'
+
 alias uwu=doas
 
 # convenience stuff
-# alias l='ls -al --color=auto'
 alias eza='eza -alhbrs modified'
 alias l='eza -alhbrs modified'
-alias cls='clear;ls -al --color=auto'
+alias cls='clear; eza -alhbrs modified'
+
+function cdl () {
+	eza -alhbrs modified $1 && cd $1
+}
+
 alias lsblk='lsblk -pf'
 alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
@@ -34,6 +42,7 @@ alias kbon='asusctl -k low'
 alias kboff='asusctl -k off'
 alias kbunfuck='asusctl led-mode static -z 1 -c ffffff'
 alias nvidia-settings='nvidia-settings --config=/home/sanyaxo/.config/.nvidia-settings-rc'
+
 # keybinds
 
 # [Home/End -> go to beginnng/end of line]
