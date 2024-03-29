@@ -16,8 +16,8 @@ alias pacs='pacman -Ss'
 alias paci='pacman -Si'
 alias dbs='pacman -Qs'
 alias dbi='pacman -Qi'
-alias summon='pacman -S'
-alias begone='pacman -Rs'
+alias summon='doas pacman -S'
+alias begone='doas pacman -Rs'
 alias update-owo='doas pacman -Syu'
 
 alias uwu=doas
