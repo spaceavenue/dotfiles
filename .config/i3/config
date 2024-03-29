@@ -68,10 +68,10 @@ bindsym $mod+Shift+e exit
 bindsym $mod+Shift+r restart
 
 # height and width control
-bindsym $mod+greater       resize grow   width  10 px or 10 ppt
-bindsym $mod+less          resize shrink width  10 px or 10 ppt
-bindsym $mod+Shift+greater resize grow   height 10 px or 10 ppt
-bindsym $mod+Shift+less    resize shrink height 10 px or 10 ppt
+bindsym $mod+greater       resize grow   width  5 px or 5 ppt
+bindsym $mod+less          resize shrink width  5 px or 5 ppt
+bindsym $mod+Shift+greater resize grow   height 5 px or 5 ppt
+bindsym $mod+Shift+less    resize shrink height 5 px or 5 ppt
 
 # add/subtract to current
 bindsym $mod+plus       gaps inner current plus 10
