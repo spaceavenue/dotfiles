@@ -23,6 +23,7 @@ alias update-owo='doas pacman -Syu'
 alias uwu=doas
 
 # convenience stuff
+alias cat='bat -P'
 alias eza='eza -alhbrs modified'
 alias l='eza -alhbrs modified'
 alias cls='clear; eza -alhbrs modified'
