@@ -12,13 +12,13 @@ alias btdc='bluetoothctl disconnect'
 alias nmgui='nm-connection-editor'  
 
 # pacman stuff 
-alias pacs='pacman -Ss'
-alias paci='pacman -Si'
-alias dbs='pacman -Qs'
-alias dbi='pacman -Qi'
+alias pacs='paru -Ss'
+alias paci='paru -Si'
+alias dbs='paru -Qs'
+alias dbi='paru -Qi'
 alias summon='doas pacman -S'
-alias begone='doas pacman -Rs'
-alias update-owo='doas pacman -Syu'
+alias begone='doas pacman -Rns'
+alias update-owo='paru -Syu'
 
 alias uwu=doas
 
