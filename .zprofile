@@ -10,4 +10,4 @@ export ZDOTDIR="$HOME/.config/zsh/"
 export XINITRC="$HOME/.local/share/X11/xinitrc"
 export XSERVERRC="$HOME/.local/share/X11/xserverrc"
 
-xinit /usr/bin/i3
+xinit /usr/bin/i3 -- -keeptty
