@@ -7,7 +7,9 @@ export XDG_STATE_HOME="$HOME/.local/state"
 #set zsh config
 export ZDOTDIR="$HOME/.config/zsh/"
 
-export XINITRC="$HOME/.local/share/X11/xinitrc"
-export XSERVERRC="$HOME/.local/share/X11/xserverrc"
+#set X server env variables
+export XINITRC="$HOME/.config/X11/xinitrc"
+export XSERVERRC="$HOME/.config/X11/xserverrc"
 
+#start X server
 xinit /usr/bin/i3 -- -keeptty
