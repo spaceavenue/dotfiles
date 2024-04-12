@@ -1,0 +1,5 @@
+killall -q polybar;
+
+sleep 1;
+
+exec polybar -q main &
