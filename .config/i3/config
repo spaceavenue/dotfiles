@@ -7,7 +7,7 @@ set $term alacritty
 set $spot flatpak run com.spotify.Client
 set $thunar thunar
 
-font pango:Iosevka ss06 Extralight 12
+font pango:Iosevka Aile 12
 
 # start polybar
 exec --no-startup-id polybar -q main
@@ -15,12 +15,11 @@ exec --no-startup-id polybar -q main
 #start dunst
 exec --no-startup-id dunst
 
-
 # autotiling script
 exec --no-startup-id $HOME/.local/bin/autotiling
 
 # wallpaper
-exec --no-startup-id feh --bg-scale --no-fehbg $HOME/media/wallpaper/ultrakill_wallpaper.png
+exec --no-startup-id feh --bg-scale --no-fehbg $HOME/media/wallpaper/image_proxy.png
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -80,6 +79,11 @@ bindsym $mod+minus      gaps inner current minus 5
 
 # no window border
 for_window [class=".*"] border pixel 0
+
+# enable floating mode for some windows by default
+for_window [class="steam"] floating enable
+for_window [class="Xarchiver"] floating enable
+for_window [class="Pavucontrol"] floating enable
 
 # open terminal
 bindsym $mod+t exec $term
