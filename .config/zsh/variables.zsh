@@ -27,7 +27,7 @@ else
 fi
 
 # prompt
-PROMPT='[%B%F{9}%n%f%b@%B%F{15}%m%f%b %F{6}%1~%f ] '
+PROMPT='[%B%F{9}%n%f%b%F{6}@%f%B%F{13}%m%f%b %F{6}%1~%f ] '
 
 # autocomplete and directory nav options and stuff
 setopt auto_cd always_to_end menu_complete extended_glob nomatch interactive_comments
