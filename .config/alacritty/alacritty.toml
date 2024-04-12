@@ -10,9 +10,9 @@ black = "#59516a"
 blue = "#a9bcec"
 cyan = "#9de3eb"
 green = "#53aa5e"
-magenta = "#ad81c2"
+magenta = "#a875ff"
 red = "#e86aa2"
-white = "#a288f7"
+white = "#e6e6e6"
 yellow = "#b2dc87"
 
 [colors.cursor]
