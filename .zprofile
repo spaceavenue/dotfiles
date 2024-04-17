@@ -12,4 +12,8 @@ export XINITRC="$HOME/.config/X11/xinitrc"
 export XSERVERRC="$HOME/.config/X11/xserverrc"
 
 #start X server
-xinit /usr/bin/i3 -- -keeptty
+if [[ ! -v DISPLAY ]]  &&  (( XDG_VTNR == 1 )) then
+
+      xinit /usr/bin/i3 -- -keeptty > ~/.local/share/xorg/xorg.log 2>&1 &
+
+fi
