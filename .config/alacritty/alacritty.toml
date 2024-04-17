@@ -34,7 +34,7 @@ background = "#000000"
 foreground = "#9f9fa1"
 
 [cursor]
-blink_interval = 750
+blink_interval = 500
 blink_timeout = 0
 thickness = 0.15
 unfocused_hollow = false
