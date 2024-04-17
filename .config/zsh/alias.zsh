@@ -19,11 +19,12 @@ alias dbi='paru -Qi'
 alias summon='doas pacman -S'
 alias begone='doas pacman -Rns'
 alias update-owo='paru -Syu'
-
+alias sudo=doas
 alias uwu=doas
 
 # convenience stuff
 alias cat='bat -P'
+alias man=batman
 alias eza='eza -alhbrs modified'
 alias l='eza -alhbrs modified'
 alias cls='clear; eza -alhbrs modified'
@@ -42,7 +43,6 @@ alias monitor2='xrandr --output HDMI-1-0 --mode 1920x1080 --right-of eDP-1'
 alias kbon='asusctl -k low'
 alias kboff='asusctl -k off'
 alias kbunfuck='asusctl led-mode static -z 1 -c ffffff'
-alias nvidia-settings='nvidia-settings --config=/home/sanyaxo/.config/.nvidia-settings-rc'
 
 # keybinds
 
