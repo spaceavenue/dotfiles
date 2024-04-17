@@ -6,6 +6,7 @@ set $discord2 /home/sanyaxo/.local/bin/vencorddesktop
 set $term alacritty
 set $spot flatpak run com.spotify.Client
 set $thunar thunar
+set $vsc codium --extensions-dir=/home/sanyaxo/.local/share/VSCodium/extensions/
 
 font pango:Iosevka Aile 12
 
@@ -68,22 +69,24 @@ bindsym $mod+Shift+e exit
 bindsym $mod+Shift+r restart
 
 # height and width control
-bindsym $mod+greater       resize grow   width  5 px or 5 ppt
-bindsym $mod+less          resize shrink width  5 px or 5 ppt
-bindsym $mod+Shift+greater resize grow   height 5 px or 5 ppt
-bindsym $mod+Shift+less    resize shrink height 5 px or 5 ppt
+bindsym $mod+greater       resize grow   width  10 px or 10 ppt
+bindsym $mod+less          resize shrink width  10 px or 10 ppt
+bindsym $mod+Shift+greater resize grow   height 10 px or 10 ppt
+bindsym $mod+Shift+less    resize shrink height 10 px or 10 ppt
 
 # add/subtract to current
 bindsym $mod+plus       gaps inner current plus 10
 bindsym $mod+minus      gaps inner current minus 5
 
-# no window border
-for_window [class=".*"] border pixel 0
+# window border
+for_window [class=".*"] border pixel 2
+client.focused #a875ff #285577 #ffffff #a875ff #a875ff
 
 # enable floating mode for some windows by default
 for_window [class="steam"] floating enable
 for_window [class="Xarchiver"] floating enable
 for_window [class="Pavucontrol"] floating enable
+for_window [class="Galculator"] floating enable
 
 # open terminal
 bindsym $mod+t exec $term
@@ -106,7 +109,7 @@ bindsym $mod+s exec $spot
 bindsym $mod+n exec $thunar
 
 #open codium
-bindsym $mod+c exec codium
+bindsym $mod+c exec $vsc
 
 # screenshot
 bindsym --release Control+Shift+s exec flameshot && flameshot gui
