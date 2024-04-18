@@ -3,9 +3,6 @@
 
 [general]
 
-# Smoothing mode. Can be 'normal', 'scientific' or 'waves'. DEPRECATED as of 0.6.0
-; mode = normal
-
 # Accepts only non-negative values.
 ; framerate = 60
 
@@ -139,7 +136,7 @@ bit_format = 16bit
 gradient = 1
 gradient_count = 3
 gradient_color_1 = '#a875ff'
-gradient_color_2 = '#f47aed'
+gradient_color_2 = '#e86aa2'
 gradient_color_3 = '#f58bfc'
 ; gradient_color_4 = '#cccc33'
 ; gradient_color_5 = '#cca633'
