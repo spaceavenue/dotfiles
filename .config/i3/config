@@ -10,17 +10,20 @@ set $vsc codium --extensions-dir=/home/sanyaxo/.local/share/VSCodium/extensions/
 
 font pango:Iosevka Aile 12
 
-# start polybar
-exec --no-startup-id polybar -q main
-
-#start dunst
-exec --no-startup-id dunst
+# win95 startup sound
+exec --no-startup-id cvlc --play-and-exit $HOME/media/win95_startup.flac &>/dev/null
 
 # autotiling script
 exec --no-startup-id $HOME/.local/bin/autotiling
 
 # wallpaper
 exec --no-startup-id feh --bg-scale --no-fehbg $HOME/media/wallpaper/image_proxy.png
+
+# start polybar
+exec --no-startup-id polybar -q main
+
+#start dunst
+exec --no-startup-id dunst
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
