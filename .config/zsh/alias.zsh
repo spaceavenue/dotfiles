@@ -16,9 +16,12 @@ alias pacs='paru -Ss'
 alias paci='paru -Si'
 alias dbs='paru -Qs'
 alias dbi='paru -Qi'
+alias dbu='paru -Sy && paru -Qu'
 alias summon='doas pacman -S'
 alias begone='doas pacman -Rns'
 alias update-owo='paru -Syu'
+
+# sudo -> doas
 alias sudo=doas
 alias uwu=doas
 
@@ -28,7 +31,9 @@ alias man=batman
 alias eza='eza -alhbrs modified'
 alias l='eza -alhbrs modified'
 alias cls='clear; eza -alhbrs modified'
-
+alias mv='mv -v'
+alias cp='cp -v'
+alias rm='rm -Irv'
 function cdl () {
 	eza -alhbrs modified $1 && cd $1
 }
