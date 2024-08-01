@@ -7,6 +7,7 @@ set $vsc codium --extensions-dir=/home/sanyaxo/.local/share/VSCodium/extensions/
 
 font pango:Iosevka Aile 12
 
+
 # export $DISPLAY and $XDG_CURRENT_DESKTOP so that 
 # xdg-desktop-portal-gtk.service doesnt fail
 exec systemctl --user import-environment DISPLAY XDG_CURRENT_DESKTOP
@@ -21,7 +22,7 @@ exec_always gnome-keyring-daemon --start --components=pkcs11,secrets
 exec --no-startup-id cvlc --play-and-exit $HOME/media/win95_startup.flac &>/dev/null
 
 # wallpaper
-exec --no-startup-id feh --bg-scale --no-fehbg $HOME/media/wallpaper/xp_dark.png
+exec --no-startup-id feh --bg-scale --no-fehbg $HOME/media/wallpapers/celeste_wallpaper.png
 
 # start polybar
 exec --no-startup-id polybar -q main
@@ -89,7 +90,7 @@ client.focused #a875ff #285577 #ffffff #a875ff #a875ff
 # enable floating mode for some windows by default
 for_window [class="steam"] floating enable
 for_window [class="Xarchiver"] floating enable
-for_window [class="Pavucontrol"] floating enable
+for_window [class="pavucontrol"] floating enable
 for_window [class="Galculator"] floating enable
 
 #media controls
@@ -121,7 +122,7 @@ bindsym $mod+n exec $thunar
 bindsym $mod+c exec $vsc
 
 # screenshot
-bindsym --release Control+Shift+s exec flameshot && flameshot gui
+bindsym --release Control+Shift+s exec flameshot gui
 
 # shift to second display
 bindsym $mod+Shift+p move workspace to output right
