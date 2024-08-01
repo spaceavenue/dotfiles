@@ -37,8 +37,8 @@ alias rm='rm -Irv'
 function cdl () {
 	eza -alhbrs modified $1 && cd $1
 }
-
-alias lsblk='lsblk -pf'
+alias lsblk='lsblk -p -o NAME,FSTYPE,LABEL,UUID,FSAVAIL,FSSIZE,FSUSE%,MOUNTPOINTS'
+#alias lsblk='lsblk -pf'
 alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
