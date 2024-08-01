@@ -1,13 +1,30 @@
 # general enviornment variables
-# export LANG=en_us.UTF-8
 export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/opt/:$HOME/.local/bin
 
+# put rust stuff in better directory
 export CARGO_HOME=$HOME/.local/lib/cargo/
 export RUSTUP_HOME=$HOME/.local/lib/rustup/
-export JAVA_HOME=/usr/local/java/jdk-20.0.1
-export app_java_home=$JAVA_HOME # for FTBApp
 
+# update PATH
 export PATH=$PATH:$JAVA_HOME:$CARGO_HOME/bin
+
+# make some libadwaita-based applications respect gtk theme
+export GTK_THEME="catppuccin-mocha-mauve-standard+default"
+
+# default wineprefix path
+export WINEPREFIX="$HOME/.local/share/wineprefixes/default"
+
+# prevent .java directory from being created
+export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
+
+# prevenet .nv directory from being created
+export CUDA_CACHE_PATH="$XDG_CACHE_HOME"/nv
+
+# wget config path
+export WGETRC="$XDG_CONFIG_HOME/wgetrc"
+
+# npm config path
+export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/npmrc
 
 # history file variables
 HISTFILE="$XDG_DATA_HOME/zsh/zsh_history"
@@ -16,8 +33,6 @@ SAVEHIST=10000
 
 # disable less history (whys this a thing anyway)
 LESSHISTSIZE=0
-
-errfile=$XDG_DATA_HOME/x11/xsession-errors
 
 # preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
