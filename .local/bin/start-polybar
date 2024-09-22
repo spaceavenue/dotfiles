@@ -1,5 +1,7 @@
-killall -q polybar;
+#!/usr/bin/sh
+
+/usr/bin/kill -9 -a polybar;
 
 sleep 1;
 
-exec polybar -q main &
+exec polybar -q main 2>/dev/null &
