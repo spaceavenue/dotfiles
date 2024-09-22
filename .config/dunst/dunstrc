@@ -152,7 +152,7 @@
     #   %n  progress value if set without any extra characters
     #   %%  Literal %
     # Markup is allowed
-    format = "<b>%s</b>\n%b"
+    format = "<b>%a</b>\n<b>%s</b>\n%b"
 
     # Alignment of message text.
     # Possible values are "left", "center" and "right".
@@ -197,7 +197,7 @@
     max_icon_size = 32
 
     # Paths to default icons.
-    icon_path = /usr/share/icons/gnome/16x16/status/:/usr/share/icons/gnome/16x16/devices/
+    icon_path = /home/sanyaxo/.local/share/icons/Sweet-Purple/:/usr/share/icons/gnome/16x16/status/:/usr/share/icons/gnome/16x16/devices/
 
     ### History ###
 
@@ -307,7 +307,7 @@
     #default_icon = /path/to/icon
 
 [urgency_critical]
-    background = "#0b0112"
+    background = "#000000"
     foreground = "#e86aa2"
     frame_color = "#ff0000"
     timeout = 0
