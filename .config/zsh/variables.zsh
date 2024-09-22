@@ -1,5 +1,5 @@
 # general enviornment variables
-export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/opt/:$HOME/.local/bin
+export PATH=$HOME/.local/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/opt
 
 # put rust stuff in better directory
 export CARGO_HOME=$HOME/.local/lib/cargo/
@@ -33,6 +33,9 @@ SAVEHIST=10000
 
 # disable less history (whys this a thing anyway)
 LESSHISTSIZE=0
+
+# make clipmenu use rofi
+export CM_LAUNCHER=rofi
 
 # preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then

@@ -7,15 +7,15 @@ alias polymod='nvim ~/.config/polybar/modules.ini'
 alias b=btop
 alias sb='doas btop'
 alias config='/usr/bin/git --git-dir=/home/sanyaxo/dotfiles/ --work-tree=/home/sanyaxo'
-alias bt='bluetoothctl connect 84:D3:52:7B:08:88'
+alias bt='bluetoothctl power on && bluetoothctl connect F4:4E:FD:B2:93:30'
 alias btdc='bluetoothctl disconnect'
 alias nmgui='nm-connection-editor'  
 
 # pacman stuff 
 alias pacs='paru -Ss'
-alias paci='paru -Si'
-alias dbs='paru -Qs'
-alias dbi='paru -Qi'
+alias paci='pacman -Si'
+alias dbs='pacman -Qs'
+alias dbi='pacman -Qi'
 alias dbu='paru -Sy && paru -Qu'
 alias summon='doas pacman -S'
 alias begone='doas pacman -Rns'
@@ -25,11 +25,15 @@ alias update-owo='paru -Syu'
 alias sudo=doas
 alias uwu=doas
 
+# set cpu mode
+alias powersave='doas cpupower frequency-set -g powersave'
+alias performance='doas cpupower frequency-set -g performance'
+
 # convenience stuff
 alias cat='bat -P'
 alias man=batman
 alias eza='eza -alhbrs modified'
-alias l='eza -alhbrs modified'
+alias l='eza --icons=always -alhbrs modified'
 alias cls='clear; eza -alhbrs modified'
 alias mv='mv -v'
 alias cp='cp -v'
@@ -38,11 +42,11 @@ function cdl () {
 	eza -alhbrs modified $1 && cd $1
 }
 alias lsblk='lsblk -p -o NAME,FSTYPE,LABEL,UUID,FSAVAIL,FSSIZE,FSUSE%,MOUNTPOINTS'
-#alias lsblk='lsblk -pf'
 alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias cd..='cd ..'
+alias kill="/usr/bin/kill"
 
 alias monitor2='xrandr --output HDMI-1-0 --mode 1920x1080 --right-of eDP-1'
 alias kbon='asusctl -k low'
