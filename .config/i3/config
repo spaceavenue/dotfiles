@@ -1,12 +1,11 @@
 set $mod Mod4
 set $browser1 firefox
-set $browser2 firefox -P default
+set $browser2 ~/.local/bin/firefox-nightly
 set $term alacritty
 set $thunar thunar
 set $vsc codium --extensions-dir=/home/sanyaxo/.local/share/VSCodium/extensions/
 
-font pango:Iosevka Aile 12
-
+# font pango:Iosevka Aile 12
 
 # export $DISPLAY and $XDG_CURRENT_DESKTOP so that 
 # xdg-desktop-portal-gtk.service doesnt fail
@@ -16,22 +15,25 @@ exec systemctl --user import-environment DISPLAY XDG_CURRENT_DESKTOP
 exec dbus-update-activation-environment DISPLAY
 
 # start gnome-keyring-daemon
-exec_always gnome-keyring-daemon --start --components=pkcs11,secrets
+# exec_always gnome-keyring-daemon --start --components=pkcs11,secrets
 
 # win95 startup sound
 exec --no-startup-id cvlc --play-and-exit $HOME/media/win95_startup.flac &>/dev/null
 
 # wallpaper
-exec --no-startup-id feh --bg-scale --no-fehbg $HOME/media/wallpapers/celeste_wallpaper.png
+exec --no-startup-id feh --bg-scale --no-fehbg $HOME/media/wallpapers/xp-dark.png
 
 # start polybar
-exec --no-startup-id polybar -q main
+exec_always --no-startup-id polybar -q main
 
 # autotiling script
 exec --no-startup-id $HOME/.local/bin/autotiling
 
 #start dunst
 exec --no-startup-id dunst
+
+# autostart xdg autostart files
+exec --no-startup-id dex -a
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -65,7 +67,7 @@ bindsym $mod+Shift+f floating toggle
 bindsym $mod+space focus mode_toggle
 
 # lock screen 
-bindsym $mod+Shift+l exec lock-screen
+bindsym $mod+Shift+l exec ~/.local/bin/lock-screen
 
 # exit i3
 bindsym $mod+Shift+e exit
@@ -74,10 +76,14 @@ bindsym $mod+Shift+e exit
 bindsym $mod+Shift+r restart
 
 # height and width control
-bindsym $mod+greater       resize grow   width  10 px or 10 ppt
-bindsym $mod+less          resize shrink width  10 px or 10 ppt
-bindsym $mod+Shift+greater resize grow   height 10 px or 10 ppt
-bindsym $mod+Shift+less    resize shrink height 10 px or 10 ppt
+bindsym $mod+greater       	resize grow	width	10 px or 10 ppt
+bindsym $mod+Control+greater 	resize grow 	width	5 px or 5 ppt
+
+bindsym $mod+less          	resize shrink 	width  	10 px or 10 ppt
+bindsym $mod+Control+less	resize shrink 	width	5 px
+
+bindsym $mod+Shift+greater 	resize grow   	height 	10 px or 10 ppt
+bindsym $mod+Shift+less    	resize shrink 	height 	10 px or 10 ppt
 
 # add/subtract to current
 bindsym $mod+plus       gaps inner current plus 10
@@ -99,11 +105,17 @@ bindsym XF86AudioPause exec playerctl pause
 bindsym XF86AudioPrev exec playerctl previous
 bindsym XF86AudioNext exec playerctl next
 
-# open terminal
-bindsym $mod+t exec $term
+# screenshot
+bindsym --release Control+Shift+s exec flameshot gui
 
 # open rofi
 bindsym $mod+r exec rofi -show drun
+
+# open clipboard menu
+bindsym $mod+backslash exec CM_LAUNCHER=rofi clipmenu
+
+# open terminal
+bindsym $mod+t exec $term
 
 # open browser
 bindsym $mod+b exec $browser1
@@ -120,9 +132,6 @@ bindsym $mod+n exec $thunar
 
 #open codium
 bindsym $mod+c exec $vsc
-
-# screenshot
-bindsym --release Control+Shift+s exec flameshot gui
 
 # shift to second display
 bindsym $mod+Shift+p move workspace to output right
