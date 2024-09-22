@@ -1,9 +1,9 @@
 ipc_socket = true
 live_config_reload = true
+# import = ["~/.config/alacritty/catppuccin-mocha.toml"]
 
-[bell]
-command = "None"
-duration = 0
+[env]
+TERM="xterm-256color"
 
 [colors.bright]
 black = "#59516a"
@@ -33,6 +33,10 @@ yellow = "#8ddc20"
 background = "#000000"
 foreground = "#9f9fa1"
 
+[bell]
+command = "None"
+duration = 0
+
 [cursor]
 blink_interval = 500
 blink_timeout = 0
@@ -47,19 +51,19 @@ shape = "Underline"
 size = 8
 
 [font.bold]
-family = "Iosevka SS06"
+family = "Iosevka Term SS06"
 style = "Bold Extended"
 
 [font.bold_italic]
-family = "Iosevka SS06"
+family = "Iosevka Term SS06"
 style = "Bold Extended Italic"
 
 [font.italic]
-family = "Iosevka SS06"
+family = "Iosevka Term SS06"
 style = "Light Italic"
 
 [font.normal]
-family = "Iosevka SS06"
+family = "Iosevka Term SS06"
 style = "Light Extended"
 
 [mouse]
