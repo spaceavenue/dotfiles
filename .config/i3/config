@@ -5,8 +5,6 @@ set $term alacritty
 set $thunar thunar
 set $vsc codium --extensions-dir=/home/sanyaxo/.local/share/VSCodium/extensions/
 
-# font pango:Iosevka Aile 12
-
 # export $DISPLAY and $XDG_CURRENT_DESKTOP so that 
 # xdg-desktop-portal-gtk.service doesnt fail
 exec systemctl --user import-environment DISPLAY XDG_CURRENT_DESKTOP
@@ -18,16 +16,16 @@ exec dbus-update-activation-environment DISPLAY
 # exec_always gnome-keyring-daemon --start --components=pkcs11,secrets
 
 # win95 startup sound
-exec --no-startup-id cvlc --play-and-exit $HOME/media/win95_startup.flac &>/dev/null
+# exec --no-startup-id cvlc --play-and-exit $HOME/media/win95_startup.flac &>/dev/null
 
 # wallpaper
 exec --no-startup-id feh --bg-scale --no-fehbg $HOME/media/wallpapers/xp-dark.png
 
 # start polybar
-exec_always --no-startup-id polybar -q main
+exec_always --no-startup-id $HOME/.local/bin/start-polybar
 
 # autotiling script
-exec --no-startup-id $HOME/.local/bin/autotiling
+exec_always --no-startup-id $HOME/.local/bin/autotiling
 
 #start dunst
 exec --no-startup-id dunst
@@ -67,7 +65,7 @@ bindsym $mod+Shift+f floating toggle
 bindsym $mod+space focus mode_toggle
 
 # lock screen 
-bindsym $mod+Shift+l exec ~/.local/bin/lock-screen
+bindsym $mod+Shift+l exec $HOME/.local/bin/lock-screen
 
 # exit i3
 bindsym $mod+Shift+e exit
@@ -76,16 +74,19 @@ bindsym $mod+Shift+e exit
 bindsym $mod+Shift+r restart
 
 # height and width control
-bindsym $mod+greater       	resize grow	width	10 px or 10 ppt
-bindsym $mod+Control+greater 	resize grow 	width	5 px or 5 ppt
+bindsym $mod+greater       	    resize grow	    width	10 px or 10 ppt
+bindsym $mod+Control+greater 	resize grow 	width	5 px
 
-bindsym $mod+less          	resize shrink 	width  	10 px or 10 ppt
-bindsym $mod+Control+less	resize shrink 	width	5 px
+bindsym $mod+less          	    resize shrink 	width  	10 px or 10 ppt
+bindsym $mod+Control+less	    resize shrink 	width	5 px
 
-bindsym $mod+Shift+greater 	resize grow   	height 	10 px or 10 ppt
-bindsym $mod+Shift+less    	resize shrink 	height 	10 px or 10 ppt
+bindsym $mod+Shift+greater 	        resize grow   	height 	10 px or 10 ppt
+bindsym $mod+Control+Shift+greater  resize grow     height  5 px
 
-# add/subtract to current
+bindsym $mod+Shift+less    	        resize shrink 	height 	10 px or 10 ppt
+bindsym $mod+Control+Shift+less    	resize shrink 	height 	5 px or 10 ppt
+
+# add/subtract gaps to current
 bindsym $mod+plus       gaps inner current plus 10
 bindsym $mod+minus      gaps inner current minus 5
 

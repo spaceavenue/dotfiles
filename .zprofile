@@ -13,5 +13,5 @@ export XSERVERRC="$HOME/.config/X11/xserverrc"
 
 #start X server
 if [[ ! -v DISPLAY ]]  &&  (( XDG_VTNR == 1 )) then
-      xinit /usr/bin/i3 -- -keeptty > ~/.local/share/xorg/xorg.log 2>&1 &
+      xinit /usr/bin/i3 -- -keeptty > ~/.local/share/xorg/xorg.log 2>&1
 fi

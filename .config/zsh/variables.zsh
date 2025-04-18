@@ -21,10 +21,13 @@ export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
 export CUDA_CACHE_PATH="$XDG_CACHE_HOME"/nv
 
 # wget config path
-export WGETRC="$XDG_CONFIG_HOME/wgetrc"
+export WGETRC="$XDG_CONFIG_HOME"/wgetrc
 
 # npm config path
 export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/npmrc
+
+# gnupg key storage
+export GNUPGHOME="$XDG_DATA_HOME"/gnupg
 
 # history file variables
 HISTFILE="$XDG_DATA_HOME/zsh/zsh_history"
