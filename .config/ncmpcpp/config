@@ -2,7 +2,7 @@
 
 ncmpcpp_directory = "~/.config/ncmpcpp"
 lyrics_directory = "~/.local/share/lyrics"
-mpd_music_dir = "~/nextcloud/Music"
+mpd_music_dir = "~/media/music"
  mpd_host = "localhost"
  mpd_port = "6600"
 message_delay_time = "1"
