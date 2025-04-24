@@ -5,14 +5,18 @@ export PATH=$HOME/.local/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/
 export CARGO_HOME=$HOME/.local/lib/cargo/
 export RUSTUP_HOME=$HOME/.local/lib/rustup/
 
+# set JAVA_HOME
+export JAVA_HOME=/usr/lib/jvm/default-runtime/bin
+
 # update PATH
 export PATH=$PATH:$JAVA_HOME:$CARGO_HOME/bin
 
 # make some libadwaita-based applications respect gtk theme
-export GTK_THEME="catppuccin-mocha-mauve-standard+default"
+# export GTK_THEME="catppuccin-mocha-mauve-standard+default"
+export GTK_THEME="Sweet-Dark-v40"
 
 # default wineprefix path
-export WINEPREFIX="$HOME/.local/share/wineprefixes/default"
+export WINEPREFIX="$HOME"/.local/share/wineprefixes/default
 
 # prevent .java directory from being created
 export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
@@ -24,13 +28,13 @@ export CUDA_CACHE_PATH="$XDG_CACHE_HOME"/nv
 export WGETRC="$XDG_CONFIG_HOME"/wgetrc
 
 # npm config path
-export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/npmrc
+export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME"/npm/npmrc
 
 # gnupg key storage
 export GNUPGHOME="$XDG_DATA_HOME"/gnupg
 
 # history file variables
-HISTFILE="$XDG_DATA_HOME/zsh/zsh_history"
+HISTFILE="$XDG_DATA_HOME"/zsh/zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
 
