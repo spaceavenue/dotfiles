@@ -4,8 +4,10 @@ export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_STATE_HOME="$HOME/.local/state"
 export XDG_CURRENT_DESKTOP=gnome
+
 #set zsh config
 export ZDOTDIR="$HOME/.config/zsh/"
+source "$HOME"/.config/zsh/variables.zsh
 
 #set X server env variables
 export XINITRC="$HOME/.config/X11/xinitrc"
