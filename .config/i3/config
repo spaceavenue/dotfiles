@@ -18,8 +18,11 @@ exec dbus-update-activation-environment DISPLAY
 # win95 startup sound
 # exec --no-startup-id cvlc --play-and-exit $HOME/media/win95_startup.flac &>/dev/null
 
-# wallpaper
-exec --no-startup-id feh --bg-scale --no-fehbg $HOME/media/wallpapers/xp-dark.png
+# start picom
+exec picom
+
+# apply wallpaper
+exec_always --no-startup-id feh --bg-scale --no-fehbg $HOME/media/wallpapers/minecraft_tower_no_shaders.png
 
 # start polybar
 exec_always --no-startup-id $HOME/.local/bin/start-polybar
@@ -134,6 +137,8 @@ bindsym $mod+n exec $thunar
 #open codium
 bindsym $mod+c exec $vsc
 
+# open clipmenu
+bindsym $mod+\ exec clipmenu
 # shift to second display
 bindsym $mod+Shift+p move workspace to output right
 
