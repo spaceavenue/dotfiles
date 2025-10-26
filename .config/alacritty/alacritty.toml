@@ -1,35 +1,57 @@
-# import = ["~/.config/alacritty/catppuccin-mocha.toml"]
-
 [env]
 TERM="xterm-256color"
 
+[colors.normal]
+black = "#45475a"
+red = "#f38ba8"
+green = "#a6e3a1"
+yellow = "#f9e2af"
+blue = "#89b4fa"
+magenta = "#f5c2e7"
+cyan = "#94e2d5"
+white = "#bac2de"
+
 [colors.bright]
-black = "#59516a"
-blue = "#a9bcec"
-cyan = "#9de3eb"
-green = "#53aa5e"
-magenta = "#a875ff"
-red = "#e86aa2"
-white = "#e6e6e6"
-yellow = "#b2dc87"
+black = "#585b70"
+red = "#ff7aba"
+green = "#a6e3a1"
+yellow = "#f9e2af"
+blue = "#89b4fa"
+magenta = "#ffd1db"
+cyan = "#ffaad9"
+white = "#a6adc8"
+
+[colors.primary]
+background = "#000000"
+foreground = "#9f9fa1"
 
 [colors.cursor]
 cursor = "CellForeground"
 text = "CellBackground"
 
-[colors.normal]
-black = "#2d283f"
-blue = "#487df4"
-cyan = "#3bdeed"
-green = "#1fa91b"
-magenta = "#8d35c9"
-red = "#ed2261"
-white = "#9e9ea0"
-yellow = "#8ddc20"
+[colors.search.matches]
+foreground = "#1e1e2e"
+background = "#a6adc8"
 
-[colors.primary]
-background = "#000000"
-foreground = "#9f9fa1"
+[colors.search.focused_match]
+foreground = "#1e1e2e"
+background = "#a6e3a1"
+
+[colors.footer_bar]
+foreground = "#1e1e2e"
+background = "#a6adc8"
+
+[colors.hints.start]
+foreground = "#1e1e2e"
+background = "#f9e2af"
+
+[colors.hints.end]
+foreground = "#1e1e2e"
+background = "#a6adc8"
+
+[colors.selection]
+text = "#1e1e2e"
+background = "#f5e0dc"
 
 [bell]
 command = "None"
@@ -67,16 +89,9 @@ style = "Light Extended"
 [mouse]
 hide_when_typing = false
 
-#[mouse.double_click]
-#threshold = 300
-
-#[mouse.triple_click]
-#threshold = 300
-
 [window]
 decorations = "none"
 dynamic_title = true
-#history = 10000
 opacity = 1.0
 startup_mode = "Windowed"
 title = "Alacritty"
