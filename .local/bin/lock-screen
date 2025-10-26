@@ -1,32 +1,35 @@
 #!/bin/sh
 
-PRIMARY='#f47aedff'
-CLEAR='#00000000'
-TEXT='#c8c8c8ff'
+PRIMARY='#ff7abaff'
+BLANK='#000000ff'
+TEXT='#a6adc8ff'
 WRONG='#ff0000ff'
-VERIFYING='#00ff00ff'
+VERIFYING='#ffd1dbff'
 
 i3lock \
-	--color=00000000 \
-	--insidever-color=$CLEAR \
+	--color=$BLANK \
+    \
+    --insidever-color=$BLANK \
+    --insidewrong-color=$BLANK \
 	--ringver-color=$VERIFYING \
-	\
-	--insidewrong-color=$CLEAR \
 	--ringwrong-color=$WRONG \
 	\
-	--inside-color=$CLEAR \
+	--inside-color=$BLANK \
+    --line-color=$BLANK \
+    --separator-color=$BLANK \
 	--ring-color=$PRIMARY \
-	--line-color=$CLEAR \
-	--separator-color=$CLEAR \
 	\
-	--verif-color=$TEXT \
-	--wrong-color=$TEXT \
-	--time-color=$TEXT \
-	--date-color=$TEXT \
-	--layout-color=$TEXT \
-	--keyhl-color=$WRONG \
-	--bshl-color=$WRONG \
+    --verif-color=$TEXT \
+    --wrong-color=$TEXT \
+    --time-color=$TEXT \
+    --date-color=$TEXT \
+    --layout-color=$TEXT \
+    \
+	--keyhl-color=$VERIFYING \
+    bshl-color=$VERIFYING \
 	\
+    --verif-text="verifying…" \
+    --wrong-text="wrong!" \
 	--radius 180 \
 	--ring-width 12 \
 	--screen 1 \
