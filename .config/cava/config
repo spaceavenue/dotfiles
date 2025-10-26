@@ -133,9 +133,9 @@ bit_format = 16bit
 # You can define as many as 8 different colors. They range from bottom to top of screen
 gradient = 1
 gradient_count = 3
-gradient_color_1 = '#a875ff'
-gradient_color_2 = '#e86aa2'
-gradient_color_3 = '#f58bfc'
+gradient_color_1 = '#b00b69'
+gradient_color_2 = '#ff7aba'
+gradient_color_3 = '#ffd1db'
 ; gradient_color_4 = '#cccc33'
 ; gradient_color_5 = '#cca633'
 ; gradient_color_6 = '#cc8033'
