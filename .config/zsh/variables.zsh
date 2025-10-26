@@ -11,9 +11,15 @@ export JAVA_HOME=/usr/lib/jvm/default-runtime/bin
 # update PATH
 export PATH=$PATH:$JAVA_HOME:$CARGO_HOME/bin
 
+# set terminal to alacritty
+export TERMINAL="/usr/bin/alacritty"
+
 # make some libadwaita-based applications respect gtk theme
 # export GTK_THEME="catppuccin-mocha-mauve-standard+default"
 export GTK_THEME="Sweet-Dark-v40"
+
+# apply bat theme
+export BAT_THEME="Catppuccin Mocha"
 
 # default wineprefix path
 export WINEPREFIX="$HOME"/.local/share/wineprefixes/default
@@ -41,6 +47,8 @@ SAVEHIST=10000
 # disable less history (whys this a thing anyway)
 LESSHISTSIZE=0
 
+export MYSQL_HISTFILE="$XDG_DATA_HOME"/mariadb_history
+
 # make clipmenu use rofi
 export CM_LAUNCHER=rofi
 
@@ -52,7 +60,7 @@ else
 fi
 
 # prompt
-PROMPT='[%B%F{9}%n%f%b%F{6}@%f%B%F{13}%m%f%b %F{6}%1~%f ] '
+PROMPT='[%B%F{9}%n%f%b%F{14}@%f%B%F{13}%m%f%b %F{14}%1~%f ] '
 
 # autocomplete and directory nav options and stuff
 setopt auto_cd always_to_end menu_complete extended_glob nomatch interactive_comments
