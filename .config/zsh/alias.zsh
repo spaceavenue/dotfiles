@@ -10,8 +10,8 @@ alias config='/usr/bin/git --git-dir=/home/sanyaxo/.local/share/dotfiles/ --work
 alias bt='bluetoothctl power on && bluetoothctl connect'
 alias btdc='bluetoothctl disconnect'
 alias nmgui='nm-connection-editor'  
-alias wificon='nmcli device wifi connect'
-alias wifilist='nmcli device wifi list'
+alias wificon='nmcli device wifi rescan && nmcli device wifi connect'
+alias wifilist='nmcli device wifi rescan && nmcli device wifi list'
 
 # pacman stuff 
 alias pacs='pacman -Ss'
@@ -49,11 +49,9 @@ alias egrep='grep -E --color=auto'
 alias fgrep='grep -F --color=auto'
 alias cd..='cd ..'
 alias kill="/usr/bin/kill"
+alias monitor2='xrandr --output HDMI-1 --auto --right-of eDP-1'
 
-alias monitor2='xrandr --output HDMI-1-0 --mode 1920x1080 --right-of eDP-1'
-alias kbon='asusctl -k low'
-alias kboff='asusctl -k off'
-alias kbunfuck='asusctl aura static -z 1 -c ffffff'
+alias prismlauncher="/usr/bin/prismlauncher --dir /media/PrismLauncher/"
 
 # keybinds
 
