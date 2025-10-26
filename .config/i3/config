@@ -12,6 +12,9 @@ exec systemctl --user import-environment DISPLAY XDG_CURRENT_DESKTOP
 # export variables to dbus user session
 exec dbus-update-activation-environment DISPLAY
 
+# start pantheon's polkit agent
+exec io.elementary.desktop.agent-polkit
+
 # start gnome-keyring-daemon
 # exec_always gnome-keyring-daemon --start --components=pkcs11,secrets
 
@@ -22,7 +25,7 @@ exec dbus-update-activation-environment DISPLAY
 exec picom
 
 # apply wallpaper
-exec_always --no-startup-id feh --bg-scale --no-fehbg $HOME/media/wallpapers/minecraft_tower_no_shaders.png
+exec_always --no-startup-id feh --bg-scale --no-fehbg "$HOME/media/PC Wallpapers/deltarune_forest.png"
 
 # start polybar
 exec_always --no-startup-id $HOME/.local/bin/start-polybar
@@ -30,11 +33,14 @@ exec_always --no-startup-id $HOME/.local/bin/start-polybar
 # autotiling script
 exec_always --no-startup-id $HOME/.local/bin/autotiling
 
-#start dunst
+# start dunst
 exec --no-startup-id dunst
 
+# set color temp to 4500K
+exec --no-startup-id redshift -O 4500
+
 # autostart xdg autostart files
-exec --no-startup-id dex -a
+# exec --no-startup-id dex -a
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -87,30 +93,42 @@ bindsym $mod+Shift+greater 	        resize grow   	height 	10 px or 10 ppt
 bindsym $mod+Control+Shift+greater  resize grow     height  5 px
 
 bindsym $mod+Shift+less    	        resize shrink 	height 	10 px or 10 ppt
-bindsym $mod+Control+Shift+less    	resize shrink 	height 	5 px or 10 ppt
+bindsym $mod+Control+Shift+less    	resize shrink 	height 	5 px
 
 # add/subtract gaps to current
 bindsym $mod+plus       gaps inner current plus 10
 bindsym $mod+minus      gaps inner current minus 5
 
 # window border
-for_window [class=".*"] border pixel 2
-client.focused #a875ff #285577 #ffffff #a875ff #a875ff
+for_window [class=".*"] border none
+# client.focused #0b011d #000000 #ffffff #0b011d #0b011d
 
 # enable floating mode for some windows by default
 for_window [class="steam"] floating enable
 for_window [class="Xarchiver"] floating enable
 for_window [class="pavucontrol"] floating enable
 for_window [class="Galculator"] floating enable
+for_window [class="Ristretto"] floating enable
+for_window [class="feh"] floating enable
+for_window [class="PacketTracer"] floating enable
+for_window [class="obs"] floating enable
 
-#media controls
-bindsym XF86AudioPlay exec playerctl play
-bindsym XF86AudioPause exec playerctl pause
-bindsym XF86AudioPrev exec playerctl previous
-bindsym XF86AudioNext exec playerctl next
+# volume controls
+bindsym XF86AudioRaiseVolume exec "pactl set-sink-mute 0 false ; pactl set-sink-volume 0 +5%"
+bindsym XF86AudioLowerVolume exec "pactl set-sink-mute 0 false ; pactl set-sink-volume 0 -5%"
+bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle
+bindsym XF86AudioMicMute exec pactl set-sink-mute 1 toggle
+
+# media controls
+bindsym XF86AudioPause exec playerctl play-pause
+
+# brightness controls
+bindsym XF86MonBrightnessUp exec brightnessctl s +5%
+bindsym XF86MonBrightnessDown exec brightnessctl s 5%-
 
 # screenshot
-bindsym --release Control+Shift+s exec flameshot gui
+bindsym --release $mod+Shift+s exec flameshot gui
+bindsym --release Print exec flameshot screen
 
 # open rofi
 bindsym $mod+r exec rofi -show drun
@@ -139,6 +157,7 @@ bindsym $mod+c exec $vsc
 
 # open clipmenu
 bindsym $mod+\ exec clipmenu
+
 # shift to second display
 bindsym $mod+Shift+p move workspace to output right
 
