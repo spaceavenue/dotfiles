@@ -13,7 +13,7 @@ exec systemctl --user import-environment DISPLAY XDG_CURRENT_DESKTOP
 exec dbus-update-activation-environment DISPLAY
 
 # start pantheon's polkit agent
-exec io.elementary.desktop.agent-polkit
+# exec io.elementary.desktop.agent-polkit
 
 # start gnome-keyring-daemon
 # exec_always gnome-keyring-daemon --start --components=pkcs11,secrets
@@ -25,8 +25,7 @@ exec io.elementary.desktop.agent-polkit
 exec picom
 
 # apply wallpaper
-exec_always --no-startup-id feh --bg-scale --no-fehbg "$HOME/media/PC Wallpapers/deltarune_forest.png"
-
+exec_always --no-startup-id feh --bg-scale --no-fehbg "$HOME/media/Wallpapers/PC Wallpapers/deltarune_forest.png"
 # start polybar
 exec_always --no-startup-id $HOME/.local/bin/start-polybar
 

@@ -27,10 +27,6 @@ alias begone='doas pacman -Rns'
 alias sudo=doas
 alias uwu=doas
 
-# set cpu mode
-alias powersave='doas cpupower frequency-set -g powersave'
-alias performance='doas cpupower frequency-set -g performance'
-
 # convenience stuff
 alias cat='bat -P'
 alias man=batman
@@ -39,7 +35,8 @@ alias l='eza --icons=always -alhbrs modified'
 alias cls='clear; eza -alhbrs modified'
 alias mv='mv -v'
 alias cp='cp -v'
-alias rm='rm -Irv'
+alias rmfr='/usr/bin/rm -Irv'
+alias rm='gio trash'
 function cdl () {
 	eza -alhbrs modified $1 && cd $1
 }
