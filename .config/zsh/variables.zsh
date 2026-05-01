@@ -14,7 +14,6 @@ export PATH=$PATH:$JAVA_HOME:$CARGO_HOME/bin
 export TERMINAL="/usr/bin/alacritty"
 
 # make some libadwaita-based applications respect gtk theme
-# export GTK_THEME="catppuccin-mocha-mauve-standard+default"
 export GTK_THEME="Sweet-Dark-v40"
 
 # apply bat theme

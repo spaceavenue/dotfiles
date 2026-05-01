@@ -12,6 +12,7 @@ alias btdc='bluetoothctl disconnect'
 alias nmgui='nm-connection-editor'  
 alias wificon='nmcli device wifi rescan && nmcli device wifi connect'
 alias wifilist='nmcli device wifi rescan && nmcli device wifi list'
+alias prismlauncher="/usr/bin/prismlauncher --dir /media/PrismLauncher/"
 
 # pacman stuff 
 alias pacs='pacman -Ss'
@@ -22,6 +23,7 @@ alias dbs='pacman -Qs'
 alias dbi='pacman -Qi'
 alias summon='doas pacman -S'
 alias begone='doas pacman -Rns'
+alias kill-orphans='pacman -Qdtq | doas pacman -Rns -'
 
 # sudo -> doas
 alias sudo=doas
@@ -47,8 +49,8 @@ alias fgrep='grep -F --color=auto'
 alias cd..='cd ..'
 alias kill="/usr/bin/kill"
 alias monitor2='xrandr --output HDMI-1 --auto --right-of eDP-1'
-
-alias prismlauncher="/usr/bin/prismlauncher --dir /media/PrismLauncher/"
+alias kdiff='kitten diff'
+alias usystemctl='systemctl --user'
 
 # keybinds
 
@@ -70,5 +72,5 @@ bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
 
 # [Up/Down keybinds for hitory substring search]
-bindkey '^[[A' history-substring-search-up
-bindkey '^[[B' history-substring-search-down
+bindkey '^[[A'    history-substring-search-up
+bindkey '^[[B'    history-substring-search-down

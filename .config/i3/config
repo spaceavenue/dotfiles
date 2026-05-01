@@ -1,31 +1,25 @@
 set $mod Mod4
 set $browser1 firefox
-set $browser2 ~/.local/bin/firefox-nightly
-set $term alacritty
-set $thunar thunar
+set $term kitty 
+set $file-man thunar
 set $vsc codium --extensions-dir=/home/sanyaxo/.local/share/VSCodium/extensions/
 
 # export $DISPLAY and $XDG_CURRENT_DESKTOP so that 
 # xdg-desktop-portal-gtk.service doesnt fail
-exec systemctl --user import-environment DISPLAY XDG_CURRENT_DESKTOP
+exec_always systemctl --user import-environment GTK_THEME DISPLAY XDG_CURRENT_DESKTOP
 
 # export variables to dbus user session
 exec dbus-update-activation-environment DISPLAY
 
-# start pantheon's polkit agent
-# exec io.elementary.desktop.agent-polkit
-
 # start gnome-keyring-daemon
 # exec_always gnome-keyring-daemon --start --components=pkcs11,secrets
-
-# win95 startup sound
-# exec --no-startup-id cvlc --play-and-exit $HOME/media/win95_startup.flac &>/dev/null
 
 # start picom
 exec picom
 
 # apply wallpaper
 exec_always --no-startup-id feh --bg-scale --no-fehbg "$HOME/media/Wallpapers/PC Wallpapers/deltarune_forest.png"
+
 # start polybar
 exec_always --no-startup-id $HOME/.local/bin/start-polybar
 
@@ -39,7 +33,7 @@ exec --no-startup-id dunst
 exec --no-startup-id redshift -O 4500
 
 # autostart xdg autostart files
-# exec --no-startup-id dex -a
+exec --no-startup-id dex -a
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -140,16 +134,15 @@ bindsym $mod+t exec $term
 
 # open browser
 bindsym $mod+b exec $browser1
-bindsym $mod+Shift+b exec $browser2
 
 # open discord
 bindsym $mod+d exec discord
 
-# open spotify
-bindsym $mod+s exec spotify
+# open signal
+bindsym $mod+s exec signal-desktop
 
-# open thunar
-bindsym $mod+n exec $thunar
+# open file manager
+bindsym $mod+n exec $file-man
 
 #open codium
 bindsym $mod+c exec $vsc
