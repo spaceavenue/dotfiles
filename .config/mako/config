@@ -1,0 +1,19 @@
+font=Iosevka Etoile 12
+background-color=#0b011d88
+text-color=#ff7abaff
+width=300
+height=100
+outer-margin=10,10,0,0
+margin=0,0,10,0
+padding=5
+border-size=2
+border-color=#ffd1dbff
+border-radius=12
+icons=1
+max-icon-size=64
+icon-path="/home/sanyaxo/.local/share/icons/Sweet-Purple/"
+icon-location=left
+icon-border-radius=8
+default-timeout=5000
+format=<b><span foreground="#ffd1db" size="14pt">%a</span><span foreground="#f38ba8">\n%s</span></b>\n%b
+text-alignment=right

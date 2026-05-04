@@ -1,0 +1,3 @@
+#!/usr/bin/bash
+
+HOME=$HOME/.local/share/Steam/steam-home exec /usr/bin/steam "$@"

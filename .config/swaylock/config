@@ -1,0 +1,38 @@
+ignore-empty-password
+daemonize
+
+image="/home/sanyaxo/media/Wallpapers/PC Wallpapers/deltarune_forest_blur.png"
+
+clock
+timestr=%T
+datestr=%a, %d %b %Y
+
+font=Iosevka Etoile
+indicator-idle-visible
+indicator-radius=300
+indicator-thickness=15
+
+inside-color=00000000
+inside-clear-color=00000000
+inside-ver-color=00000000
+inside-wrong-color=00000000
+
+key-hl-color=ffd1dbff
+bs-hl-color=ffd1dbff
+
+line-color=00000000
+line-clear-color=00000000
+line-ver-color=00000000
+line-wrong-color=00000000
+
+ring-color=ff7abaff
+ring-clear-color=ff7abaff
+ring-ver-color=ffd1dbff
+ring-wrong-color=f38ba8ff
+
+separator-color=00000000
+
+text-color=a6adc8ff
+text-clear-color=a6adc8ff
+text-ver-color=a6adc8ff
+text-wrong-color=a6adc8ff

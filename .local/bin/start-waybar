@@ -1,0 +1,7 @@
+#!/usr/bin/sh
+
+/usr/bin/kill -9 -a waybar;
+
+sleep 1;
+
+exec waybar >/dev/null&
