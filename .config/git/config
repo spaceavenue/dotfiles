@@ -1,9 +1,16 @@
+[init]
+	defaultBranch = main
 [user]
-	email = sanya.xo1337@protonmail.com
-	name = Sanya
+	email = spaceavenue@proton.me
+	name = spaceavenue
 [credential "https://github.com"]
 	helper = 
 	helper = !/usr/bin/gh auth git-credential
 [credential "https://gist.github.com"]
 	helper = 
 	helper = !/usr/bin/gh auth git-credential
+[filter "lfs"]
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f

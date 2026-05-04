@@ -1,110 +1,79 @@
+/* font style and size, do not force a height */
 * {
-    font-family: Iosevka Aile Light, FontAwesome, sans-serif;
-    font-size: 18px;
+    font-family: "Symbols Nerd Font, Iosevka Etoile";
+    font-size: 12pt;
+    min-height: 0px;
 }
 
+/* waybar window styling */
 window#waybar {
-    background-color: #000000;
-    color: #ffffff;
+    background: rgba(11, 1, 29, 0.67);
+    border-radius: 20px;
 }
 
-window#waybar.hidden {
-    opacity: 0.2;
+/* common label color */
+label {
+    color: #ff7aba;
 }
 
-button {
-    box-shadow: inset 0 -3px transparent;
-    border: none;
-    border-radius: 0;
+/* tooltip window styling */
+tooltip {
+    background: rgba(11, 1, 29, 0.67);
+    padding: 4px 10px;
+    border-radius: 15px;
+    margin: 5px 0px;
 }
 
-button:hover {
-    background: inherit;
-    box-shadow: inset 0 -3px #a875ff;
+/* style for all modules */
+.module {
+    background: #720043;
+    padding: 4px 10px;
+    border-radius: 15px;
+    margin: 5px 0px; /* only top-bottom margin, no L-R margin */
 }
 
-#workspaces button {
-    padding: 0 5px;
-    background-color: transparent;
-    color: #b00b69;
+/* spacing between the edge modules and the bar */
+.modules-left:nth-child(1) {
+    margin-left: 5pt;
+}
+.modules-right:nth-last-child(1) {
+    margin-right: 5pt;
 }
 
-#workspaces button:hover {
-    background: rgba(0, 0, 0, 0.2);
-}
-
-#workspaces button.focused {
-    background-color: #000000;
-    box-shadow: inset 0 -3px #a875ff;
-}
-
-#workspaces button.urgent {
-    background-color: #eb4d4b;
-}
-
-#clock,
-#battery,
-#cpu,
-#memory,
-#disk,
-#temperature,
-#backlight,
-#network,
-#pulseaudio,
-#wireplumber,
-#custom-media,
-#tray,
-#mode,
-#idle_inhibitor,
-#scratchpad,
-#mpd {
-    /*box-shadow: inset 0 -3px #a875ff;*/
-    background-color: #000000;
-    color: #b00b69;
-    padding: 0 10px;
-}
-
-#window,
+/* workspace window styling */
 #workspaces {
-    margin: 0 4px;
+    background: rgba(11, 1, 29, 0.67); /* transluscent window */
+    padding: 0px; /* no padding between window and edge buttons */
 }
 
-/* If workspaces is the leftmost module, omit left margin */
-.modules-left > widget:first-child > #workspaces {
-    margin-left: 0;
+/* workspace button label styling */
+#workspaces button label {
+    color: #ffd1db;
 }
 
-/* If workspaces is the rightmost module, omit right margin */
-.modules-right > widget:last-child > #workspaces {
-    margin-right: 0;
+/* workspace button styling */
+#workspaces button {
+    background: #720043;
+    min-width: 20px;
+    padding: 4px 10px;
+    border-radius: 15px;
+    margin-right: 5px;
 }
 
-@keyframes blink {
-    to {
-        background-color: #000000;
-        color: #000000;
-    }
+/* focused workspace button label styling */
+#workspaces button.focused label {
+    color: #720043;
 }
 
-#battery.critical:not(.charging) {
-    color: #ff0000;
-    animation-name: blink;
-    animation-duration: 0.5s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
+/* focused workspace button styling */
+#workspaces button.focused,
+#taskbar button.active {
+    background: #ffd1db;
 }
 
-#custom-media {
-    min-width: 100px;
-}
-
-#tray > .passive {
-    -gtk-icon-effect: dim;
-}
-
-#tray > .needs-attention {
-    -gtk-icon-effect: highlight;
-    background-color: #eb4d4b;
+/* remove margin between last button and window */
+#workspaces button:nth-last-child(1),
+#taskbar button:nth-last-child(1) {
+    margin: 0;
 }
 

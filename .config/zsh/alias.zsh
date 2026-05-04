@@ -1,32 +1,57 @@
 # config stuff
-alias swayconf='nvim ~/.config/sway/config'
-alias barconf='nvim ~/.config/waybar/config'
+alias i3conf='nvim ~/.config/i3/config'
+alias polyconf='nvim ~/.config/polybar/config.ini'
+alias polymod='nvim ~/.config/polybar/modules.ini'
 
 # apps and stuff
 alias b=btop
 alias sb='doas btop'
-alias config='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
-alias bt='bluetoothctl connect 7F:3E:63:3E:89:52'
-alias btdc='bluetoothctl disconnect'  
-alias spd='speedtest-cli'
+alias config='/usr/bin/git --git-dir=/home/sanyaxo/.local/share/dotfiles/ --work-tree=/home/sanyaxo'
+alias bt='bluetoothctl power on && bluetoothctl connect'
+alias btdc='bluetoothctl disconnect'
+alias nmgui='nm-connection-editor'  
+alias wificon='nmcli device wifi rescan && nmcli device wifi connect'
+alias wifilist='nmcli device wifi rescan && nmcli device wifi list'
+alias prismlauncher="/usr/bin/prismlauncher --dir /media/PrismLauncher/"
 
-# pacman stuff
-alias update-owo='doas pacman -Syu'
+# pacman stuff 
+alias pacs='pacman -Ss'
+alias paci='pacman -Si'
+alias pars='paru -Ss'
+alias pari='paru -Si'
+alias dbs='pacman -Qs'
+alias dbi='pacman -Qi'
+alias summon='doas pacman -S'
+alias begone='doas pacman -Rns'
+alias kill-orphans='pacman -Qdtq | doas pacman -Rns -'
+
+# sudo -> doas
+alias sudo=doas
 alias uwu=doas
 
 # convenience stuff
-alias l='ls -al --color=auto'
-alias cls='clear;ls -al --color=auto'
-alias lsblk='lsblk -pf'
+alias cat='bat -P'
+alias man=batman
+alias eza='eza -alhbrs modified'
+alias l='eza --icons=always -alhbrs modified'
+alias cls='clear; eza -alhbrs modified'
+alias mv='mv -v'
+alias cp='cp -v'
+alias rmfr='/usr/bin/rm -Irv'
+alias rm='gio trash'
+function cdl () {
+	eza -alhbrs modified $1 && cd $1
+}
+alias lsblk='lsblk -p -o NAME,FSTYPE,LABEL,UUID,FSUSE%,FSUSED,FSSIZE,MOUNTPOINTS'
 alias grep='grep --color=auto'
-alias egrep='egrep --color=auto'
-alias fgrep='fgrep --color=auto'
+alias egrep='grep -E --color=auto'
+alias fgrep='grep -F --color=auto'
 alias cd..='cd ..'
-
-alias monitor2='xrandr --output HDMI-1-0 --mode 1920x1080 --right-of eDP-1'
-alias kbon='asusctl -k low'
-alias kboff='asusctl -k off'
-alias kbunfuck='asusctl led-mode static -z 1 -c ffffff'
+alias kill="/usr/bin/kill"
+alias monitor2='xrandr --output HDMI-1 --auto --right-of eDP-1'
+alias kdiff='kitten diff'
+alias icat='kitten icat'
+alias usystemctl='systemctl --user'
 
 # keybinds
 
@@ -48,5 +73,5 @@ bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
 
 # [Up/Down keybinds for hitory substring search]
-bindkey '^[[A' history-substring-search-up
-bindkey '^[[B' history-substring-search-down
+bindkey '^[[A'    history-substring-search-up
+bindkey '^[[B'    history-substring-search-down
