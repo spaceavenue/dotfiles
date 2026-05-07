@@ -2,11 +2,11 @@
 alias i3conf='nvim ~/.config/i3/config'
 alias polyconf='nvim ~/.config/polybar/config.ini'
 alias polymod='nvim ~/.config/polybar/modules.ini'
+alias dotfiles='/usr/bin/git --git-dir=/home/sanyaxo/.local/share/dotfiles/ --work-tree=/home/sanyaxo'
 
 # apps and stuff
 alias b=btop
 alias sb='doas btop'
-alias config='/usr/bin/git --git-dir=/home/sanyaxo/.local/share/dotfiles/ --work-tree=/home/sanyaxo'
 alias bt='bluetoothctl power on && bluetoothctl connect'
 alias btdc='bluetoothctl disconnect'
 alias nmgui='nm-connection-editor'  
@@ -52,6 +52,7 @@ alias monitor2='xrandr --output HDMI-1 --auto --right-of eDP-1'
 alias kdiff='kitten diff'
 alias icat='kitten icat'
 alias usystemctl='systemctl --user'
+alias ujournalctl='journalctl --user'
 
 # keybinds
 
