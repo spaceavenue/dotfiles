@@ -103,7 +103,7 @@
         "interval": 1,
         "format": "<span foreground='#ffd1db'>󰅐</span> {:%a - %H:%M}",
         "format-alt": "<span foreground='#ffd1db'>󰸗</span> {:%a, %d %b %y   <span foreground='#ffd1db'>󰅐 </span> %H:%M}",
-        "tooltip-format": "<tt><small>{calendar}</small></tt>",
+        "tooltip-format": "<tt>{calendar}</tt>",
         "calendar": {
                     "mode"          : "month",
                     "weeks-pos"     : "left",
@@ -164,6 +164,7 @@
 
     "tray": {
         "icon-size": 18,
-        "spacing": 10
+        "spacing": 5,
+        "show-passive-items": true
     }
 }

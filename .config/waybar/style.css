@@ -1,79 +1,69 @@
-/* font style and size, do not force a height */
 * {
-    font-family: "Symbols Nerd Font, Iosevka Etoile";
-    font-size: 12pt;
-    min-height: 0px;
+    all: initial;
+    font-family: "Symbols Nerd Font", "Iosevka Etoile", sans-serif;
+    font-size: 12.5pt;
+    min-height: 0;
 }
 
-/* waybar window styling */
+/* window styling */
 window#waybar {
-    background: rgba(11, 1, 29, 0.67);
+    background: rgba(0, 0, 0, 0.67);
     border-radius: 20px;
 }
 
 /* common label color */
 label {
-    color: #ff7aba;
+    color: #f38ba8;
 }
 
-/* tooltip window styling */
-tooltip {
-    background: rgba(11, 1, 29, 0.67);
-    padding: 4px 10px;
-    border-radius: 15px;
-    margin: 5px 0px;
-}
-
-/* style for all modules */
-.module {
-    background: #720043;
-    padding: 4px 10px;
-    border-radius: 15px;
-    margin: 5px 0px; /* only top-bottom margin, no L-R margin */
-}
-
-/* spacing between the edge modules and the bar */
-.modules-left:nth-child(1) {
-    margin-left: 5pt;
-}
-.modules-right:nth-last-child(1) {
-    margin-right: 5pt;
-}
-
-/* workspace window styling */
-#workspaces {
-    background: rgba(11, 1, 29, 0.67); /* transluscent window */
-    padding: 0px; /* no padding between window and edge buttons */
-}
-
-/* workspace button label styling */
-#workspaces button label {
-    color: #ffd1db;
-}
-
-/* workspace button styling */
+/* common properties for modules, tooltip and workspace button */
+.module,
+tooltip,
 #workspaces button {
     background: #720043;
-    min-width: 20px;
     padding: 4px 10px;
-    border-radius: 15px;
+    border-radius: 20px;
+    margin: 5px 0;
+}
+
+/* override tooltip background */
+tooltip {
+    background: rgba(0, 0, 0, 0.67);
+}
+
+/* spacing for edge modules (matches spacing defined in config) */
+.modules-left:first-child {
+    margin-left: 5px;
+}
+
+.modules-right:last-child {
     margin-right: 5px;
 }
 
-/* focused workspace button label styling */
-#workspaces button.focused label {
-    color: #720043;
+/* workspace styling */
+#workspaces {
+    background: transparent;
+    padding: 0;
 }
 
-/* focused workspace button styling */
+#workspaces button {
+    min-width: 20px;
+    margin: 0px 5px 0px 0;
+}
+
+/* focused states (invert bg and fg colors) */
 #workspaces button.focused,
 #taskbar button.active {
     background: #ffd1db;
 }
 
-/* remove margin between last button and window */
-#workspaces button:nth-last-child(1),
-#taskbar button:nth-last-child(1) {
-    margin: 0;
+#workspaces button.focused label,
+#taskbar button.active label {
+    color: #720043;
 }
 
+/* remove margins for trailing buttons */
+#workspaces button:last-child,
+#taskbar button:last-child {
+    margin-right: 0;
+}
