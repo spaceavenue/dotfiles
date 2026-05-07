@@ -1,0 +1,66 @@
+// Enable rounded corners and blur (for supported windows) for all windows.
+window-rule {
+    draw-border-with-background false
+    geometry-corner-radius 12
+    clip-to-geometry true
+    background-effect {
+        blur true
+    }
+}
+
+// Open kitty with default width as 67% of total screen width.
+window-rule {
+    match app-id="foot"
+    default-column-width { proportion 0.67; }
+}
+
+// Open discord and signal in "chat" workspace only
+window-rule {
+    match app-id=r#"^discord$|^signal$"#
+    open-on-workspace "chat"
+}
+
+// Block KeePassXC from screen capture
+window-rule {
+    match app-id=r#"^org\.keepassxc\.KeePassXC$"#
+    block-out-from "screen-capture"
+}
+
+// Open some windows as floating
+window-rule {
+    match app-id=r#"galculator|steam|xarchiver|pavucontrol|zenity"#
+    match app-id=r#"firefox$"# title="^Picture-in-Picture$"
+    open-floating true
+}
+
+// Put swaybg inside the overview backdrop.
+layer-rule {
+    match namespace="^wallpaper$"
+    place-within-backdrop true
+}
+
+// Enable blur behind waybar
+layer-rule {
+    match namespace="^waybar$"
+    background-effect {
+        blur true
+    }
+    geometry-corner-radius 20
+    // And behind its popups
+    popups {
+        background-effect {
+            blur true
+        }
+        geometry-corner-radius 15 
+    }
+}
+
+// Enable blur behind mako notifs and fuzzel
+layer-rule {
+    match namespace=r#"^notifications$|^launcher$"#
+    background-effect {
+        blur true
+        xray false
+    }
+    geometry-corner-radius 12
+}

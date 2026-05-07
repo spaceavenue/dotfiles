@@ -1,9 +1,10 @@
-// Input device configuration.
+// Input devices
 include "input-output.kdl"
-xwayland-satellite {
-    off
-}
-// Window positioning and size.
+
+// Turn xwayland-satellite off
+//xwayland-satellite { //off; }
+
+// Window positioning and size
 layout {
     gaps 10
     center-focused-column "on-overflow"
@@ -12,7 +13,6 @@ layout {
         proportion 0.5
         proportion 0.66667
         proportion 1.0
-
         // fixed <pixels>
     }
     preset-window-heights { }
@@ -24,27 +24,24 @@ layout {
     struts { }
 }
 
+// Set cursor theme and options
 cursor {
     xcursor-theme "breeze_cursors"
     xcursor-size 24
+    hide-after-inactive-ms 5000
 }
 
-// Ask clients to omit their client-side decorations if possible.
+// Ask clients to omit their client-side decorations
 prefer-no-csd
 
 // Startup processes
-
-// Export env variables for portals
-// spawn-at-startup "dbus-update-activation-environment" "--systemd" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP" "XDG_SESSION_TYPE" "2>/dev/null"
+//...would go here if I had any launching from niri
 
 // Disable hotkey overlay
 hotkey-overlay { skip-at-startup; }
 
-// Path where screenshots are saved.
+// Screenshot path
 screenshot-path "~/media/PC Screenshots/%Y-%m-%d_%H-%M.png"
-
-// Animation settings
-include "animations.kdl"
 
 // Named workspaces
 workspace "terminal"
@@ -70,235 +67,19 @@ overview {
     }
 }
 
+// Animation settings
+include "animations.kdl"
+
 // Window rules
-// Enable rounded corners and blur (for supported windows) for all windows.
-window-rule {
-    draw-border-with-background false
-    geometry-corner-radius 12
-    clip-to-geometry true
-    background-effect {
-        blur true
-    }
-}
+include "window-layer-rules.kdl"
 
-// Open kitty with default width as 67% of total screen width.
-window-rule {
-    match app-id="kitty"
-    default-column-width { proportion 0.67; }
-}
+// App(-related) keybinds
+include "app-binds.kdl"
 
-// Open discord and signal in "chat" workspace only
-window-rule {
-    match app-id=r#"^discord$|^signal$"#
-    open-on-workspace "chat"
-}
+// Various focus and movement related binds
+include "focus-movement-binds.kdl"
 
-// Block KeePassXC from screen capture
-window-rule {
-    match app-id=r#"^org\.keepassxc\.KeePassXC$"#
-    block-out-from "screen-capture"
-}
-
-// Open some windows as floating
-window-rule {
-    match app-id=r#"galculator|steam|xarchiver|pavucontrol|zenity"#
-    match app-id=r#"firefox$"# title="^Picture-in-Picture$"
-    open-floating true
-}
-
-// Put swaybg inside the overview backdrop.
-layer-rule {
-    match namespace="^wallpaper$"
-    place-within-backdrop true
-}
-
-// Enable blur behind waybar
-layer-rule {
-    match namespace="^waybar$"
-    background-effect {
-        blur true
-    }
-    geometry-corner-radius 20
-    // And behind its popups
-    popups {
-        background-effect {
-            blur true
-        }
-        geometry-corner-radius 15 
-    }
-}
-
-// Enable blur behind mako notifs and fuzzel
-layer-rule {
-    match namespace=r#"^notifications$|^launcher$"#
-    background-effect {
-        blur true
-        xray false
-    }
-    geometry-corner-radius 12
-}
-
-// Keybinds
-binds {
-    Mod+T { spawn "kitty" "--single-instance"; } // Terminal
-    Mod+Space { spawn "fuzzel"; } // App launcher
-    Mod+N { spawn "thunar"; } // File manager
-    Mod+B { spawn "firefox"; } // Firefox
-    Mod+D { spawn "vesktop"; } // Discord
-    Mod+S { spawn "signal-desktop" "--password-store=gnome-libsecret"; } // Signal
-    Mod+P {spawn "~/.local/bin/color-picker"; } //color picker
-
-    // Clipboard history
-    Mod+Apostrophe { spawn-sh "cliphist list | fuzzel --dmenu | cliphist decode | wl-copy"; }
-
-    // Emoji picker
-    Mod+Semicolon { spawn "rofimoji"; }
-
-    // Screenshot
-    Mod+Shift+S { screenshot; }
-    Print { screenshot-screen; }
-    Alt+Print { screenshot-window; }
-
-    Mod+Shift+L { spawn "swaylock"; } // Screen lock
-    
-    // Open/close the Overview
-    Mod+O repeat=false { toggle-overview; }
-    
-    // Close window.
-    Mod+Q repeat=false { close-window; }
-    
-    // Quit session
-    Mod+Shift+E { quit; }
-    Ctrl+Alt+Delete { quit; }
-
-    Mod+V { toggle-window-floating; } // Toggle between floating and tiling
-
-    // Volume keys mappings for PipeWire & WirePlumber.
-    XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+ -l 1.0"; }
-    XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-"; }
-    XF86AudioMute        allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
-    XF86AudioMicMute     allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
-
-    // Media keys mapping using playerctl.
-    XF86AudioPlay        allow-when-locked=true { spawn "playerctl" "play-pause"; }
-    XF86AudioStop        allow-when-locked=true { spawn "playerctl" "stop"; }
-    XF86AudioPrev        allow-when-locked=true { spawn "playerctl" "previous"; }
-    XF86AudioNext        allow-when-locked=true { spawn "playerctl" "next"; }
-
-    // Brightness key mappings for brightnessctl.
-    XF86MonBrightnessUp   allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "+5%"; }
-    XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "5%-"; }
-
-    // Window focus
-    Mod+Up    { focus-window-up; }
-    Mod+Down  { focus-window-down; }
-
-    // Window movement
-    Mod+Shift+Up    { move-window-up; }
-    Mod+Shift+Down  { move-window-down; }
-    
-    // Column focus
-    Mod+Left   { focus-column-left; }
-    Mod+Right  { focus-column-right; }
-
-    Mod+WheelScrollDown  { focus-column-right; }
-    Mod+WheelScrollUp    { focus-column-left; }
-
-    Mod+Home  { focus-column-first; }
-    Mod+End   { focus-column-last; }
-
-    // Column movement
-    Mod+Shift+Left  { move-column-left; }
-    Mod+Shift+Right { move-column-right; }
-
-    Mod+Shift+WheelScrollDown { move-column-right; }
-    Mod+Shift+WheelScrollUp   { move-column-left; }
-
-    Mod+Shift+Home { move-column-to-first; }
-    Mod+Shift+End  { move-column-to-last; }
-    
-    // Workspace scrolling (focus)
-    Mod+Page_Down      { focus-workspace-down; }
-    Mod+Page_Up        { focus-workspace-up; }
-
-    Mod+Ctrl+WheelScrollDown      cooldown-ms=150 { focus-workspace-down; }
-    Mod+Ctrl+WheelScrollUp        cooldown-ms=150 { focus-workspace-up; }
-    
-    // Workspace scrolling (movement)
-    Mod+Shift+Page_Down       { move-workspace-down; }
-    Mod+Shift+Page_Up         { move-workspace-up; }
-
-    Mod+Ctrl+Shift+WheelScrollDown cooldown-ms=150 { move-column-to-workspace-down; }
-    Mod+Ctrl+Shift+WheelScrollUp   cooldown-ms=150 { move-column-to-workspace-up; }
-
-    // Workspace focus
-    Mod+1 { focus-workspace 1; }
-    Mod+2 { focus-workspace 2; }
-    Mod+3 { focus-workspace 3; }
-    Mod+4 { focus-workspace 4; }
-    Mod+5 { focus-workspace 5; }
-    Mod+6 { focus-workspace 6; }
-    Mod+7 { focus-workspace 7; }
-    Mod+8 { focus-workspace 8; }
-    Mod+9 { focus-workspace 9; }
-
-    // Window movement to workspace
-    Mod+Shift+1 { move-window-to-workspace 1; }
-    Mod+Shift+2 { move-window-to-workspace 2; }
-    Mod+Shift+3 { move-window-to-workspace 3; }
-    Mod+Shift+4 { move-window-to-workspace 4; }
-    Mod+Shift+5 { move-window-to-workspace 5; }
-    Mod+Shift+6 { move-window-to-workspace 6; }
-    Mod+Shift+7 { move-window-to-workspace 7; }
-    Mod+Shift+8 { move-window-to-workspace 8; }
-    Mod+Shift+9 { move-window-to-workspace 9; }
-    
-    // Column movement to workspace
-    Mod+Ctrl+1 { move-column-to-workspace 1; }
-    Mod+Ctrl+2 { move-column-to-workspace 2; }
-    Mod+Ctrl+3 { move-column-to-workspace 3; }
-    Mod+Ctrl+4 { move-column-to-workspace 4; }
-    Mod+Ctrl+5 { move-column-to-workspace 5; }
-    Mod+Ctrl+6 { move-column-to-workspace 6; }
-    Mod+Ctrl+7 { move-column-to-workspace 7; }
-    Mod+Ctrl+8 { move-column-to-workspace 8; }
-    Mod+Ctrl+9 { move-column-to-workspace 9; }
-
-    // The following binds move the focused window in and out of a column.
-    // If the window is alone, they will consume it into the nearby column to the side.
-    // If the window is already in a column, they will expel it out.
-    Mod+BracketLeft  { consume-or-expel-window-left; }
-    Mod+BracketRight { consume-or-expel-window-right; }
-
-    // Consume from and expel to the right from the bottom of the focused column
-    Mod+Shift+BracketLeft  { consume-window-into-column; }
-    Mod+Shift+BracketRight { expel-window-from-column; }
-
-    Mod+R { switch-preset-column-width; } // Cycle through preset widths
-    Mod+Shift+R { switch-preset-column-width-back; } // In reverse order
-
-    // Mod+Shift+R { switch-preset-window-height; }
-    Mod+Ctrl+R { reset-window-height; }
-
-    Mod+F { maximize-column; } // Expand to edges
-    Mod+Shift+F { fullscreen-window; }
-    Mod+M { maximize-window-to-edges; } // Ignore gaps and expand to the edges
-    Mod+Ctrl+F { expand-column-to-available-width; } // Expand focused column available space 
-
-    Mod+C { center-column; }
-    Mod+Ctrl+C { center-visible-columns; }
-
-    // Finer width adjustments.
-    Mod+Comma { set-column-width "-10%"; }
-    Mod+Period { set-column-width "+10%"; }
-
-    // Finer height adjustments
-    Mod+Shift+Comma { set-window-height "-10%"; }
-    Mod+Shift+Period { set-window-height "+10%"; }
-
-    // The allow-inhibiting=false property ensures niri always processes binds, even when an inhibitor is active.
-    Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
-
+/-binds {
     // Monitor focus:
     //Mod+Shift+Left  { focus-monitor-left; }
     //Mod+Shift+Down  { focus-monitor-down; }
