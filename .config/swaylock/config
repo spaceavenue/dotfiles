@@ -1,7 +1,10 @@
 ignore-empty-password
 daemonize
 
-image="/home/sanyaxo/media/Wallpapers/PC Wallpapers/deltarune_forest_blur.png"
+image="/home/sanyaxo/.config/current_wallpaper"
+effect-scale=0.5
+effect-blur=5x15
+time-effects
 
 clock
 timestr=%T
