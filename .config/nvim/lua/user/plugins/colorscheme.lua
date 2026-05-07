@@ -9,6 +9,14 @@ return {
             light = "latte",
             dark = "mocha",
         },
+        transparent_background = true,
+        float = {
+            transparent = true, -- enable transparent floating windows
+            solid = false, -- use solid styling for floating windows, see |winborder|
+        },
+        no_italic = false, -- Force no italic
+        no_bold = false, -- Force no bold
+        no_underline = false, -- Force no underline
         show_end_of_buffer = false, -- don't show the '~' characters after the end of buffers
         term_colors = false, -- sets terminal colors (e.g. `g:terminal_color_0`)
         styles = { -- Handles the styles of general hi groups (see `:h highlight-args`):
@@ -26,26 +34,46 @@ return {
             operators = {},
             -- miscs = {}, -- Uncomment to turn off hard-coded styles
         },
+        lsp_styles = { -- Handles the style of specific lsp hl groups (see `:h lsp-highlight`).
+            virtual_text = {
+                errors = { "italic" },
+                hints = { "italic" },
+                warnings = { "italic" },
+                information = { "italic" },
+                ok = { "italic" },
+            },
+            underlines = {
+                errors = { "underline" },
+                hints = { "underline" },
+                warnings = { "underline" },
+                information = { "underline" },
+                ok = { "underline" },
+            },
+            inlay_hints = {
+                background = true,
+            },
+        },
         color_overrides = {
             mocha = {
                 base = "#000000",
-                mantle = "#000000",
+                mantle = "#0b011d",
                 crust = "#0b011d",
             },
         },
         custom_highlights = {},
         default_integrations = true,
-        integrations = {
-            cmp = true,
-            gitsigns = true,
-            nvimtree = true,
-            treesitter = true,
-            notify = false,
-            mini = {
-                enabled = true,
-                indentscope_color = "",
-            },
-        },
+        auto_integrations = true,
+        -- integrations = {
+        --     cmp = true,
+        --     gitsigns = true,
+        --     nvimtree = true,
+        --     treesitter = true,
+        --     notify = false,
+        --     mini = {
+        --         enabled = true,
+        --         indentscope_color = "",
+        --     },
+        -- },
     })
 
     vim.cmd("colorscheme catppuccin-mocha")
