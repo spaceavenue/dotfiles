@@ -3,8 +3,8 @@ binds {
     Mod+Space { spawn "fuzzel"; } // App launcher
     Mod+N { spawn "thunar"; } // File manager
     Mod+B { spawn "firefox"; } // Firefox
-    Mod+D { spawn "vesktop"; } // Discord
-    Mod+S { spawn "signal-desktop" "--password-store=gnome-libsecret"; } // Signal
+    Mod+D { spawn "env" "DISPLAY=" "vesktop"; } // Discord
+    Mod+S { spawn "env" "DISPLAY=" "signal-desktop" "--password-store=gnome-libsecret"; } // Signal
     Mod+P {spawn "~/.local/bin/color-picker"; } //color picker
 
     // Clipboard history

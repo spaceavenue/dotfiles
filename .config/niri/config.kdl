@@ -2,7 +2,7 @@
 include "input-output.kdl"
 
 // Turn xwayland-satellite off
-//xwayland-satellite { //off; }
+// xwayland-satellite { off; }
 
 // Window positioning and size
 layout {

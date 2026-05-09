@@ -1,13 +1,13 @@
 export PATH=$HOME/.local/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/opt
 
 # put rust libs in better directory
-# export CARGO_HOME=$HOME/.local/lib/cargo
+export CARGO_HOME=$HOME/.local/lib/cargo
 
 # set JAVA_HOME
 export JAVA_HOME=/usr/lib/jvm/default-runtime/bin
 
 # update PATH
-export PATH=$PATH:$JAVA_HOME
+export PATH=$PATH:$JAVA_HOME:$CARGO_HOME
 
 # make some libadwaita-based applications respect gtk theme
 # export GTK_THEME="Sweet-Dark-v40"

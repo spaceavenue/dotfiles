@@ -23,7 +23,7 @@ alias dbs='pacman -Qs'
 alias dbi='pacman -Qi'
 alias summon='doas pacman -S'
 alias begone='doas pacman -Rns'
-alias kill-orphans='pacman -Qdtq | doas pacman -Rns -'
+alias kill-orphans='pacman -Qdtq | doas pacman -Rns -- -'
 
 # sudo -> doas
 alias sudo=doas
