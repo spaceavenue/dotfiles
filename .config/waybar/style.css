@@ -7,7 +7,7 @@
 
 /* window styling */
 window#waybar {
-    background: rgba(0, 0, 0, 0.67);
+    background: rgba(0, 0, 0, 0.5);
     border-radius: 20px;
 }
 
@@ -21,6 +21,7 @@ label {
 tooltip,
 #workspaces button {
     background: #720043;
+    min-width: 40px;
     padding: 4px 10px;
     border-radius: 20px;
     margin: 5px 0;
@@ -28,7 +29,7 @@ tooltip,
 
 /* override tooltip background */
 tooltip {
-    background: rgba(0, 0, 0, 0.67);
+    background: rgba(0, 0, 0, 0.5);
 }
 
 /* spacing for edge modules (matches spacing defined in config) */
@@ -42,28 +43,20 @@ tooltip {
 
 /* workspace styling */
 #workspaces {
-    background: transparent;
     padding: 0;
 }
 
 #workspaces button {
-    min-width: 20px;
-    margin: 0px 5px 0px 0;
+    background: transparent;
+    padding: 0;
+    margin: 0;
 }
 
 /* focused states (invert bg and fg colors) */
-#workspaces button.focused,
-#taskbar button.active {
+#workspaces button.focused {
     background: #ffd1db;
 }
 
-#workspaces button.focused label,
-#taskbar button.active label {
+#workspaces button.focused label {
     color: #720043;
-}
-
-/* remove margins for trailing buttons */
-#workspaces button:last-child,
-#taskbar button:last-child {
-    margin-right: 0;
 }

@@ -4,11 +4,8 @@
     "exclusive": true,
     "spacing": 5,
     "margin": "5px 5px 0px 5px",
-    // "height": 40,
-    "modules-left": [ 
+    "modules-left": [
         "niri/workspaces",
-        //"group/group-taskbar",
-        //"wlr/taskbar", 
         "group/group-cpu",  
         "custom/memory", 
         "disk"
@@ -20,7 +17,7 @@
         "custom/weather",
         "wireplumber", 
         "battery", 
-        "network" 
+        "network"
         // "tray"
     ],
 
@@ -28,35 +25,13 @@
         "format": "{icon}",
         "format-icons": {
             "default": "",
-            "terminal": "",
+            // "terminal": "",
+            "terminal": "",
             "browser": "󰈹",
             "chat": ""
         },
         "hide-empty": true
     },
-
-    // "group/group-taskbar": {
-    //     "orientation": "horizontal",
-    //     "drawer": {
-    //         "transition-duration": 300,
-    //         "children-class": "taskbar"
-    //     },
-    //     "modules": [
-    //         "custom/menu",
-    //         "wlr/taskbar"
-    //     ]
-    // },
-    //
-    // "custom/menu": {
-    //     "format": "󰍜 "
-    // },
-    //
-    // "wlr/taskbar": {
-    //     "format": "{icon}",
-    //     "on-click": "activate",
-    //     "on-click-middle": "close",
-    //     "tooltip": false
-    // },
 
     "group/group-cpu": {
         "orientation": "horizontal",
@@ -96,7 +71,7 @@
         "interval": 10,
         "path": "/",
         "format": "<span foreground='#ffd1db'></span> {free}",
-        "tooltip-format": "{free} out of {total} free"
+        "tooltip": false
     },
 
     "clock": {
