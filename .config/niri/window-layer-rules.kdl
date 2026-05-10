@@ -1,3 +1,12 @@
+blur {
+    // blur true
+    passes 3
+    offset 5.0
+    noise 0.04
+    saturation 1.25
+}
+
+
 // Enable rounded corners and blur (for supported windows) for all windows.
 window-rule {
     draw-border-with-background false
@@ -12,6 +21,12 @@ window-rule {
 window-rule {
     match app-id="foot"
     default-column-width { proportion 0.67; }
+    border {
+        on
+        width 4
+        active-color "#f38ba8"
+        inactive-color "#720043"
+    }
 }
 
 // Open discord and signal in "chat" workspace only
