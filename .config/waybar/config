@@ -16,7 +16,8 @@
     "modules-right": [
         "custom/weather",
         "wireplumber", 
-        "battery", 
+        "battery",
+        "inhibitor",
         "network"
         // "tray"
     ],
@@ -124,6 +125,15 @@
         "format-time": "{H}:{M}",
         "interval": 30
     },
+    "inhibitor": {
+        "what": "idle",
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "<span foreground='#720043'>󰒳</span>",
+            "deactivated": "<span foreground='#ffd1db'>󰒲</span>"
+        },
+        "tooltip": false
+    },
 
     "network": {
         "interval": 5,
@@ -135,11 +145,11 @@
         "format-ethernet": "<span foreground='#ffd1db'>󰈀</span> Connected",
         "format-disconnected": "<span foreground='#ffd1db'>󰲛</span> Offline",
         "tooltip": false
-    },
-
-    "tray": {
-        "icon-size": 18,
-        "spacing": 5,
-        "show-passive-items": true
     }
+
+    // "tray": {
+    //     "icon-size": 18,
+    //     "spacing": 5,
+    //     "show-passive-items": true
+    // }
 }

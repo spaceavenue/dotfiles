@@ -27,6 +27,10 @@ tooltip,
     margin: 5px 0;
 }
 
+#inhibitor {
+    min-width: 20px;
+}
+
 /* override tooltip background */
 tooltip {
     background: rgba(0, 0, 0, 0.5);
@@ -53,7 +57,8 @@ tooltip {
 }
 
 /* focused states (invert bg and fg colors) */
-#workspaces button.focused {
+#workspaces button.focused,
+#inhibitor.activated {
     background: #ffd1db;
 }
 
