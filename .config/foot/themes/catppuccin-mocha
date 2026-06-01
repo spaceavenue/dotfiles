@@ -2,7 +2,7 @@
 # Catppuccin Mocha
 
 [colors-dark]
-# foreground=CCA0A8
+alpha=0.5
 foreground=CC99AA
 background=000000
 

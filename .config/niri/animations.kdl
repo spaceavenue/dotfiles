@@ -15,14 +15,14 @@ animations {
               return vec4(0.0);
           }
           float progress = niri_clamped_progress;
-          float border_width = 0.008; // Adjust based on your border size
+          float border_width = 0.004; // Adjust based on your border size
           vec2 coords = coords_geo.xy;
           // Check if we're in the border region
           bool in_border = coords.x < border_width || coords.x > (1.0 - border_width) ||
                           coords.y < border_width || coords.y > (1.0 - border_width);
           // Only pixelate the inner content, not the border
           if (!in_border) {
-              float pixel_size = (1.0 - progress) * 0.5;
+              float pixel_size = (1.0 - progress) * 0.3;
               if (pixel_size > 0.0) {
                   coords = floor(coords / pixel_size) * pixel_size + pixel_size * 0.5;
               }
@@ -51,14 +51,14 @@ animations {
               return vec4(0.0);
           }
           float progress = niri_clamped_progress;
-          float border_width = 0.008;
+          float border_width = 0.004;
           vec2 coords = coords_geo.xy;
           // Check if we're in the border region
           bool in_border = coords.x < border_width || coords.x > (1.0 - border_width) ||
                           coords.y < border_width || coords.y > (1.0 - border_width);
           // Only pixelate the inner content, not the border
           if (!in_border) {
-              float pixel_size = progress * 0.5;
+              float pixel_size = progress * 0.3;
               if (pixel_size > 0.0) {
                   coords = floor(coords / pixel_size) * pixel_size + pixel_size * 0.5;
               }

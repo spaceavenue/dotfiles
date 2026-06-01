@@ -1,20 +1,4 @@
-# config stuff
-alias i3conf='nvim ~/.config/i3/config'
-alias polyconf='nvim ~/.config/polybar/config.ini'
-alias polymod='nvim ~/.config/polybar/modules.ini'
-alias dotfiles='/usr/bin/git --git-dir=/home/sanyaxo/.local/share/dotfiles/ --work-tree=/home/sanyaxo'
-
-# apps and stuff
-alias b=btop
-alias sb='doas btop'
-alias bt='bluetoothctl power on && bluetoothctl connect'
-alias btdc='bluetoothctl disconnect'
-alias nmgui='nm-connection-editor'  
-alias wificon='nmcli device wifi rescan && nmcli device wifi connect'
-alias wifilist='nmcli device wifi rescan && nmcli device wifi list'
-alias prismlauncher="/usr/bin/prismlauncher --dir /media/PrismLauncher/"
-
-# pacman stuff 
+# pacman
 alias pacs='pacman -Ss'
 alias paci='pacman -Si'
 alias pars='paru -Ss'
@@ -29,18 +13,26 @@ alias kill-orphans='pacman -Qdtq | doas pacman -Rns -- -'
 alias sudo=doas
 alias uwu=doas
 
-# convenience stuff
+# convenience
+alias b=btop
+alias sb='doas btop'
+alias bt='bluetoothctl power on && bluetoothctl connect'
+alias btdc='bluetoothctl disconnect'
+alias wificon='nmcli device wifi rescan && nmcli device wifi connect'
+alias wifilist='nmcli device wifi rescan && nmcli device wifi list'
+alias dotfiles='/usr/bin/git --git-dir=/home/sanyaxo/projects/dotfiles/ --work-tree=/home/sanyaxo'
 alias cat='bat -P'
 alias man=batman
-alias eza='eza -alhbrs modified'
-alias l='eza --icons=always -alhbrs modified'
-alias cls='clear; eza -alhbrs modified'
+alias eza='eza --icons=always -alhbrs modified'
+alias l='eza'
+alias cls='clear; eza'
 alias mv='mv -v'
 alias cp='cp -v'
-alias rmfr='/usr/bin/rm -Irv'
-alias rm='gio trash'
+alias rm='/usr/bin/rm -Irv'
+alias tr='trash-put'
+alias ncdu='ncdu -t16'
 function cdl () {
-	eza -alhbrs modified $1 && cd $1
+	cd $1; eza
 }
 alias lsblk='lsblk -p -o NAME,FSTYPE,LABEL,UUID,FSUSE%,FSUSED,FSSIZE,MOUNTPOINTS'
 alias grep='grep --color=auto'
@@ -48,11 +40,9 @@ alias egrep='grep -E --color=auto'
 alias fgrep='grep -F --color=auto'
 alias cd..='cd ..'
 alias kill="/usr/bin/kill"
-alias monitor2='xrandr --output HDMI-1 --auto --right-of eDP-1'
-alias kdiff='kitten diff'
-alias icat='kitten icat'
 alias usystemctl='systemctl --user'
 alias ujournalctl='journalctl --user'
+alias prismlauncher="/usr/bin/prismlauncher --dir /media/PrismLauncher/"
 
 # keybinds
 

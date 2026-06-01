@@ -1,0 +1,11 @@
+if systemctl --user is-active --quiet "$1"; then
+    echo "Stopping $1..."
+    systemctl --user stop "$1"
+    notify-send -a "systemd" "Stopped $1"
+
+else
+    echo "Starting $1..."
+    systemctl --user start "$1"
+    notify-send -a "systemd" "Started $1"
+fi
+

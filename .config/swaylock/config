@@ -28,14 +28,14 @@ line-clear-color=00000000
 line-ver-color=00000000
 line-wrong-color=00000000
 
-ring-color=ff7abaff
-ring-clear-color=ff7abaff
-ring-ver-color=ffd1dbff
-ring-wrong-color=f38ba8ff
+ring-color=72004300
+ring-clear-color=720043ff
+ring-ver-color=720043ff
+ring-wrong-color=ff4444ff
 
 separator-color=00000000
 
-text-color=a6adc8ff
-text-clear-color=a6adc8ff
-text-ver-color=a6adc8ff
-text-wrong-color=a6adc8ff
+text-color=ff38ba8ff
+text-clear-color=f38ba8ff
+text-ver-color=f38ba8ff
+text-wrong-color=f38ba8ff

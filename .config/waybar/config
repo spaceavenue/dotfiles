@@ -14,7 +14,7 @@
         "clock"
     ],
     "modules-right": [
-        "custom/weather",
+        // "custom/weather",
         "wireplumber", 
         "battery",
         "inhibitor",
@@ -26,7 +26,6 @@
         "format": "{icon}",
         "format-icons": {
             "default": "",
-            // "terminal": "",
             "terminal": "",
             "browser": "󰈹",
             "chat": ""
@@ -48,13 +47,13 @@
     },
 
     "cpu": {
-        "interval": 5,
+        "interval": 2,
         "format": "<span foreground='#ffd1db'></span> {usage}%",
         "tooltip": false
     },
 
     "temperature": {
-        "interval": 5,
+        "interval": 2,
         "thermal-zone": 0,
         "hwmon-path": "/sys/devices/platform/thinkpad_hwmon/hwmon/hwmon7/temp1_input",
         "format": "<span foreground='#ffd1db'>󱃃</span> {temperatureC}°C",
@@ -129,8 +128,8 @@
         "what": "idle",
         "format": "{icon}",
         "format-icons": {
-            "activated": "<span foreground='#720043'>󰒳</span>",
-            "deactivated": "<span foreground='#ffd1db'>󰒲</span>"
+            "activated": "󰒳",
+            "deactivated": "󰒲"
         },
         "tooltip": false
     },

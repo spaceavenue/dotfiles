@@ -1,7 +1,7 @@
 * {
     all: initial;
     font-family: "Symbols Nerd Font", "Iosevka Etoile", sans-serif;
-    font-size: 12.5pt;
+    font-size: 13pt;
     min-height: 0;
 }
 
@@ -27,15 +27,14 @@ tooltip,
     margin: 5px 0;
 }
 
-#inhibitor {
-    min-width: 20px;
-}
-
 /* override tooltip background */
 tooltip {
     background: rgba(0, 0, 0, 0.5);
 }
 
+tooltip label {
+    margin: 4px 10px;
+}
 /* spacing for edge modules (matches spacing defined in config) */
 .modules-left:first-child {
     margin-left: 5px;
@@ -43,6 +42,15 @@ tooltip {
 
 .modules-right:last-child {
     margin-right: 5px;
+}
+
+/* separate temp module from cpu, feels like a hack */
+#temperature {
+    margin-left: 5px;
+}
+
+#inhibitor {
+    min-width: 20px;
 }
 
 /* workspace styling */
@@ -62,6 +70,11 @@ tooltip {
     background: #ffd1db;
 }
 
-#workspaces button.focused label {
+#workspaces button.focused label,
+label#inhibitor.activated {
     color: #720043;
+}
+
+label#inhibitor.deactivated {
+    color: #ffd1db;
 }
