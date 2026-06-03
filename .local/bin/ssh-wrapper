@@ -1,0 +1,12 @@
+#!/bin/sh
+# generate ssh keys using 
+#   `ssh-keygen -t ed25519 -f $SSH_DIR/id_ed25519`
+
+# ssh directory
+SSH_DIR="$HOME/.local/share/ssh"
+
+# set socket path for agent
+export SSH_AUTH_SOCK="$HOME/.local/share/ssh/agent/ssh_agent.sock"
+
+# custom config file, look for known hosts inside dir
+exec ssh -F "$SSH_DIR/config" -o "UserKnownHostsFile=$SSH_DIR/known_hosts" "$@"

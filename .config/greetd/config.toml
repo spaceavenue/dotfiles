@@ -1,0 +1,10 @@
+[terminal]
+vt = 1
+
+[default_session]
+command = "agreety --cmd env ZDOTDIR=$HOME/.config/zsh /usr/bin/zsh"
+user = "greeter"
+
+[initial_session]
+command = "/usr/local/bin/niri-session-wrapper"
+user = "sanyaxo"
