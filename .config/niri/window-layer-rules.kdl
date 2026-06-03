@@ -57,14 +57,13 @@ window-rule {
 
 // Open some windows as floating
 window-rule {
-    match app-id=r#"^org\.keepassxc\.KeePassXC$"# title="^Unlock Database - KeePassXC"
-    match app-id=r#"qalculate-gtk|steam|xarchiver|pavucontrol|zenity"#
+    match app-id=r#"^org\.keepassxc\.KeePassXC$"#
+    // title="^Unlock Database - KeePassXC"
+    match app-id=r#"qalculate-gtk|steam|xarchiver|pavucontrol|zenity|com.gabm.satty"#
     match app-id=r#"firefox$"# title="^Picture-in-Picture$"
     open-floating true
 }
-window-rule {
-    match app-id=r#"firefox$"#
-}
+
 // Enable blur behind waybar
 layer-rule {
     match namespace="^waybar$"

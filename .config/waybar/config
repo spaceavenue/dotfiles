@@ -14,7 +14,7 @@
         "clock"
     ],
     "modules-right": [
-        // "custom/weather",
+        "custom/weather",
         "wireplumber", 
         "battery",
         "inhibitor",

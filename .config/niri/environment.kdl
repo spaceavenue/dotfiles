@@ -1,0 +1,16 @@
+environment {
+    // default wineprefix path (set here for file manager)
+    WINEPREFIX "/home/sanyaxo/.local/share/wineprefixes/default"
+
+    // for firefox (might not be needed?)
+    MOZ_ENABLE_WAYLAND "1"
+    QT_QPA_PLATFORM "wayland"
+    SDL_VIDEODRIVER "wayland"
+    _JAVA_AWT_WM_NONREPARENTING "1"
+
+    // qt theming
+    QT_QPA_PLATFORMTHEME "qt6ct"
+
+    // java options (prevents .java in home, set here for prismlauncher)
+    _JAVA_OPTIONS "-Djava.util.prefs.userRoot=/home/sanyaxo/.config/java"
+}

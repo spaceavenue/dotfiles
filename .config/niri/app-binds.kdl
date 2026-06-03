@@ -17,7 +17,7 @@ binds {
     Mod+F6 { spawn "~/.local/bin/service-toggle" "swayidle"; } // idle
     
     // Screenshot
-    Mod+Shift+S { screenshot; }
+    Mod+Shift+S { spawn-sh "niri msg action screenshot ; niri msg --json event-stream | grep -m 1 ScreenshotCaptured ; wl-paste | swappy -f -"; }
     Print { screenshot-screen; }
     Alt+Print { screenshot-window; }
     
@@ -32,10 +32,11 @@ binds {
     XF86AudioMicMute     allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
 
     // Media keys mapping
-    XF86AudioPlay        allow-when-locked=true { spawn "playerctl" "play-pause"; }
-    XF86AudioStop        allow-when-locked=true { spawn "playerctl" "stop"; }
-    XF86AudioPrev        allow-when-locked=true { spawn "playerctl" "previous"; }
-    XF86AudioNext        allow-when-locked=true { spawn "playerctl" "next"; }
+    XF86AudioPlay  allow-when-locked=true { spawn "playerctl" "play-pause"; }
+    XF86AudioPause allow-when-locked=true { spawn "playerctl" "play-pause"; }
+    XF86AudioStop  allow-when-locked=true { spawn "playerctl" "stop"; }
+    XF86AudioPrev  allow-when-locked=true { spawn "playerctl" "previous"; }
+    XF86AudioNext  allow-when-locked=true { spawn "playerctl" "next"; }
 
     // Brightness key mappings
     XF86MonBrightnessUp   allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "+5%"; }
