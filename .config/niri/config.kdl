@@ -1,11 +1,11 @@
+// Turn xwayland-satellite off
+// xwayland-satellite { off; }
+
 // Environment
 include "environment.kdl"
 
 // Input devices
 include "input-output.kdl"
-
-// Turn xwayland-satellite off
-// xwayland-satellite { off; }
 
 // Window positioning and size
 layout {
@@ -20,7 +20,12 @@ layout {
     preset-window-heights { }
     default-column-width { proportion 1.0; }
     focus-ring { off; }
-    border { off; }
+    border {
+        on
+        width 4
+        active-color "#f38ba8"
+        inactive-color "#720043"
+    }
     shadow { off; }
     background-color "transparent"
     struts {
@@ -31,7 +36,7 @@ layout {
 // Set cursor theme and options
 cursor {
     xcursor-theme "Bibata-Modern-Ice"
-    xcursor-size 24
+    xcursor-size 28
     hide-after-inactive-ms 5000
 }
 
@@ -47,11 +52,6 @@ hotkey-overlay { skip-at-startup; }
 // Screenshot path
 screenshot-path "~/media/PC Screenshots/%Y-%m-%d_%H-%M.png"
 
-// Named workspaces
-workspace "terminal"
-workspace "browser"
-workspace "chat"
-
 // Overview management
 overview { 
     backdrop-color "#0b011d"; 
@@ -64,49 +64,27 @@ overview {
     }
 }
 
+// Named workspaces
+workspace "terminal"
+workspace "browser"
+workspace "chat"
+
 // Animation settings
 include "animations.kdl"
 
 // Window rules
 include "window-layer-rules.kdl"
 
-// Various focus and movement related binds
+// Various focus and movement related keybinds
 include "focus-movement-binds.kdl"
 
 // App(-related) keybinds
 include "app-binds.kdl"
 
+// Monitor related keybinds for workspaces, columns and windows
+// include "monitor-binds.kdl"
+
+// Other keybinds
 /-binds {
     Mod+Shift+Ctrl+D { debug-toggle-damage; }
-    // Monitor focus:
-    Mod+Shift+Left  { focus-monitor-left; }
-    Mod+Shift+Down  { focus-monitor-down; }
-    Mod+Shift+Up    { focus-monitor-up; }
-    Mod+Shift+Right { focus-monitor-right; }
-
-    // Move Columns to Monitor:
-    Mod+Shift+Ctrl+Left  { move-column-to-monitor-left; }
-    Mod+Shift+Ctrl+Down  { move-column-to-monitor-down; }
-    Mod+Shift+Ctrl+Up    { move-column-to-monitor-up; }
-    Mod+Shift+Ctrl+Right { move-column-to-monitor-right; }
-    
-    // Move Window to a Monitor:
-    Mod+Shift+Ctrl+Left  { move-window-to-monitor-left; }
-    Mod+Shift+Ctrl+Right { move-window-to-monitor-right; }
-    Mod+Shift+Ctrl+Up     { move-window-to-monitor-up; }
-    Mod+Shift+Ctrl+Right  { move-window-to-monitor-right; }
-
-    // Move Workspace to Monitor:
-    Mod+Shift+Ctrl+Left   { move-workspace-to-monitor-left; }
-    Mod+Shift+Ctrl+Right  { move-workspace-to-monitor-right; }
-    Mod+Shift+Ctrl+Up      { move-workspace-to-monitor-up; }
-    Mod+Shift+Ctrl+Down    { move-workspace-to-monitor-down; }
-
-    // Move Column adjacent Workspace:
-    Mod+Ctrl+Page_Down { move-column-to-workspace-down; }
-    Mod+Ctrl+Page_Up   { move-column-to-workspace-up; }
-
-    // Move Window to adjacent Workspace: 
-    Mod+Ctrl+Page_Down { move-window-to-workspace-down; }
-    Mod+Ctrl+Page_Up   { move-window-to-workspace-up; }
 }

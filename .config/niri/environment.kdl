@@ -1,8 +1,11 @@
 environment {
-    // default wineprefix path (set here for file manager)
+    // default wineprefix path 
+    // (set here for file manager)
+    // (so that windows exe doesnt create .wine dir)
     WINEPREFIX "/home/sanyaxo/.local/share/wineprefixes/default"
 
-    // for firefox (might not be needed?)
+    // for wayland compat 
+    // (idk how many are useful or needed)
     MOZ_ENABLE_WAYLAND "1"
     QT_QPA_PLATFORM "wayland"
     SDL_VIDEODRIVER "wayland"
@@ -11,6 +14,13 @@ environment {
     // qt theming
     QT_QPA_PLATFORMTHEME "qt6ct"
 
-    // java options (prevents .java in home, set here for prismlauncher)
+    // java options 
+    // (prevents .java in home) 
+    // (set here mostly for prismlauncher)
     _JAVA_OPTIONS "-Djava.util.prefs.userRoot=/home/sanyaxo/.config/java"
+
+    // ssh auth socket 
+    // (set here mostly for keepass)
+    // (so that i dont have to set a socket file explicitly)
+    SSH_AUTH_SOCK "/run/user/1000/ssh_agent.sock"
 }

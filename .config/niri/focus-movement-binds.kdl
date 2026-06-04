@@ -2,12 +2,12 @@ binds {
     Mod+V { toggle-window-floating; } // Toggle between floating and tiling
 
     // Window focus
-    Mod+Up    { focus-window-up; }
-    Mod+Down  { focus-window-down; }
+    Mod+Up   { focus-window-up; }
+    Mod+Down { focus-window-down; }
 
     // Window movement
-    Mod+Shift+Up    { move-window-up; }
-    Mod+Shift+Down  { move-window-down; }
+    Mod+Shift+Up   { move-window-up; }
+    Mod+Shift+Down { move-window-down; }
     
     // Column focus
     Mod+Left            { focus-column-left; }
@@ -34,8 +34,8 @@ binds {
     Mod+Ctrl+WheelScrollDown cooldown-ms=150 { focus-workspace-down; }
     
     // Workspace scrolling (movement)
-    Mod+Shift+Page_Up         { move-workspace-up; }
-    Mod+Shift+Page_Down       { move-workspace-down; }
+    Mod+Shift+Page_Up   { move-workspace-up; }
+    Mod+Shift+Page_Down { move-workspace-down; }
 
     // Workspace focus
     Mod+1 { focus-workspace 1; }
@@ -80,15 +80,15 @@ binds {
     Mod+Shift+BracketLeft  { consume-window-into-column; }
     Mod+Shift+BracketRight { expel-window-from-column; }
 
-    Mod+R { switch-preset-column-width; } // Cycle through preset widths
+    Mod+R       { switch-preset-column-width; } // Cycle through preset widths
     Mod+Shift+R { switch-preset-column-width-back; } // In reverse order
 
-    Mod+Ctrl+R { reset-window-height; }
+    Mod+Ctrl+R  { reset-window-height; }
 
-    Mod+F { maximize-column; } // Expand to edges
-    Mod+M { maximize-window-to-edges; } // Ignore gaps and expand to the edges
+    Mod+F       { maximize-column; } // Expand to edges
+    Mod+M       { maximize-window-to-edges; } // Ignore gaps and expand to the edges
     Mod+Shift+F { fullscreen-window; } // Fullscreen
-    Mod+Ctrl+F { expand-column-to-available-width; } // Expand focused column available space 
+    Mod+Ctrl+F  { expand-column-to-available-width; } // Expand focused column available space 
 
     Mod+C      { center-column; }
     Mod+Ctrl+C { center-visible-columns; }

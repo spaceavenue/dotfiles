@@ -1,3 +1,4 @@
+// Blur settings
 blur {
     // off
     passes 3
@@ -6,19 +7,13 @@ blur {
     saturation 1.25
 }
 
-// Enable rounded corners, blur (for supported windows) and border for all windows
+// Enable rounded corners and blur
 window-rule {
     draw-border-with-background false
     geometry-corner-radius 20
     clip-to-geometry true
     background-effect {
         blur true
-    }
-    border {
-        on
-        width 4
-        active-color "#f38ba8"
-        inactive-color "#720043"
     }
 }
 
@@ -34,13 +29,9 @@ window-rule {
     default-column-width { proportion 0.67; }
 }
 
-/-window-rule {
-    match app-id="codium"
-}
-
 // Open discord and signal in "chat" workspace only
 window-rule {
-    match app-id=r#"^vesktop$|^signal$|^electron$"#
+    match app-id=r#"^vesktop$|^signal$"#
     open-on-workspace "chat"
     popups {
         background-effect {
@@ -57,22 +48,23 @@ window-rule {
 
 // Open some windows as floating
 window-rule {
-    match app-id=r#"^org\.keepassxc\.KeePassXC$"#
-    // title="^Unlock Database - KeePassXC"
-    match app-id=r#"qalculate-gtk|steam|xarchiver|pavucontrol|zenity|com.gabm.satty"#
+    match app-id=r#"^org\.keepassxc\.KeePassXC$"# title="^Unlock Database - KeePassXC"
+    match app-id="thunar" title="File Operation Progress"
+    match app-id=r#"xarchiver|pavucontrol|zenity|swappy"#
     match app-id=r#"firefox$"# title="^Picture-in-Picture$"
     open-floating true
 }
 
-// Enable blur behind waybar
+// Enable blur behind waybar, mako and fuzzel
 layer-rule {
-    match namespace="^waybar$"
+    match namespace="^waybar$|^notifications$|^launcher$"
     background-effect {
         blur true
         xray false
     }
     geometry-corner-radius 20
-    // And behind its popups
+
+    // And behind their popups
     popups {
         background-effect {
             blur true
@@ -80,14 +72,4 @@ layer-rule {
         }
         geometry-corner-radius 20 
     }
-}
-
-// Enable blur behind mako notifs and fuzzel
-layer-rule {
-    match namespace=r#"^notifications$|^launcher$"#
-    background-effect {
-        blur true
-        xray false
-    }
-    geometry-corner-radius 20
 }
