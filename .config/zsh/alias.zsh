@@ -22,7 +22,7 @@ alias wificon='nmcli device wifi rescan && nmcli device wifi connect'
 alias wifilist='nmcli device wifi rescan && nmcli device wifi list'
 alias dotfiles='/usr/bin/git --git-dir=/home/sanyaxo/projects/dotfiles/ --work-tree=/home/sanyaxo'
 alias cat='bat -P'
-alias man=batman
+alias man='batman --paging=always'
 alias eza='eza --icons=always -alhbrs modified'
 alias l='eza'
 alias cls='clear; eza'
