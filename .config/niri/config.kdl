@@ -1,73 +1,17 @@
-// Turn xwayland-satellite off
-// xwayland-satellite { off; }
-
 // Environment
 include "environment.kdl"
+
+// Startup processes
+include "startup.kdl"
 
 // Input devices
 include "input-output.kdl"
 
-// Window positioning and size
-layout {
-    gaps 10
-    center-focused-column "on-overflow"
-    preset-column-widths {
-        proportion 0.33333
-        proportion 0.5
-        proportion 0.66667
-        proportion 1.0
-    }
-    preset-window-heights { }
-    default-column-width { proportion 1.0; }
-    focus-ring { off; }
-    border {
-        on
-        width 4
-        active-color "#f38ba8"
-        inactive-color "#720043"
-    }
-    shadow { off; }
-    background-color "transparent"
-    struts {
-        top -5
-    }
-}
+// Layout(-related) config
+include "layout.kdl"
 
-// Set cursor theme and options
-cursor {
-    xcursor-theme "Bibata-Modern-Ice"
-    xcursor-size 28
-    hide-after-inactive-ms 5000
-}
-
-// Ask clients to omit their client-side decorations
-prefer-no-csd
-
-// Startup processes
-spawn-at-startup "/usr/bin/foot" "--server"
-
-// Disable hotkey overlay
-hotkey-overlay { skip-at-startup; }
-
-// Screenshot path
-screenshot-path "~/media/PC Screenshots/%Y-%m-%d_%H-%M.png"
-
-// Overview management
-overview { 
-    backdrop-color "#0b011d"; 
-    workspace-shadow {
-        // off
-        softness 40
-        spread 10
-        offset x=10 y=10
-        color "#00000050"
-    }
-}
-
-// Named workspaces
-workspace "terminal"
-workspace "browser"
-workspace "chat"
+// Misc config
+include "misc.kdl"
 
 // Animation settings
 include "animations.kdl"
@@ -82,9 +26,10 @@ include "focus-movement-binds.kdl"
 include "app-binds.kdl"
 
 // Monitor related keybinds for workspaces, columns and windows
+// Dont have a second monitor :p
 // include "monitor-binds.kdl"
 
-// Other keybinds
+// Other keybinds, mostly debug ig
 /-binds {
     Mod+Shift+Ctrl+D { debug-toggle-damage; }
 }

@@ -5,7 +5,7 @@ binds {
     Mod+B { spawn "firefox"; } // Firefox
     Mod+D { spawn "env" "DISPLAY=" "vesktop"; } // Discord
     Mod+S { spawn "env" "DISPLAY=" "signal-desktop"; } // Signal
-    Mod+Apostrophe { spawn-sh "cliphist list | fuzzel --dmenu | cliphist decode | wl-copy"; } // Clipboard history
+    Mod+Apostrophe { spawn-sh "cliphist list | fuzzel -d --placeholder \"Search clipboard...\" --with-nth 2 | cliphist decode | wl-copy"; } // Clipboard history
     Mod+Semicolon { spawn "rofimoji"; } // Emoji picker
     Mod+P { spawn "~/.local/bin/color-picker"; } //color picker 
 
@@ -17,9 +17,9 @@ binds {
     Mod+F6 { spawn "~/.local/bin/service-toggle" "swayidle"; } // idle
     
     // Screenshot
-    Mod+Shift+S { spawn-sh "niri msg action screenshot ; niri msg --json event-stream | grep -m 1 ScreenshotCaptured ; wl-paste | swappy -f -"; }
-    Print { screenshot-screen; }
-    Alt+Print { screenshot-window; }
+    Mod+Shift+S { spawn-sh "niri msg action screenshot --to-stdout | swappy -f -"; }
+    Print { spawn-sh "niri msg action screenshot-screen --to-stdout | swappy -f -"; }
+    Mod+Print { spawn-sh "niri msg action screenshot-window --to-stdout | swappy -f -"; }
     
     // Quit
     Mod+Shift+E { quit; }

@@ -1,15 +1,31 @@
+// Turn xwayland-satellite off.
+// Technically environment related? I guess?
+// xwayland-satellite { off; }
+
 environment {
+    // path for zsh config
+    // only need it for interactive sessions
+    // started within apps in niri, like foot.
+    // no need to set it for systemd services 
+    // in wrapper script.
+    ZDOTDIR "/home/sanyaxo/.config/zsh/"
+
     // default wineprefix path 
     // (set here for file manager)
     // (so that windows exe doesnt create .wine dir)
     WINEPREFIX "/home/sanyaxo/.local/share/wineprefixes/default"
 
     // for wayland compat 
-    // (idk how many are useful or needed)
+    // (idk how many are useful/needed)
     MOZ_ENABLE_WAYLAND "1"
+    ELECTRON_OZONE_PLATFORM_HINT "auto"
     QT_QPA_PLATFORM "wayland"
     SDL_VIDEODRIVER "wayland"
     _JAVA_AWT_WM_NONREPARENTING "1"
+    
+    // unset display
+    // can set selectively for xwayland programs
+    DISPLAY null
 
     // qt theming
     QT_QPA_PLATFORMTHEME "qt6ct"
