@@ -1,0 +1,35 @@
+// Environment
+include "environment.kdl"
+
+// Startup processes
+include "startup.kdl"
+
+// Input devices
+include "input-output.kdl"
+
+// Layout(-related) config
+include "layout.kdl"
+
+// Misc config
+include "misc.kdl"
+
+// Animation settings
+include "animations.kdl"
+
+// It's pronounced "Rules"
+include "rouxls-kaard.kdl"
+
+// Various focus and movement related keybinds
+include "focus-movement-binds.kdl"
+
+// App(-related) keybinds
+include "app-binds.kdl"
+
+// Monitor related keybinds for workspaces, columns and windows
+// Dont have a second monitor :p
+// include "monitor-binds.kdl"
+
+// Other keybinds, mostly debug ig
+/-binds {
+    Mod+Shift+Ctrl+D { debug-toggle-damage; }
+}

@@ -1,0 +1,25 @@
+// Set cursor theme and options
+cursor {
+    xcursor-theme "Bibata-Modern-Ice"
+    xcursor-size 28
+    hide-after-inactive-ms 5000
+}
+
+// Ask clients to omit their client-side decorations
+prefer-no-csd
+
+// No screenshot path, let swappy deal with it
+// screenshot-path "~/media/PC Screenshots/%Y-%m-%d_%H-%M.png"
+screenshot-path null
+
+// Disable hotkey overlay
+hotkey-overlay { skip-at-startup; }
+
+switch-events {
+    lid-close {
+        spawn "swaylock";
+    }
+    lid-open {
+        spawn "niri" "msg" "action" "power-on-monitors";
+    }
+}

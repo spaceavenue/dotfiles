@@ -1,0 +1,19 @@
+[init]
+	defaultBranch = main
+[user]
+	email = spaceavenue@proton.me
+	name = spaceavenue
+	signingkey = AD1E5733E6CD1BBC
+[credential "https://github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+[filter "lfs"]
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+[commit]
+	gpgsign = true

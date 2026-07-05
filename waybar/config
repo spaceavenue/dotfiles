@@ -1,0 +1,169 @@
+{
+    "layer": "top",
+    "position": "top",
+    "exclusive": true,
+    "spacing": 5,
+    "margin": "5px 5px 0px 5px",
+    "modules-left": [
+        // "niri/workspaces",
+        "group/group-cpu",  
+        "custom/memory", 
+        "disk",
+        "mpris"
+    ],
+    "modules-center": [
+        "clock"
+    ],
+    "modules-right": [
+        "custom/weather",
+        "inhibitor",
+        "wireplumber", 
+        "battery",
+        "network"
+        // "tray"
+    ],
+
+    "niri/workspaces": {
+        "format": "{icon}",
+        "format-icons": {
+            "default": "",
+            "terminal": "",
+            "browser": "󰈹",
+            "chat": ""
+        },
+        "hide-empty": true
+    },
+
+    "group/group-cpu": {
+        "orientation": "horizontal",
+        "drawer": {
+            "transition-duration": 300,
+            "children-class": "cpu-related",
+            "click-to-reveal": true
+        },
+        "modules": [
+            "cpu",
+            "temperature"
+        ]
+    },
+
+    "cpu": {
+        "interval": 2,
+        "format": "<span foreground='#ffd1db'></span> {usage}%",
+        "tooltip": false
+    },
+
+    "temperature": {
+        "interval": 2,
+        "thermal-zone": 0,
+        "hwmon-path": "/sys/devices/platform/thinkpad_hwmon/hwmon/hwmon7/temp1_input",
+        "format": "<span foreground='#ffd1db'>󱃃</span> {temperatureC}°C",
+        "tooltip": false
+    },
+    
+    "custom/memory": {
+        "exec": "~/.config/waybar/scripts/memory.sh",
+        "interval": 5,
+        "format": "<span foreground='#ffd1db'></span> {}",
+        "tooltip": false
+    },
+
+    "disk": {
+        "interval": 10,
+        "path": "/",
+        "format": "<span foreground='#ffd1db'></span> {free}",
+        "tooltip": false
+    },
+
+    "clock": {
+        "interval": 1,
+        "format": "<span foreground='#ffd1db'>󰅐</span> {:%a - %H:%M}",
+        "format-alt": "<span foreground='#ffd1db'>󰸗</span> {:%a, %d %b %y   <span foreground='#ffd1db'>󰅐 </span> %H:%M}",
+        "tooltip-format": "<tt>{calendar}</tt>",
+        "calendar": {
+                    "mode"          : "month",
+                    "weeks-pos"     : "left",
+                    "on-scroll"     : 1,
+                    "format": {
+                              "months":     "<span color='#89b4fa'><b>{}</b></span>",
+                              "days":       "<span color='#ff7aba'><b>{}</b></span>",
+                              "weeks":      "<span color='#a6e3a1'><b>W{}</b></span>",
+                              "weekdays":   "<span color='#f38ba8'><b>{}</b></span>",
+                              "today":      "<span color='#ffd1db'><b><u>{}</u></b></span>"
+                              }
+                    },
+        "tooltip": true
+    },
+    "mpris": {
+	    "format": "<span foreground='#ffd1db'>{player_icon}</span> {dynamic}",
+	    "format-paused": "<span foreground='#ffd1db'>{status_icon}</span> <i>{dynamic}</i>",
+	    // "title-len": 10,
+        // "artist-len": 10,
+        "dynamic-order": ["title"],
+        "player-icons": {
+		    "default": "",
+		    "rmpc": ""
+	    },
+	    "status-icons": {
+		    "paused": ""
+	    },
+	    "ignored-players": ["firefox"]
+    },
+    "custom/weather": {
+        "interval": 3600,
+        "exec": "${HOME}/.config/waybar/scripts/weather.sh Delhi+India",
+        "return-type": "json",
+        "format": "<span foreground='#ffd1db'>󰅟</span> {}",
+        "tooltip": false
+    },
+
+    "wireplumber": {
+        "format": "<span foreground='#ffd1db'>{icon}</span> {volume}%",
+        "format-muted": "<span foreground='#ffd1db'>󰝟</span> Muted",
+        "format-icons": ["󰕿", "󰖀", "󰕾"],
+        "on-click-right": "pavucontrol",
+        "tooltip":  false
+    },
+
+    "battery": {
+        "states": { "warning": 30, "critical": 15 },
+        "format": "<span foreground='#ffd1db'>{icon}</span> {capacity}%",
+        "format-charging": "<span foreground='#ffd1db'>{icon}</span> {capacity}%",
+        "format-plugged": "<span foreground='#ffd1db'></span> {capacity}%",
+        "format-full": "<span foreground='#ffd1db'></span> {capacity}%",
+        "tooltip-format": "{timeTo}",
+        "format-icons": {
+            "charging": ["", "", "", "", ""],
+            "default": ["", "", "", "", ""]
+        },
+        "format-time": "{H}:{M}",
+        "interval": 30
+    },
+    "inhibitor": {
+        "what": "idle",
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "󰒳",
+            "deactivated": "󰒲"
+        },
+        "tooltip": false
+    },
+
+    "network": {
+        "interval": 5,
+        "interface": "wlan0",
+        "format-wifi": "<span foreground='#ffd1db'>{icon}</span> {essid}",
+        "format-icons": {
+            "wifi": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"]
+        },
+        "format-ethernet": "<span foreground='#ffd1db'>󰈀</span> Connected",
+        "format-disconnected": "<span foreground='#ffd1db'>󰲛</span> Offline",
+        "tooltip": false
+    }
+
+    // "tray": {
+    //     "icon-size": 18,
+    //     "spacing": 5,
+    //     "show-passive-items": true
+    // }
+}

@@ -1,0 +1,88 @@
+// Blur settings
+blur {
+    // off
+    passes 3
+    offset 8.0
+    noise 0.00
+    saturation 1.25
+}
+
+// Enable rounded corners and blur
+window-rule {
+    draw-border-with-background false
+    geometry-corner-radius 20
+    clip-to-geometry true
+    background-effect {
+        blur true
+    }
+}
+
+// Overview backdrop wallpaper
+layer-rule {
+    match namespace="^wallpaper-overview$"
+    place-within-backdrop true
+}
+
+// Open terminal with default width as 67% of total screen width
+window-rule {
+    match app-id="foot"
+    default-column-width { proportion 0.67; }
+}
+
+window-rule {
+    match app-id="firefox"
+    force-render true
+}
+
+// Open discord and signal in "chat" workspace only
+window-rule {
+    match app-id=r#"^vesktop$|^signal$"#
+    open-on-workspace "chat"
+}
+
+// Block KeePassXC from screen capture
+window-rule {
+    match app-id=r#"^org\.keepassxc\.KeePassXC$"#
+    block-out-from "screen-capture"
+    default-floating-position x=10 y=10
+}
+
+// Open some windows as floating
+window-rule {
+    match app-id=r#"^org\.keepassxc\.KeePassXC$"#
+    match title="^Developer Tools|Vencord QuickCSS Editor"
+    match app-id=r#"xarchiver|pavucontrol|zenity|swappy|org.gnome.Calculator|org.gnome.FileRoller"#
+    match app-id=r#"firefox$"# title="^Picture-in-Picture$"
+    match app-id="XEyes"
+    open-floating true
+    default-column-width { proportion 0.5; }
+    default-window-height { proportion 0.5; }
+}
+
+// Enable rounder corners for waybar and its tooltips
+layer-rule {
+    match namespace="^waybar$"
+    geometry-corner-radius 20
+    popups {
+        geometry-corner-radius 20
+    }
+}
+
+// Enable blur behind mako and fuzzel
+layer-rule {
+    match namespace="^notifications$|^launcher$"
+    background-effect {
+        blur true
+        xray false
+    }
+    geometry-corner-radius 20
+
+    // And behind their popups
+    popups {
+        background-effect {
+            blur true
+            xray false
+        }
+        geometry-corner-radius 20 
+    }
+}

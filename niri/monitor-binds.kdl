@@ -1,0 +1,25 @@
+binds {
+    // Monitor focus:
+    Mod+Shift+Left  { focus-monitor-left; }
+    Mod+Shift+Down  { focus-monitor-down; }
+    Mod+Shift+Up    { focus-monitor-up; }
+    Mod+Shift+Right { focus-monitor-right; }
+
+    // Move Columns to Monitor:
+    Mod+Shift+Ctrl+Left  { move-column-to-monitor-left; }
+    Mod+Shift+Ctrl+Down  { move-column-to-monitor-down; }
+    Mod+Shift+Ctrl+Up    { move-column-to-monitor-up; }
+    Mod+Shift+Ctrl+Right { move-column-to-monitor-right; }
+    
+    // Move Window to a Monitor:
+    Mod+Shift+Ctrl+Left  { move-window-to-monitor-left; }
+    Mod+Shift+Ctrl+Right { move-window-to-monitor-right; }
+    Mod+Shift+Ctrl+Up     { move-window-to-monitor-up; }
+    Mod+Shift+Ctrl+Right  { move-window-to-monitor-right; }
+
+    // Move Workspace to Monitor:
+    Mod+Shift+Ctrl+Left   { move-workspace-to-monitor-left; }
+    Mod+Shift+Ctrl+Right  { move-workspace-to-monitor-right; }
+    Mod+Shift+Ctrl+Up      { move-workspace-to-monitor-up; }
+    Mod+Shift+Ctrl+Down    { move-workspace-to-monitor-down; }
+}

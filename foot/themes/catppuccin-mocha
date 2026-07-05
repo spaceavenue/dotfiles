@@ -1,0 +1,41 @@
+# _*_ conf _*_
+# Catppuccin Mocha
+
+[colors-dark]
+alpha=0.50
+foreground=CC99AA
+background=000000
+
+regular0=45475a # black
+regular1=f38ba8 # red
+regular2=a6e3a1 # green
+regular3=f9e2af # yellow
+regular4=89b4fa # blue
+regular5=f5c2e7 # magenta
+regular6=94e2d5 # cyan
+regular7=bac2de # white
+
+bright0=585b70
+bright1=f38ba8
+bright2=a6e3a1
+bright3=f9e2af
+bright4=89b4fa
+bright5=f5c2e7
+bright6=94e2d5
+bright7=a6adc8
+
+# cursor=1e1e2e ffd1db
+
+16=fab387
+17=f5e0dc
+18=cba6f7
+19=ffd1db
+
+selection-foreground=1e1e2e
+selection-background=ffd1db
+
+search-box-no-match=11111b f38ba8
+search-box-match=cdd6f4 313244
+
+jump-labels=11111b fab387
+urls=89b4fa

@@ -1,0 +1,106 @@
+binds {
+    Mod+V { toggle-window-floating; } // Toggle between floating and tiling
+
+    // Window focus
+    Mod+Up   { focus-window-up; }
+    Mod+Down { focus-window-down; }
+
+    // Window movement
+    Mod+Shift+Up   { move-window-up-or-to-workspace-up; }
+    Mod+Shift+Down { move-window-down-or-to-workspace-down; }
+    
+    // Column focus
+    Mod+Left            { focus-column-left; }
+    Mod+Right           { focus-column-right; }
+    Mod+WheelScrollUp   { focus-column-left; }
+    Mod+WheelScrollDown { focus-column-right; }
+    Mod+Home            { focus-column-first; }
+    Mod+End             { focus-column-last; }
+
+    // Column movement
+    Mod+Shift+Left            { move-column-left; }
+    Mod+Shift+Right           { move-column-right; }
+    Mod+Shift+WheelScrollUp   { move-column-left; }
+    Mod+Shift+WheelScrollDown { move-column-right; }
+    Mod+Shift+Home            { move-column-to-first; }
+    Mod+Shift+End             { move-column-to-last; }
+    Mod+Ctrl+Up   cooldown-ms=150 { move-column-to-workspace-up; }
+    Mod+Ctrl+Down cooldown-ms=150 { move-column-to-workspace-down; }
+    
+    // Workspace (focus)
+    Mod+Page_Up                              { focus-workspace-up; }
+    Mod+Page_Down                            { focus-workspace-down; }
+    Mod+Ctrl+WheelScrollUp   cooldown-ms=150 { focus-workspace-up; }
+    Mod+Ctrl+WheelScrollDown cooldown-ms=150 { focus-workspace-down; }
+    
+    // Workspace (movement)
+    Mod+Shift+Page_Up   { move-workspace-up; }
+    Mod+Shift+Page_Down { move-workspace-down; }
+
+    // Workspace focus
+    Mod+1 { focus-workspace 1; }
+    Mod+2 { focus-workspace 2; }
+    Mod+3 { focus-workspace 3; }
+    Mod+4 { focus-workspace 4; }
+    Mod+5 { focus-workspace 5; }
+    Mod+6 { focus-workspace 6; }
+    Mod+7 { focus-workspace 7; }
+    Mod+8 { focus-workspace 8; }
+    Mod+9 { focus-workspace 9; }
+
+    // Window movement to workspace
+    Mod+Shift+1 { move-window-to-workspace 1; }
+    Mod+Shift+2 { move-window-to-workspace 2; }
+    Mod+Shift+3 { move-window-to-workspace 3; }
+    Mod+Shift+4 { move-window-to-workspace 4; }
+    Mod+Shift+5 { move-window-to-workspace 5; }
+    Mod+Shift+6 { move-window-to-workspace 6; }
+    Mod+Shift+7 { move-window-to-workspace 7; }
+    Mod+Shift+8 { move-window-to-workspace 8; }
+    Mod+Shift+9 { move-window-to-workspace 9; }
+    
+    // Column movement to workspace
+    Mod+Ctrl+1 { move-column-to-workspace 1; }
+    Mod+Ctrl+2 { move-column-to-workspace 2; }
+    Mod+Ctrl+3 { move-column-to-workspace 3; }
+    Mod+Ctrl+4 { move-column-to-workspace 4; }
+    Mod+Ctrl+5 { move-column-to-workspace 5; }
+    Mod+Ctrl+6 { move-column-to-workspace 6; }
+    Mod+Ctrl+7 { move-column-to-workspace 7; }
+    Mod+Ctrl+8 { move-column-to-workspace 8; }
+    Mod+Ctrl+9 { move-column-to-workspace 9; }
+
+    // The following binds move the focused window in and out of a column.
+    // If the window is alone, they will consume it into the nearby column to the side.
+    // If the window is already in a column, they will expel it out.
+    Mod+BracketLeft  { consume-or-expel-window-left; }
+    Mod+BracketRight { consume-or-expel-window-right; }
+
+    // Consume from and expel to the right from the bottom of the focused column
+    Mod+Shift+BracketLeft  { consume-window-into-column; }
+    Mod+Shift+BracketRight { expel-window-from-column; }
+
+    Mod+R       { switch-preset-column-width; } // Cycle through preset widths
+    Mod+Shift+R { switch-preset-column-width-back; } // In reverse order
+
+    Mod+Ctrl+R  { reset-window-height; }
+
+    Mod+F       { maximize-column; } // Expand to edges
+    Mod+M       { maximize-window-to-edges; } // Ignore gaps and expand to the edges
+    Mod+Shift+F { fullscreen-window; } // Fullscreen
+    Mod+Ctrl+F  { expand-column-to-available-width; } // Expand focused column available space 
+
+    Mod+C      { center-column; }
+    Mod+Ctrl+C { center-visible-columns; }
+
+    // Finer width adjustments
+    Mod+Comma  { set-column-width "-10%"; }
+    Mod+Period { set-column-width "+10%"; }
+
+    // Height adjustments
+    Mod+Shift+Comma  { set-window-height "-10%"; }
+    Mod+Shift+Period { set-window-height "+10%"; }
+
+    // The allow-inhibiting=false property ensures niri always processes binds, even when an inhibitor is active.
+    Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
+}

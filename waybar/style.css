@@ -1,0 +1,79 @@
+@define-color main-bg rgba(0, 0, 0, 0.0);
+@define-color main-fg #f38ba8;
+@define-color module-bg #18000f;
+@define-color module-fg #ffd1db;
+@define-color module-bg-active #ffd1db;
+@define-color module-fg-active #18000f;
+
+* {
+    all: initial;
+    font-family: "Symbols Nerd Font", "Iosevka Etoile", sans-serif;
+    font-size: 14pt;
+    min-height: 0;
+}
+
+/* window styling */
+window#waybar {
+    background: @main-bg;
+    border-radius: 20px;
+}
+
+/* common label color */
+label {
+    color: @main-fg;
+}
+
+/* common properties for modules, tooltip and workspace button */
+.module,
+tooltip box,
+#workspaces button {
+    background: @module-bg;
+    min-width: 40px;
+    padding: 4px 10px;
+    border-radius: 20px;
+    margin: 0;
+}
+
+
+/* tooltip label { */
+/*     margin: 4px 10px; */
+/* } */
+
+/* spacing for edge modules (matches spacing defined in config) */
+/* .modules-left:first-child { */
+/*     margin-left: 5px; */
+/* } */
+/**/
+/* .modules-right:last-child { */
+/*     margin-right: 5px; */
+/* } */
+
+#inhibitor {
+    min-width: 20px;
+}
+
+/* workspace styling */
+#workspaces {
+    padding: 0;
+}
+
+#workspaces button {
+    background: transparent;
+    padding: 0;
+    margin: 0;
+}
+
+/* focused states (invert bg and fg colors) */
+#workspaces button.focused,
+#inhibitor.activated {
+    background: @module-bg-active;
+}
+
+#workspaces button.focused label,
+label#inhibitor.activated {
+    color: @module-fg-active;
+}
+
+label#inhibitor.deactivated {
+    color: @module-fg;
+}

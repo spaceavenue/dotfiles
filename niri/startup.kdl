@@ -1,0 +1,10 @@
+// Startup processes
+
+spawn-at-startup "/home/sanya/.local/bin/setwall"
+spawn-at-startup "rustemp" "4500.0"
+spawn-at-startup "/home/sanya/.local/bin/swayidle-static"
+
+spawn-at-startup "/usr/bin/foot" "--server"
+spawn-at-startup "/usr/bin/ssh-agent" "-a" "/run/user/1000/ssh_agent.sock"
+spawn-at-startup "/usr/bin/keepassxc"
+
