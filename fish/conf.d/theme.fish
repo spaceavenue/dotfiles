@@ -49,6 +49,6 @@ set -g fish_pager_color_selected_description 18000f             # Description co
 
 # --- Secondary/Alternating Completion Rows ---
 set -g fish_pager_color_secondary_background normal
-set -g fish_pager_color_secondary_prefix 89b4fa                 #
-set -g fish_pager_color_secondary_completion ffd1db             #
-set -g fish_pager_color_secondary_description 6e6a86            #
+set -g fish_pager_color_prefix 89b4fa          # The part of the string you already typed
+set -g fish_pager_color_completion cba6f7      # The rest of the string suggested by Fish
+set -g fish_pager_color_description cc99aa     # The command description text on the right

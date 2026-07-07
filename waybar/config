@@ -8,8 +8,8 @@
         // "niri/workspaces",
         "group/group-cpu",  
         "custom/memory", 
-        "disk",
-        "mpris"
+        "disk"
+        // "mpris"
     ],
     "modules-center": [
         "clock"
@@ -94,21 +94,21 @@
                     },
         "tooltip": true
     },
-    "mpris": {
-	    "format": "<span foreground='#ffd1db'>{player_icon}</span> {dynamic}",
-	    "format-paused": "<span foreground='#ffd1db'>{status_icon}</span> <i>{dynamic}</i>",
-	    // "title-len": 10,
-        // "artist-len": 10,
-        "dynamic-order": ["title"],
-        "player-icons": {
-		    "default": "",
-		    "rmpc": ""
-	    },
-	    "status-icons": {
-		    "paused": ""
-	    },
-	    "ignored-players": ["firefox"]
-    },
+    // "mpris": {
+    //  "format": "<span foreground='#ffd1db'>{player_icon}</span> {dynamic}",
+    //  "format-paused": "<span foreground='#ffd1db'>{status_icon}</span> <i>{dynamic}</i>",
+    //  // "title-len": 10,
+    //     // "artist-len": 10,
+    //     "dynamic-order": ["title"],
+    //     "player-icons": {
+    //   "default": "",
+    //   "rmpc": ""
+    //  },
+    //  "status-icons": {
+    //   "paused": ""
+    //  },
+    //  "ignored-players": ["firefox"]
+    // },
     "custom/weather": {
         "interval": 3600,
         "exec": "${HOME}/.config/waybar/scripts/weather.sh Delhi+India",

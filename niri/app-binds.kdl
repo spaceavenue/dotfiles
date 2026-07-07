@@ -24,9 +24,9 @@ binds {
     Mod+Q repeat=false { close-window; }   // Close window
 
     // Screenshot
-    Mod+Shift+S { spawn-sh "niri msg action screenshot --to-stdout | swappy -f -"; }
-    Print       { spawn-sh "niri msg action screenshot-screen --to-stdout | swappy -f -"; }
-    Mod+Print   { spawn-sh "niri msg action screenshot-window --to-stdout | swappy -f -"; }
+    Mod+Shift+S { spawn-sh "niri msg action screenshot --to-stdout | satty -f -"; }
+    Print       { spawn-sh "niri msg action screenshot-screen --to-stdout | satty -f -"; }
+    Mod+Print   { spawn-sh "niri msg action screenshot-window --to-stdout | satty -f -"; }
 
     // Quit
     Mod+Shift+E     { quit; }
