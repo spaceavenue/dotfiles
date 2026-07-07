@@ -1,0 +1,13 @@
+[general]
+copy-command = "wl-copy"
+fullscreen = "current-screen"
+initial-tool = "rectangle"
+default-fill-shapes = true
+primary-highlighter = "block"
+annotation-size-factor = 2.0
+early-exit = ["all"]
+corner-roundness = 0
+no-window-decoration = true
+disable-notifications = true
+actions-on-enter = ["save-to-clipboard"]
+actions-on-escape = ["exit"]
