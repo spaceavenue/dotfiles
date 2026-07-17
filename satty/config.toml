@@ -1,4 +1,5 @@
 [general]
+output-filename = "~/media/PC Screenshots/%Y-%m-%d_%H-%M.png"
 copy-command = "wl-copy"
 fullscreen = "current-screen"
 initial-tool = "rectangle"
