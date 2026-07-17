@@ -4,21 +4,26 @@ binds {
     Mod+T       { spawn "footclient"; }           // Terminal
     Mod+N       { spawn "nautilus"; }            // File manager
     Mod+Shift+N { spawn "footclient" "yazi"; }  // Terminal file manager
-    Mod+K       { spawn "keepassxc"; }         //Password manager
+    Mod+K       { spawn "keepassxc"; }         // Password manager
     Mod+B       { spawn "firefox-nightly"; }  // Firefox
     Mod+D       { spawn "vesktop"; }         // Discord
     Mod+S       { spawn "signal-desktop"; } // Signal
     Mod+Shift+L { spawn "swaylock"; }      // Screen lock
 
-    Mod+Apostrophe       { spawn "~/.local/bin/clip-history"; }    // Clipboard history
-    Mod+Shift+Apostrophe { spawn "~/.local/bin/color-picker"; }   // Color picker
-    Mod+Semicolon        { spawn "~/.local/bin/emoji-picker"; }  // Emoji picker
-    Mod+Shift+Semicolon  { spawn "~/.local/bin/glyph-picker"; } // Nerd font glyph picker
+    Mod+Apostrophe			{ spawn "~/.local/bin/clip-history";     }	 // Clipboard history
+	Mod+Alt+Apostrophe		{ spawn "~/.local/bin/clip-history" "-w";}  // Clipboard history (wtype)
+	
+	Mod+Shift+Apostrophe	{ spawn "~/.local/bin/color-picker";     } // Color picker
+    
+	Mod+Semicolon			{ spawn "~/.local/bin/emoji-picker";     }  // Emoji picker
+    Mod+Alt+Semicolon		{ spawn "~/.local/bin/emoji-picker" "-w";} // Emoji picker (wtype)
+    
+	Mod+Shift+Semicolon		{ spawn "~/.local/bin/glyph-picker";     }  // Nerd font glyph picker
+    Mod+Alt+Shift+Semicolon { spawn "~/.local/bin/glyph-picker" "-w";} // Nerd font glyph picker (wtype)
 
-    Mod+F4  { spawn "~/.local/bin/power-menu"; }                 // Power menu
-    Mod+F5  { spawn "~/.local/bin/service-toggle" "swayidle"; } // Idle
-    Mod+F6  { spawn "~/.local/bin/wall-picker"; }              // Wallpaper selector
-    Mod+F12 { spawn "~/.local/bin/foot-server-wrapper"; }     // (Re)start foot server
+    Mod+F4  { spawn "~/.local/bin/power-menu";	}	// Power menu
+    Mod+F5  { spawn "~/.local/bin/wall-picker"; }  // Wallpaper selector
+    Mod+F12 { spawn "~/.local/bin/foot-server"; } // (Re)start foot server
 
     Mod+O repeat=false { toggle-overview; } // Open/close the Overview
     Mod+Q repeat=false { close-window; }   // Close window

@@ -31,9 +31,11 @@ environment {
     DISPLAY null
 
     // qt theming
-    QT_QPA_PLATFORMTHEME "qt6ct"
-
-    // java options 
+    // QT_QPA_PLATFORMTHEME "qt6ct"
+	QT_QPA_PLATFORMTHEME "gtk3"
+	// QT_STYLE_OVERRIDE "kvantum"
+    
+	// java options 
     // (prevents .java in home) 
     // (set here mostly for prismlauncher)
     _JAVA_OPTIONS "-Djava.util.prefs.userRoot=/home/sanya/.config/java"
