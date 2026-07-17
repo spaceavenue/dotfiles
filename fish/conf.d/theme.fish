@@ -30,9 +30,9 @@ set -g fish_color_escape cba6f7                # Escape characters
 set -g fish_color_valid_path ffd1db --underline # Valid system paths
 
 # --- UI Feedback & In-line Selection ---
-set -g fish_color_error cc99aa                 # Unknown commands or syntax errors
-set -g fish_color_autosuggestion 6e6a86        # Inline history autocomplete suggestions
-set -g fish_color_selection --background=6e6a86 # Selected text in the command line
+set -g fish_color_error cc99aa                     # Unknown commands or syntax errors
+set -g fish_color_autosuggestion 6e6a86            # Inline history autocomplete suggestions
+set -g fish_color_selection --background=6e6a86    # Selected text in the command line
 set -g fish_color_search_match --background=6e6a86 # Matched text during history search
 
 # --- Interactive Tab-Completion Menu  ---
