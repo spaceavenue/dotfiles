@@ -6,7 +6,8 @@
     "margin": "5px 5px 0px 5px",
     "modules-left": [
         // "niri/workspaces",
-        "group/group-cpu",  
+        "cpu",
+		"temperature",
         "custom/memory", 
         "disk"
         // "mpris"
@@ -34,18 +35,18 @@
         "hide-empty": true
     },
 
-    "group/group-cpu": {
-        "orientation": "horizontal",
-        "drawer": {
-            "transition-duration": 300,
-            "children-class": "cpu-related",
-            "click-to-reveal": true
-        },
-        "modules": [
-            "cpu",
-            "temperature"
-        ]
-    },
+    // "group/group-cpu": {
+    //     "orientation": "horizontal",
+    //     "drawer": {
+    //         "transition-duration": 300,
+    //         "children-class": "cpu-related",
+    //         "click-to-reveal": true
+    //     },
+    //     "modules": [
+    //         "cpu",
+    //         "temperature"
+    //     ]
+    // },
 
     "cpu": {
         "interval": 2,
@@ -114,6 +115,7 @@
         "exec": "${HOME}/.config/waybar/scripts/weather.sh Delhi+India",
         "return-type": "json",
         "format": "<span foreground='#ffd1db'>󰅟</span> {}",
+		"on-click-right": "${HOME}/.config/waybar/scripts/weather.sh Delhi+India",
         "tooltip": false
     },
 
