@@ -2,7 +2,6 @@
 on  = "M"
 run = "plugin mount"
 
-# keymap.toml
 [[mgr.prepend_keymap]]
 on   = "T"
 run  = "plugin toggle-pane min-parent"
