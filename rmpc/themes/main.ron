@@ -12,8 +12,8 @@
     modal_backdrop: false,
     preview_label_style: (fg: "#f38ba8"),
     preview_metadata_group_style: (fg: "#ffd1db", modifiers: "Bold"),
-    highlighted_item_style: (fg: "#18000f", bg: "#f38ba8", modifiers: "Bold"),
-    current_item_style: (fg: "#18000f", bg: "#ffd1db", modifiers: "Bold"),
+    highlighted_item_style: (fg: "#18000f", bg: "#ffd1db", modifiers: "Bold"),
+    current_item_style: (fg: "#f38ba8", modifiers: "Bold"),
     borders_style: (fg: "#ffd1db"),
     highlight_border_style: (fg: "#ffd1db"),
 	symbols: (
@@ -43,7 +43,7 @@
         trace: (fg: "#cc99aa", bg: "black"),
     ),
     progress_bar: (
-        symbols: ["-", "-", ">", " ", "-"],
+        symbols: ["-", "-", ">", " ", ">"],
         track_style: (fg: "#cc99aa"),
         elapsed_style: (fg: "#f38ba8"),
         thumb_style: (fg: "#ffd1db"),
@@ -75,28 +75,32 @@
     ],
     song_table_format: [
         (
-            prop: (kind: Property(Artist),
+            prop: (
+				kind: Property(Artist),
                 default: (kind: Text("Unknown"))
             ),
             label_prop: (kind: Text("Artist")),
             width: "20%",
         ),
         (
-            prop: (kind: Property(Title),
+            prop: (
+				kind: Property(Title),
                 default: (kind: Text("Unknown"))
             ),
             label_prop: (kind: Text("Title")),
             width: "35%",
         ),
         (
-            prop: (kind: Property(Album), style: (fg: "#cc99aa"),
+            prop: (
+				kind: Property(Album), style: (fg: "#cc99aa"),
                 default: (kind: Text("Unknown Album"), style: (fg: "#cc99aa"))
             ),
             label_prop: (kind: Text("Album")),
             width: "30%",
         ),
         (
-            prop: (kind: Property(Duration),
+            prop: (
+				kind: Property(Duration),
                 default: (kind: Text("-"))
             ),
             label_prop: (kind: Text("Duration")),
@@ -129,6 +133,10 @@
                             pane: Split(
                                 direction: Horizontal,
                                 panes: [
+									(
+										size: "1",
+										pane: Pane(Property(content: [(kind: Text(" "))])),
+									),
                                     (
                                         size: "100%",
                                         pane: Pane(ProgressBar),
@@ -145,6 +153,10 @@
                             pane: Split(
                                 direction: Horizontal,
                                 panes: [
+									(
+										size: "10",
+										pane: Component("song_status"),
+									),
                                     (
                                         size: "100%",
                                         pane: Component("song_info"),
@@ -175,21 +187,26 @@
             ],
             align: Right,
         )),
-        "song_info": Pane(Property(
-            content: [
-                (kind: Text("["), style: (fg: "#ffd1db", modifiers: "Bold")),
+		"song_status": Pane(Property(
+			content: [
+				(kind: Text("["), style: (fg: "#ffd1db", modifiers: "Bold")),
                 (kind: Property(Status(StateV2())), style: (fg: "#ffd1db", modifiers: "Bold")),
                 (kind: Text("] "), style: (fg: "#ffd1db", modifiers: "Bold")),
+			],
+			align: Left,
+		)),
+        "song_info": Pane(Property(
+            content: [
                 (
 					kind: Property(Song(Title)), style: (fg: "#ffd1db", modifiers: "Bold"), 
 					default: (kind: Text("No Song"), style: (fg: "#ffd1db", modifiers: "Bold"))
 				),
-                (kind: Text(" by "), style: (fg: "#cc99aa")),
+                (kind: Text(" by "), style: (fg: "#cba6f7")),
                 (
 					kind: Property(Song(Artist)), style: (fg: "#f38ba8", modifiers: "Bold"), 
 					default: (kind: Text("Unknown"), style: (fg: "#f38ba8", modifiers: "Bold"))
 				),
-				(kind: Text(" in "), style: (fg: "#cc99aa")),
+				(kind: Text(" in "), style: (fg: "#cba6f7")),
 				(
 					kind: Property(Song(Album)), style: (fg: "#f38ba8", modifiers: "Bold"), 
 					default: (kind: Text("Unknown"), style: (fg: "#f38ba8", modifiers: "Bold"))
@@ -208,7 +225,17 @@
 						align: Right
 					))
 				),
-                (size: "100%", pane: Pane(Volume(kind: Slider(symbols: (filled: "─", thumb: "●", track: "─"))))),
+                (
+					size: "100%", 
+					pane: Pane(Volume(
+						kind: Slider(
+							symbols: (filled: "─", thumb: "●", track: "─"),
+							track_style: (fg: "#cc99aa"),
+							filled_style: (fg: "#f38ba8"),
+							thumb_style: (fg: "#ffd1db"),
+						),
+					))
+				),
                 (
 					size: "5", 
 					pane: Pane(Property(
