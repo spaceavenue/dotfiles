@@ -1,3 +1,11 @@
+if status is-login
+	fish_add_path "$HOME"/.local/bin/prog "$HOME"/.local/bin/
+	set -gx XDG_CONFIG_HOME "$HOME"/.config
+	set -gx XDG_CACHE_HOME  "$HOME"/.cache
+	set -gx XDG_DATA_HOME   "$HOME"/.local/share
+	set -gx XDG_STATE_HOME  "$HOME"/.local/state
+end
+
 if status is-interactive
     set -g fish_greeting
 	set -g fish_history_derivative true
@@ -17,7 +25,8 @@ if status is-interactive
 	set -gx PAGER "bat -p --paging=always"
 	set -gx GIT_PAGER $PAGER
 
-	# bat gets confused because aurutils actually opens a directory
+	# bat gets confused because aurutils actually opens a directory.
+	# could be set to nvim? maybe?
 	set -gx AUR_PAGER yazi
 	set -gx AUR_PACMAN_AUTH run0
 end
