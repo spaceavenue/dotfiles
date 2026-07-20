@@ -1,0 +1,78 @@
+#![enable(implicit_some)]
+#![enable(unwrap_newtypes)]
+#![enable(unwrap_variant_newtypes)]
+(
+	theme: "main",
+    tabs: [
+        (
+            name: "Queue",
+            pane: Split(
+                direction: Horizontal,
+                panes: [
+                    (
+                        size: "60%",
+                        borders: "ALL",
+                        border_symbols: Rounded,
+                        pane: Pane(AlbumArt)
+                    ),
+                    (
+                        size: "40%",
+                        borders: "ALL",
+                        border_symbols: Rounded,
+                        pane: Pane(Queue)
+                    ),
+                ],
+            ),
+        ),
+        (
+            name: "Album Artists",
+            borders: "ALL",
+            border_symbols: Rounded,
+            pane: Split(
+                size: "100%",
+                direction: Vertical,
+                panes: [(pane: Pane(AlbumArtists), size: "100%", borders: "ALL", border_symbols: Rounded)],
+            )
+        ),
+        (
+            name: "Artists",
+            borders: "ALL",
+            border_symbols: Rounded,
+            pane: Split(
+                size: "100%",
+                direction: Vertical,
+                panes: [(pane: Pane(Artists), size: "100%", borders: "ALL", border_symbols: Rounded)],
+            )
+        ),
+        (
+            name: "Albums",
+            borders: "ALL",
+            border_symbols: Rounded,
+            pane: Split(
+                size: "100%",
+                direction: Vertical,
+                panes: [(pane: Pane(Albums), size: "100%", borders: "ALL", border_symbols: Rounded)],
+            )
+        ),
+        (
+            name: "Playlists",
+            borders: "ALL",
+            border_symbols: Rounded,
+            pane: Split(
+                size: "100%",
+                direction: Vertical,
+                panes: [(pane: Pane(Playlists), size: "100%", borders: "ALL", border_symbols: Rounded)],
+            )
+        ),
+        (
+            name: "Search",
+            borders: "ALL",
+            border_symbols: Rounded,
+            pane: Split(
+                size: "100%",
+                direction: Vertical,
+                panes: [(pane: Pane(Search), size: "100%", borders: "ALL", border_symbols: Rounded)],
+            )
+        ),
+    ],
+)
