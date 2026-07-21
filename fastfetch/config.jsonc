@@ -1,18 +1,15 @@
 {
     "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
-    "logo": {
-		"source": "~/media/PFP/portrait.png",
-        "type": "sixel",
-		"height": 10,
-		"color": {
-			"1": "#ffd1db",
-			"2": "#f38ba8"
-		},
-		"padding": {
-			// "top": 1,
-			// "right": 10
-        }
-    },
+	// "logo": {
+	// 	"source": "~/media/img_2026-07-21_01-49-17_f65ac485.png",
+	// 	"type": "sixel",
+	// 	"height": 15,
+	// 	"color": {
+	// 		"1": "#ffd1db",
+	// 		"2": "#f38ba8"
+	// 	}
+	// },
+	"logo": null,
     "display": {
         "separator": " │ ",
         "color": {
@@ -20,6 +17,19 @@
 			"output": "#f38ba8",
             "separator": "#cba6f7"
         },
+		"temp": {
+			"green": "#cba6f7",
+			"yellow": "#cba6f7",
+			"red": "#cba6f7"
+		},
+		"percent": {
+			"type": ["num", "num-color"],
+			"color": {
+				"green": "#cba6f7",
+				"yellow": "#cba6f7",
+				"red": "#cba6f7"
+			}
+		},
         "constants": [
             "──────────────────────────────────────────────────",
             "\u001b[38;2;203;166;247m│\u001b[50C│\u001b[50D\u001b[38;2;255;209;219m"
@@ -75,11 +85,11 @@
             "key": "{$2}memory   ",
             "type": "memory"
         },
-        {
-            "key": "{$2}disk     ",
-            "type": "disk",
-            "folders": "/"
-        },
+		{
+			"key": "{$2}disk     ",
+			"type": "disk",
+			"format": "{size-used} / {size-total} ({size-percentage})"
+		},
         {
             "format": "{#separator}╰{$1}╯",
             "type": "custom"

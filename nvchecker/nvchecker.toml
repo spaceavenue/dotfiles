@@ -1,0 +1,74 @@
+[__config__]
+oldver = "oldver.json"
+newver = "newver.json"
+
+# arch repackages
+
+[clang-gccless]
+source = "archpkg"
+archpkg = "clang"
+strip_release = true
+
+[obsidian-custom]
+source = "archpkg"
+archpkg = "obsidian"
+strip_release = true
+
+[signal-desktop-custom]
+source = "archpkg"
+archpkg = "signal-desktop"
+strip_release = true
+
+# personal projects
+
+[niri-custom]
+source = "git"
+git = "https://github.com/spaceavenue/niri.git"
+branch = "custom"
+use_commit = true
+
+[rustbg]
+source = "git"
+git = "https://codeberg.org/spaceavenue/rustbg.git"
+branch = "dump-bgra"
+use_commit = true
+
+[rustemp]
+source = "git"
+git = "https://codeberg.org/spaceavenue/rustemp.git"
+use_commit = true
+
+[rustype]
+source = "git"
+git = "https://codeberg.org/spaceavenue/rustype.git"
+use_commit = true
+
+# github projects
+
+[swaylock-time]
+source = "github"
+github = "swaywm/swaylock"
+prefix = "v"
+use_max_tag = true
+
+[ttc-iosevka-collection]
+source = "github"
+github = "be5invis/Iosevka"
+use_max_tag = true
+prefix = "v"
+
+[uutils-coreutils]
+source = "github"
+github = "uutils/coreutils"
+use_max_tag = true
+
+[vesktop-custom]
+source = "github"
+github = "Vencord/Vesktop"
+use_latest_release = true
+prefix = "v"
+
+[yt-dlp-ejs-npm-bin]
+source = "github"
+github = "yt-dlp/ejs"
+use_max_release = true
