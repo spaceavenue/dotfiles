@@ -17,7 +17,7 @@
     ],
     "modules-right": [
         "custom/weather",
-        "inhibitor",
+        // "inhibitor",
         "wireplumber", 
         "battery",
         "network"
@@ -141,15 +141,15 @@
         "format-time": "{H}:{M}",
         "interval": 30
     },
-    "inhibitor": {
-        "what": "idle",
-        "format": "{icon}",
-        "format-icons": {
-            "activated": "󰒳",
-            "deactivated": "󰒲"
-        },
-        "tooltip": false
-    },
+    // "inhibitor": {
+    //     "what": "idle",
+    //     "format": "{icon}",
+    //     "format-icons": {
+    //         "activated": "󰒳",
+    //         "deactivated": "󰒲"
+    //     },
+    //     "tooltip": false
+    // },
 
     "network": {
         "interval": 5,
