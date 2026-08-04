@@ -38,6 +38,7 @@ function fish_user_key_bindings
 	abbr -a gpl  'git pull'
 	abbr -a gplr 'git pull --rebase'
 	abbr -a gri	 'git rebase -i'
+	abbr -a gs   'git status' 
 
 	abbr -a b btop
 	abbr -a sb 'uwu btop'
