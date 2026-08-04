@@ -9,6 +9,9 @@ not status is-interactive && return
 set -g fish_greeting
 set -g fish_history_derivative true
 
+set fconf ~/.config/fish
+set fgen $fconf/fun-gen
+
 set -gx WGETRC "$XDG_CONFIG_HOME"/wgetrc
 set -gx NPM_CONFIG_USERCONFIG "$XDG_CONFIG_HOME"/npm/npmrc
 set -gx RIPGREP_CONFIG_PATH "$XDG_CONFIG_HOME"/ripgrep/config
