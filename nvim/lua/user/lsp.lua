@@ -1,15 +1,17 @@
--- Requires these binaries already on your $PATH:
+-- Requires these binaries in $PATH:
 --   rust-analyzer, clangd, vscode-html-language-server, vscode-css-language-server,
---   typescript-language-server, pyright-langserver, lua-language-server
+--   typescript-language-server, pyright-langserver, lua-language-server, marksman, taplo
 
 vim.lsp.enable({
-  "rust_analyzer",
   "clangd",
-  "html",
   "cssls",
-  "ts_ls",
-  "pyright",
+  "html",
   "lua_ls",
+  "marksman",
+  "pyright",
+  "rust_analyzer",
+  "taplo",
+  "ts_ls",
 })
 
 vim.diagnostic.config({
