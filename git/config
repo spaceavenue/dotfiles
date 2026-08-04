@@ -17,3 +17,40 @@
 	clean = git-lfs clean -- %f
 [commit]
 	gpgsign = true
+
+[core]
+	pager = delta
+[interactive]
+	diffFilter = delta --color-only
+[delta]
+	pager = less -RF
+	features = main-theme
+    navigate = true
+    side-by-side = true
+	line-numbers = true
+	line-numbers-left-format = "{nm:>4}│"
+	line-numbers-right-format = "{np:>4}│"
+[delta "main-theme"]
+    dark = true
+    syntax-theme = "Catppuccin Mocha"
+
+    hunk-header-style = bold "#ffd1db"
+    hunk-header-decoration-style = "#ffd1db" box
+
+    file-style = bold "#f38ba8"
+    file-decoration-style = "#f38ba8" ul
+
+    plus-style = syntax "#2a3d31"
+    plus-emph-style = syntax "#3a5943" bold
+
+    minus-style = syntax "#442b38"
+    minus-emph-style = syntax "#6a3547" bold
+
+    line-numbers-left-style  = "#89b4fa"
+    line-numbers-right-style = "#f38ba8"
+    line-numbers-minus-style = "#f38ba8"
+    line-numbers-plus-style  = "#a6e3a1"
+    line-numbers-zero-style  = "#6c7086"
+
+	blame-palette = "#1e1e2e #181825 #313244 #45475a #89b4fa #ffd1db #f38ba8"
+
