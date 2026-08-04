@@ -86,6 +86,13 @@ image_bound      = [ 10000, 10000 ]
 suppress_preload = false
 
 [plugin]
+prepend_preloaders = [
+    { url = "*.qoz", run = "qoz" }
+]
+
+prepend_previewers = [
+    { url = "*.qoz", run = "qoz" }
+]
 fetchers = [
 	# MIME-type
 	{ url = "*/",         run = "mime.dir",    prio = "high", group = "mime" },
