@@ -38,10 +38,10 @@ source = "git"
 git = "https://codeberg.org/spaceavenue/rustemp.git"
 use_commit = true
 
-[rustype]
-source = "git"
-git = "https://codeberg.org/spaceavenue/rustype.git"
-use_commit = true
+# [rustype]
+# source = "git"
+# git = "https://codeberg.org/spaceavenue/rustype.git"
+# use_commit = true
 
 # github projects
 
