@@ -102,8 +102,7 @@ security_context:
   range: {foreground: "#f5c2e7"}
 
 header:      {foreground: "#cba6f7"}
-# date:        {foreground: "#ababff"}
-date:        {foreground: "#eba0ac"}
+date:        {foreground: "#ddaabb"}
 punctuation: {foreground: "#cc99aa"}
 inode:       {foreground: "#cc99aa"}
 blocks:      {foreground: "#cc99aa"}
