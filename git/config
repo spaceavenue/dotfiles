@@ -23,7 +23,6 @@
 [interactive]
 	diffFilter = delta --color-only
 [delta]
-	pager = less -RF
 	features = main-theme
     navigate = true
     side-by-side = true
