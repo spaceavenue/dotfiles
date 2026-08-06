@@ -1,3 +1,4 @@
+#!/usr/bin/env fish
 function fish_user_key_bindings
 	# aur
 	abbr -a aurs 'aur search -k NumVotes'    # aur package search
@@ -24,13 +25,12 @@ function fish_user_key_bindings
 	# note: the -g flag displays operation progress and only exists for uutils-coreutils versions of cp, mv and rm.
 	abbr -a mv 'mv -gvi'
 	abbr -a cp 'cp -gavi'
-
 	abbr -a rm 'rm -gIdr'
 	abbr -a rmf 'rm -gfdr'
 
 	abbr -a grep 'rg'
 
-	abbr -a lsblk 'lsblk -p -o NAME,FSTYPE,LABEL,FSUSE%,FSUSED,FSSIZE,MOUNTPOINTS'
+  abbr -a dusty 'dust -b -d 1'
 
 	# convenience
 	abbr -a gc   'git clone'

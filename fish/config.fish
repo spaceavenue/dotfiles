@@ -23,11 +23,11 @@ set -gx MYSQL_HISTFILE "$XDG_STATE_HOME"/mariadb_history
 set -gx EDITOR "/usr/bin/nvim"
 set -gx VISUAL $EDITOR
 
-set -gx PAGER "bat -p --paging=always"
-set -gx GIT_PAGER $PAGER
+# set -gx PAGER "bat -p --paging=always"
+set -gx PAGER ov
 
 # bat gets confused because aurutils actually opens a directory.
 # could be set to nvim? maybe?
 set -gx AUR_PAGER yazi
-set -gx AUR_PACMAN_AUTH run0
+set -gx AUR_PACMAN_AUTH doas
 

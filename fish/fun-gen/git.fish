@@ -1,3 +1,4 @@
+#!/usr/bin/env fish
 function add-commit
 	git add $argv[1..-2] && git commit -m $argv[-1]
 end

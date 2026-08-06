@@ -1,3 +1,4 @@
+#!/usr/bin/env fish
 function gui_icons
 	set -l icon_name $argv[1]
 	gsettings set org.gnome.desktop.interface icon-theme $icon_name

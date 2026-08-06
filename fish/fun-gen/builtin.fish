@@ -1,4 +1,5 @@
 #!/usr/bin/env fish
+#!/usr/bin/env fish
 
 fish_add_path "$HOME"/.local/bin/prog "$HOME"/.local/bin
 

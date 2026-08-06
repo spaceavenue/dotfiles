@@ -1,3 +1,4 @@
+#!/usr/bin/env fish
 alias --save dot-conf="git -C ~/.config"
 alias --save dot-script="git -C ~/.local/bin/"
 
@@ -5,7 +6,7 @@ alias --save run0="run0 --background="
 alias --save uwu="doas" # :3
 
 # add a config file blease
-alias --save eza="eza --long --all --reverse --sort modified --binary --time modified --time-style '+%Y-%m-%d %H:%M' --icons=always"
+alias --save eza="eza --long --all --sort modified --binary --time modified --time-style '+%y-%m-%d %H:%M' --icons=always"
 
 alias --save man="man -T utf8 -O width=$COLUMNS"
 
