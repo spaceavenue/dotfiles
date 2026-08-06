@@ -97,9 +97,17 @@ binds {
     Mod+Comma  { set-column-width "-10%"; }
     Mod+Period { set-column-width "+10%"; }
 
+    // Even Finer width adjustments
+    Mod+Ctrl+Comma  { set-column-width "-1%"; }
+    Mod+Ctrl+Period { set-column-width "+1%"; }
+
     // Height adjustments
     Mod+Shift+Comma  { set-window-height "-10%"; }
     Mod+Shift+Period { set-window-height "+10%"; }
+
+    // Finer Height adjustments
+    Mod+Ctrl+Shift+Comma  { set-window-height "-1%"; }
+    Mod+Ctrl+Shift+Period { set-window-height "+1%"; }
 
     // The allow-inhibiting=false property ensures niri always processes binds, even when an inhibitor is active.
     Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
