@@ -15,7 +15,7 @@ end
 funcsave scry
 
 function ponder
-	argparse 0 -- $argv; or return
+    argparse 0 -- $argv; or return
 
     if set -q _flag_0
         pacman -Qi $argv
@@ -28,5 +28,10 @@ funcsave ponder
 # only explicitly installed, official packages
 alias --save pkg-dump="pacman -Qenq | grep -vf (pacman -Slq mine | psub)"
 
-alias --save pgraph="pacgraph -b '#180004' -l '#cba6f7' -t '#ffd1db' -d '#f38ba8' 2>/dev/null && resvg -w 4000 --monospace-family 'Iosevka Etoile' pacgraph.svg pacgraph.png && rm -frv pacgraph.svg"
-
+# a real function (not `alias --save`, which bakes/expands its string at
+# save-time) so $palette_* stays live in the generated functions/pgraph.fish -
+# re-running this generator always picks up whatever palette.fish holds then.
+function pgraph
+    pacgraph -b "#$palette_shadow" -l "#$palette_mauve" -t "#$palette_text" -d "#$palette_red" 2>/dev/null && resvg -w 4000 --monospace-family 'Iosevka Etoile' pacgraph.svg pacgraph.png && rm -frv pacgraph.svg $argv
+end
+funcsave pgraph

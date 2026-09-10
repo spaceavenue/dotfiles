@@ -46,4 +46,3 @@ complete --command __zoxide_z --no-files --arguments '(__zoxide_z_complete)'
 funcsave __zoxide_z_complete
 
 alias --save z __zoxide_z
-

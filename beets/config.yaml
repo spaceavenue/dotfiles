@@ -1,0 +1,9 @@
+directory: "~/msc"
+library: "~/.local/share/beets/library.db"
+
+import:
+  move: false
+  copy: false
+  write: true
+
+id3v23: true

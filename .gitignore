@@ -1,7 +1,7 @@
 # ignore everything
 /*
 
-# explicitly ignore these subdirs
+# explicitly ignore these
 cava/shaders/
 cava/themes/
 fish/functions/
@@ -36,13 +36,11 @@ nvchecker/oldver.json~
 !npm/
 !nvchecker/
 !nvchecker/nvchecker.toml
-!nvim/
 !obsidian/user-flags.conf
 !ripgrep/
 !rmpc/
 !satty/
 !signal-desktop-flags.conf
-!swayidle/
 !swaylock/
 !systemd/
 !udiskie/

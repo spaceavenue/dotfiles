@@ -6,7 +6,6 @@ spawn-at-startup "rustbg" "-f" "-n" "wallpaper-overview" "/home/sanya/.config/cu
 spawn-at-startup "rustemp" "-t" "4500" "-c" "0.3" "-w" "0.92" "-O" "0.02:0.02:0.02"
 spawn-sh-at-startup "rustidle ~/.config/rustidle/config"
 
-// spawn-at-startup "foot" "--server"
 spawn-at-startup "ssh-agent" "-a" "/run/user/1000/ssh_agent.sock"
 spawn-at-startup "keepassxc"
 

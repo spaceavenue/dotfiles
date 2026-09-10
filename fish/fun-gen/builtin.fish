@@ -19,9 +19,8 @@ function __fish_print_help --description 'Print help for a fish command using ma
     set -l item $argv[1]
     test -z "$item"; and return 1
 
-	set -lx MANPATH "$__fish_data_dir/man:" $MANPATH
-    
-	ban $item
+    set -lx MANPATH "$__fish_data_dir/man:" $MANPATH
+
+    ban $item
 end
 funcsave __fish_print_help
-
