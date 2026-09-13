@@ -19,6 +19,16 @@ source = "archpkg"
 archpkg = "signal-desktop"
 strip_release = true
 
+[zed-custom]
+source = "archpkg"
+archpkg = "zed"
+strip_release = true
+
+[nautilus-custom]
+source = "archpkg"
+archpkg = "nautilus"
+strip_release = true
+
 # personal projects
 
 [niri-custom]
@@ -52,11 +62,22 @@ use_commit = true
 [wtype-custom]
 source = "github"
 github = "atx/wtype"
+use_max_tag = true
 prefix = "v"
 
 [imv-custom]
 source = "git"
 git = "https://git.sr.ht/~exec64/imv"
+prefix = "v"
+
+[helix-custom]
+source = "github"
+github = "helix-editor/helix"
+
+[ttf-ibm-plex-custom]
+source = "github"
+github = "IBM/plex"
+use_max_tag = true
 prefix = "v"
 
 [swaylock-time]
@@ -82,7 +103,7 @@ github = "Vencord/Vesktop"
 use_latest_release = true
 prefix = "v"
 
-[yt-dlp-ejs-npm-bin]
+[yt-dlp-ejs-qjs-bin]
 source = "github"
 github = "yt-dlp/ejs"
 use_max_release = true

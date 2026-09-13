@@ -12,9 +12,9 @@ alias --save eza="eza --long --all --sort modified --binary --time modified --ti
 function ban --wraps man --description "pipe mandoc output to bat"
     set -l BAT_OPTS --language=man --paging=always --style=grid
     if command man -w $argv >/dev/null 2>&1
-        man $argv | col -bx | bat $BAT_OPTS
+        man -O width=$COLUMNS $argv | col -bx | bat $BAT_OPTS
     else
-        man $argv
+        man -O width=$COLUMNS $argv
     end
 end
 funcsave ban
