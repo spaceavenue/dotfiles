@@ -5,9 +5,6 @@
 cava/shaders/
 cava/themes/
 fish/functions/
-nvchecker/newver.json
-nvchecker/oldver.json
-nvchecker/oldver.json~
 
 # but not these
 !.gitignore
@@ -35,15 +32,11 @@ nvchecker/oldver.json~
 !niri/
 !npm/
 !nvchecker/
-!nvchecker/nvchecker.toml
-!obsidian/user-flags.conf
 !ripgrep/
 !rmpc/
 !satty/
-!signal-desktop-flags.conf
 !swaylock/
 !systemd/
-!udiskie/
 !user-dirs.dirs
 !waybar/
 !wgetrc

@@ -3,6 +3,12 @@ alias --save summon="doas pacman -S"
 
 alias --save banish="doas pacman -Rns"
 
+alias --save ascend="doas pacman -Syu"
+
+# alias --save cleanse="doas pacman -Scc"
+
+alias --save inventory="pacman -Qenq | grep -vf (pacman -Slq mine | psub)"
+
 function scry
     argparse 0 -- $argv; or return
 
@@ -25,13 +31,32 @@ function ponder
 end
 funcsave ponder
 
-# only explicitly installed, official packages
-alias --save pkg-dump="pacman -Qenq | grep -vf (pacman -Slq mine | psub)"
+function cleanse
+    doas rm -fdr /var/tmp/makepkg/* 2>/dev/null
+    doas pacman -Scc
+end
+funcsave cleanse
 
-# a real function (not `alias --save`, which bakes/expands its string at
-# save-time) so $palette_* stays live in the generated functions/pgraph.fish -
-# re-running this generator always picks up whatever palette.fish holds then.
+function purify
+    if pacman -Qdtq >/dev/null
+        doas pacman -Rns -- (pacman -Qdtq)
+    else
+        echo "nothing to do!"
+    end
+end
+funcsave purify
+
 function pgraph
-    pacgraph -b "#$palette_shadow" -l "#$palette_mauve" -t "#$palette_text" -d "#$palette_red" 2>/dev/null && resvg -w 4000 --monospace-family 'Iosevka Etoile' pacgraph.svg pacgraph.png && rm -frv pacgraph.svg $argv
+    pacgraph \
+        --bg "#18000f" \
+        --top "#ffd1db" \
+        --dep "#f38ba8" \
+        --link "#18000f" \
+        --stat "#ffd1db" 2>/dev/null \
+        && resvg \
+        -w 4000 \
+        --monospace-family 'Iosevka Etoile' \
+        pacgraph.svg pacgraph.png \
+        && rm -f pacgraph.svg $argv
 end
 funcsave pgraph

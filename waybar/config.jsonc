@@ -5,48 +5,21 @@
     "spacing": 5,
     "margin": "5px 5px 0px 5px",
     "modules-left": [
-        // "niri/workspaces",
         "cpu",
-		"temperature",
+		    "temperature",
         "custom/memory", 
         "disk"
-        // "mpris"
+        // "network#speed"
     ],
     "modules-center": [
         "clock"
     ],
     "modules-right": [
         "custom/weather",
-        // "inhibitor",
         "wireplumber", 
         "battery",
         "network"
-        // "tray"
     ],
-
-    "niri/workspaces": {
-        "format": "{icon}",
-        "format-icons": {
-            "default": "",
-            "terminal": "",
-            "browser": "󰈹",
-            "chat": ""
-        },
-        "hide-empty": true
-    },
-
-    // "group/group-cpu": {
-    //     "orientation": "horizontal",
-    //     "drawer": {
-    //         "transition-duration": 300,
-    //         "children-class": "cpu-related",
-    //         "click-to-reveal": true
-    //     },
-    //     "modules": [
-    //         "cpu",
-    //         "temperature"
-    //     ]
-    // },
 
     "cpu": {
         "interval": 2,
@@ -61,7 +34,7 @@
         "format": "<span foreground='#ffd1db'>󱃃</span> {temperatureC}°C",
         "tooltip": false
     },
-    
+
     "custom/memory": {
         "exec": "~/.config/waybar/scripts/memory.sh",
         "interval": 5,
@@ -95,27 +68,13 @@
                     },
         "tooltip": true
     },
-    // "mpris": {
-    //  "format": "<span foreground='#ffd1db'>{player_icon}</span> {dynamic}",
-    //  "format-paused": "<span foreground='#ffd1db'>{status_icon}</span> <i>{dynamic}</i>",
-    //  // "title-len": 10,
-    //     // "artist-len": 10,
-    //     "dynamic-order": ["title"],
-    //     "player-icons": {
-    //   "default": "",
-    //   "rmpc": ""
-    //  },
-    //  "status-icons": {
-    //   "paused": ""
-    //  },
-    //  "ignored-players": ["firefox"]
-    // },
+
     "custom/weather": {
         "interval": 3600,
         "exec": "${HOME}/.config/waybar/scripts/weather.sh Delhi+India",
         "return-type": "json",
         "format": "<span foreground='#ffd1db'>󰅟</span> {}",
-		"on-click-right": "${HOME}/.config/waybar/scripts/weather.sh Delhi+India",
+		    "on-click-right": "${HOME}/.config/waybar/scripts/weather.sh Delhi+India",
         "tooltip": false
     },
 
@@ -123,7 +82,7 @@
         "format": "<span foreground='#ffd1db'>{icon}</span> {volume}%",
         "format-muted": "<span foreground='#ffd1db'>󰝟</span> Muted",
         "format-icons": ["󰕿", "󰖀", "󰕾"],
-        "on-click-right": "pavucontrol",
+        "on-click-right": "foot -T 'wiremix-waybar' wiremix",
         "tooltip":  false
     },
 
@@ -141,15 +100,13 @@
         "format-time": "{H}:{M}",
         "interval": 30
     },
-    // "inhibitor": {
-    //     "what": "idle",
-    //     "format": "{icon}",
-    //     "format-icons": {
-    //         "activated": "󰒳",
-    //         "deactivated": "󰒲"
-    //     },
-    //     "tooltip": false
-    // },
+
+    "network#speed": {
+        "interval": 5,
+        "interface": "wlan0",
+        "format": "<span foreground='#ffd1db'> </span>{bandwidthUpBits}  <span foreground='#ffd1db'> </span>{bandwidthDownBits}",
+        "tooltip": false
+    },
 
     "network": {
         "interval": 5,
@@ -162,10 +119,4 @@
         "format-disconnected": "<span foreground='#ffd1db'>󰲛</span> Offline",
         "tooltip": false
     }
-
-    // "tray": {
-    //     "icon-size": 18,
-    //     "spacing": 5,
-    //     "show-passive-items": true
-    // }
 }

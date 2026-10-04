@@ -16,10 +16,7 @@ screenshot-path null
 hotkey-overlay { skip-at-startup; }
 
 switch-events {
-    lid-close {
-        spawn "swaylock";
-    }
-    lid-open {
-        spawn "niri" "msg" "action" "power-on-monitors";
-    }
+  lid-close {
+      spawn "sh" "-c" "if pgrep swaylock; then systemctl suspend; else swaylock && systemctl suspend; fi";
+  }
 }

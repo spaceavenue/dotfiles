@@ -8,7 +8,7 @@ binds {
     // Window movement
     Mod+Shift+Up   { move-window-up-or-to-workspace-up; }
     Mod+Shift+Down { move-window-down-or-to-workspace-down; }
-    
+
     // Column focus
     Mod+Left            { focus-column-left; }
     Mod+Right           { focus-column-right; }
@@ -26,13 +26,13 @@ binds {
     Mod+Shift+End             { move-column-to-last; }
     Mod+Ctrl+Up   cooldown-ms=150 { move-column-to-workspace-up; }
     Mod+Ctrl+Down cooldown-ms=150 { move-column-to-workspace-down; }
-    
+
     // Workspace (focus)
     Mod+Page_Up                              { focus-workspace-up; }
     Mod+Page_Down                            { focus-workspace-down; }
     Mod+Ctrl+WheelScrollUp   cooldown-ms=150 { focus-workspace-up; }
     Mod+Ctrl+WheelScrollDown cooldown-ms=150 { focus-workspace-down; }
-    
+
     // Workspace (movement)
     Mod+Shift+Page_Up   { move-workspace-up; }
     Mod+Shift+Page_Down { move-workspace-down; }
@@ -93,11 +93,11 @@ binds {
     Mod+C      { center-column; }
     Mod+Ctrl+C { center-visible-columns; }
 
-    // Finer width adjustments
+    // Width adjustments
     Mod+Comma  { set-column-width "-10%"; }
     Mod+Period { set-column-width "+10%"; }
 
-    // Even Finer width adjustments
+    // Finer width adjustments
     Mod+Ctrl+Comma  { set-column-width "-1%"; }
     Mod+Ctrl+Period { set-column-width "+1%"; }
 

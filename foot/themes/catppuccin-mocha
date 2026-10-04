@@ -2,9 +2,11 @@
 # Catppuccin Mocha
 
 [colors-dark]
-alpha=0.50
+# alpha=0.50
+alpha=1.00
 foreground=CC99AA
-background=000000
+# background=000000
+background=18000f
 
 regular0=45475a # black
 regular1=f38ba8 # red

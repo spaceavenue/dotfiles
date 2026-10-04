@@ -26,17 +26,17 @@ layer-rule {
 // Open terminal with default width as 67% of total screen width
 window-rule {
     match app-id="foot"
-    default-column-width { proportion 0.67; }
+    default-column-width { proportion 0.666667; }
 }
 
 window-rule {
-    match app-id="firefox"
-    force-render true
+    match app-id="firefox-nightly"
+    force-render 60
 }
 
 // Open discord and signal in "chat" workspace only
 window-rule {
-    match app-id=r#"^vesktop$|^signal$"#
+    match app-id=r"^vesktop$|^signal$"
     open-on-workspace "chat"
 }
 

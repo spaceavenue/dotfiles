@@ -22,8 +22,8 @@ function fish_prompt
     set_color normal $palette_mauve
     echo -n '['
 
-    set_color normal $palette_salmon --bold
-    echo -n ' '
+    # set_color normal $palette_salmon --bold
+    # echo -n ' '
 
     set_color normal $palette_text --bold
     echo -n $USER

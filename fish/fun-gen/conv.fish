@@ -1,9 +1,7 @@
 #!/usr/bin/env fish
-alias --save dot-conf="git -C ~/.config"
-alias --save dot-script="git -C ~/.local/bin/"
-
 alias --save run0="run0 --background="
 alias --save uwu="doas" # :3
+alias --save sudo="doas" # not an abbreviation becuase that messes with pasted commands that use sudo
 
 # add a config file blease
 alias --save eza="eza --long --all --sort modified --binary --time modified --time-style '+%y-%m-%d %H:%M' --icons=always"
@@ -51,11 +49,11 @@ function rf --wraps rg --description "search and pipe output of rg into fzf"
             --delimiter : \
             --preview 'bat --color=always {1} --highlight-line {2}' \
             --preview-window 'up,60%,border-bottom,+{2}+3/3,~3' \
-            --bind 'enter:become(nvim {1} +{2})'
+            --bind 'enter:become(hx {1} +{2})'
 end
 funcsave rf
 
-function list-binds --description ''
+function list-binds --description 'list niri keybinds'
     bat -p $XDG_CONFIG_HOME/niri/{app,focus-movement}-binds.kdl | sed -E '
     s://.*$::; 
     s/^[[:blank:]]+//; 
@@ -67,15 +65,13 @@ function list-binds --description ''
 end
 funcsave list-binds
 
-function ytm-album --wraps yt-dlp
-    yt-dlp -4 --format="ba[ext=m4a]"/ba --extract-audio --audio-format m4a --no-overwrites --embed-metadata --embed-thumbnail --ppa "ThumbnailsConvertor:-lavfi crop=ih:ih" -o "%(album)s/%(track_number,playlist_index)s %(title)s.%(ext)s" $argv
-end
-funcsave ytm-album
-
 function crop_thumb
     mkdir -p tmp_out
     for file in *.m4a
-        ffmpeg -i "$file" -map_metadata 0 -vf "crop=720:720" -c:v mjpeg -disposition:v attached_pic -c:a copy "tmp_out/$file" && mv "tmp_out/$file" "$file"
+        ffmpeg -i "$file" -map_metadata 0 \
+            -vf "crop=720:720" -c:v mjpeg \
+            -disposition:v attached_pic -c:a copy \
+            "tmp_out/$file" && mv "tmp_out/$file" "$file"
     end
     rmdir tmp_out
 end

@@ -1,6 +1,6 @@
 [__config__]
-oldver = "oldver.json"
-newver = "newver.json"
+oldver = "$XDG_DATA_HOME/nvchecker/oldver.json"
+newver = "$XDG_DATA_HOME/nvchecker/newver.json"
 
 # arch repackages
 
@@ -59,12 +59,6 @@ use_commit = true
 
 # github projects (forked/patched when building)
 
-[wtype-custom]
-source = "github"
-github = "atx/wtype"
-use_max_tag = true
-prefix = "v"
-
 [imv-custom]
 source = "git"
 git = "https://git.sr.ht/~exec64/imv"
@@ -74,7 +68,7 @@ prefix = "v"
 source = "github"
 github = "helix-editor/helix"
 
-[ttf-ibm-plex-custom]
+[ibm-plex-custom]
 source = "github"
 github = "IBM/plex"
 use_max_tag = true
@@ -86,7 +80,7 @@ github = "swaywm/swaylock"
 use_max_tag = true
 prefix = "v"
 
-[ttc-iosevka-collection]
+[iosevka-custom]
 source = "github"
 github = "be5invis/Iosevka"
 use_max_tag = true
@@ -103,7 +97,7 @@ github = "Vencord/Vesktop"
 use_latest_release = true
 prefix = "v"
 
-[yt-dlp-ejs-qjs-bin]
+[yt-dlp-ejs-custom]
 source = "github"
 github = "yt-dlp/ejs"
 use_max_release = true

@@ -1,41 +1,44 @@
 binds {
   // Programs
   Mod+Space   { spawn "fuzzel"; }
-  Mod+A       { spawn "msc-player.fish";}
+  Mod+A       { spawn "msc-player.py";}
   Mod+B       { spawn "firefox-nightly"; }
-  Mod+D       { spawn "vesktop"; }
+  Mod+D       { spawn "firefox-nightly" "--new-window" "discord.com/channels/@me"; }
   Mod+K       { spawn "keepassxc"; }
   Mod+N       { spawn "nautilus"; }
   Mod+W       { spawn "pkill" "-USR1" "waybar"; }
   Mod+S       { spawn "signal-desktop"; }
   Mod+T       { spawn "footclient"; }
+  Mod+F12     { spawn "wl-screenrec" "--low-power" "off" "--codec" "hevc"; }
   Mod+Shift+N { spawn "footclient" "yazi"; }
   Mod+Shift+L { spawn "swaylock"; }
   
   // Scripts
 
   // Clipboard history
-  Mod+Apostrophe		 { spawn "clip-history.fish"; }
-  Mod+Alt+Apostrophe { spawn "clip-history.fish" "--wtype";}
-  Mod+Ctrl+Alt+Apostrophe { spawn "clip-history.fish" "--wtype" "--nline"; }
+  Mod+Apostrophe		  { spawn "pick" "clip"; }
+  Mod+Alt+Apostrophe      { spawn "pick" "clip" "--wtype";}
+  Mod+Ctrl+Alt+Apostrophe { spawn "pick" "clip" "--wtype" "--nline"; }
   
   // Color picker
-  Mod+Shift+Apostrophe	   { spawn "color-picker.fish"; }
-  Mod+Alt+Shift+Apostrophe { spawn "color-picker.fish" "--wtype"; }
+  Mod+Shift+Apostrophe	   { spawn "pick" "color"; }
 
   // Emoji picker
-  Mod+Semicolon     { spawn "emoji-picker.fish"; }
-  Mod+Alt+Semicolon	{ spawn "emoji-picker.fish" "--wtype";}
+  Mod+Semicolon     { spawn "pick" "emoji"; }
+  Mod+Alt+Semicolon	{ spawn "pick" "emoji" "--wtype"; }
   
   // Nerd font glyph picker
-  Mod+Shift+Semicolon	  	{ spawn "glyph-picker.fish"; }
-  Mod+Alt+Shift+Semicolon { spawn "glyph-picker.fish" "--wtype";}
+  Mod+Shift+Semicolon	  	{ spawn "pick" "glyph"; }
+  Mod+Alt+Shift+Semicolon   { spawn "pick" "glyph" "--wtype"; }
   
-  Mod+F4  { spawn "power-menu.fish";	}	        // Power menu
-  Mod+F5  { spawn "wall-picker.fish"; }         // Wallpaper selector
+  Mod+F4  { spawn "pow-menu.fish"; }	        // Power menu
+  Mod+F5  { spawn "pick" "wall"; }              // Wallpaper selector
   Mod+F6  { spawn "pkill" "-USR1" "rustidle"; } // Toggle idle management
 
-  Mod+O repeat=false { toggle-overview; } // Open/close the Overview
+  // Open/close the Overview
+  Mod {
+    release { toggle-overview; }
+  } 
   Mod+Q repeat=false { close-window; }    // Close window
 
   // Screenshot
@@ -48,10 +51,10 @@ binds {
   Ctrl+Alt+Delete { quit; }
 
   // Volume keys mappings
-  XF86AudioRaiseVolume allow-when-locked=true { spawn "volctl.fish" "u"; }
-  XF86AudioLowerVolume allow-when-locked=true { spawn "volctl.fish" "d"; }
-  XF86AudioMute        allow-when-locked=true { spawn "volctl.fish" "m"; }
-  XF86AudioMicMute     allow-when-locked=true { spawn "volctl.fish" "c"; }
+  XF86AudioRaiseVolume allow-when-locked=true { spawn "hwctl" "vol" "u"; }
+  XF86AudioLowerVolume allow-when-locked=true { spawn "hwctl" "vol" "d"; }
+  XF86AudioMute        allow-when-locked=true { spawn "hwctl" "vol" "m"; }
+  XF86AudioMicMute     allow-when-locked=true { spawn "hwctl" "vol" "c"; }
 
   // Media keys mapping
   XF86AudioPlay  allow-when-locked=true { spawn "playerctl" "play-pause"; }
@@ -61,6 +64,6 @@ binds {
   XF86AudioNext  allow-when-locked=true { spawn "playerctl" "next"; }
 
   // Brightness key mappings
-  XF86MonBrightnessUp   allow-when-locked=true { spawn "blctl.fish" "u" "5"; }
-  XF86MonBrightnessDown allow-when-locked=true { spawn "blctl.fish" "d" "5"; }
+  XF86MonBrightnessUp   allow-when-locked=true { spawn "hwctl" "bl" "u" "5"; }
+  XF86MonBrightnessDown allow-when-locked=true { spawn "hwctl" "bl" "d" "5"; }
 }

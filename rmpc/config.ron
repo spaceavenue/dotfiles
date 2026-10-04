@@ -25,6 +25,20 @@
       ),
     ),
     (
+      name: "Albums",
+      pane: Split(
+        direction: Vertical,
+        panes: [
+          (
+            size: "100%",
+            pane: Pane(Albums),
+            borders: "ALL",
+            border_symbols: Rounded
+          )
+        ]
+      )
+    ),
+    (
       name: "Album Artists",
       pane: Split(
         direction: Vertical,
@@ -46,20 +60,6 @@
           (
             size: "100%",
             pane: Pane(Artists),
-            borders: "ALL",
-            border_symbols: Rounded
-          )
-        ]
-      )
-    ),
-    (
-      name: "Albums",
-      pane: Split(
-        direction: Vertical,
-        panes: [
-          (
-            size: "100%",
-            pane: Pane(Albums),
             borders: "ALL",
             border_symbols: Rounded
           )

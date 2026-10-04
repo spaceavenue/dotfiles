@@ -22,6 +22,7 @@ layout {
     /-struts {
         top -5
     }
+    center-single-window
 }
 
 // Overview management

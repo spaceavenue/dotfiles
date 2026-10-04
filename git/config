@@ -53,3 +53,7 @@
 
 	blame-palette = "#1e1e2e #181825 #313244 #45475a #89b4fa #ffd1db #f38ba8"
 
+[rerere]
+	enabled = true
+[merge]
+	conflictstyle = zdiff3

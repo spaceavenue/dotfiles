@@ -3,7 +3,7 @@
 	"logo": {
     "type": "small",
     "padding": {
-      "top": 4 
+      "top": 5
     },
 		"color": {
 			"1": "#ffd1db",
@@ -73,6 +73,11 @@
         "type": "shell"
     },
     {
+      "key": "{$2}font     ",
+      "type": "terminalfont",
+      "format": "{name} ({size})"
+    },
+    {
         "key": "{$2}cpu      ",
         "type": "cpu",
         "showPeCoreCount": true
@@ -89,6 +94,11 @@
       "key": "{$2}disk     ",
       "type": "disk",
       "format": "{size-used} / {size-total} ({size-percentage})"
+    },
+    {
+      "key": "{$2}colors   ",
+      "type": "colors",
+      "symbol": "circle"
     },
     {
       "format": "{#separator}╰{$1}╯",

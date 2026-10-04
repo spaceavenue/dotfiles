@@ -5,7 +5,7 @@ input {
             options "caps:escape_shifted_capslock"
         }
         repeat-delay 300
-        repeat-rate 25
+        repeat-rate 50
         numlock
     }
     touchpad {
@@ -45,4 +45,5 @@ output "eDP-1" {
     mode "1920x1200"
     scale 1
     transform "normal"
+    variable-refresh-rate
 }
