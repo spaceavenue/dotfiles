@@ -1,0 +1,31 @@
+pkgname=obsidian-custom
+_pkgname=obsidian
+pkgver=1.13.7
+pkgrel=1
+pkgdesc="A powerful knowledge base that works on top of a local folder of plain text Markdown files"
+arch=('x86_64')
+url="https://obsidian.md"
+license=('LicenseRef-Obsidian')
+depends=('fontconfig' 'bash' 'zlib' 'hicolor-icon-theme' 'electron')
+install=obsidian.install
+provides=($_pkgname)
+conflicts=($_pkgname)
+source=(
+  "${_pkgname}.tar.zst::https://archlinux.org/packages/extra/x86_64/obsidian/download"
+  "${_pkgname}.sh"
+)
+sha256sums=('250bdc7bff7d882476276bd6e283aef88b7cac0e5881f29f7f7bd88db72258b5'
+            '65111c9b78df85da9ff2666c3fdc1aec8cef4adb3489394622d058a878cb2e92')
+b2sums=('ac578d1f5d7bdd9ba7f107543ac5a88b672102246451ce8f4a1cd9ff73471dc47cf3aafc77a7dfc612f934a77d25ed7f51ab88bff33aa3b187cbef0e594f3d3b'
+        '48e7be6c240fcde3ac87464e554113d2d2d6a09f0e90c4dc7bc008b7011b30adec9018c6ed0a0e3c0192ccb864fc7a6776a9e4b8fb5307ae78ad9b54df95efa7')
+
+package() {
+
+  # everything
+  cp -ar ./usr "$pkgdir"
+  
+  # Launcher
+  install -Dm755 "${_pkgname}.sh" "${pkgdir}/usr/bin/${_pkgname}"
+}
+
+# vim: ts=2 sw=2 et:

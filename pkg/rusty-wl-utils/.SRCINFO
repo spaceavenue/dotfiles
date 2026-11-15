@@ -1,0 +1,13 @@
+pkgbase = rusty-wl-utils
+	pkgdesc = Tiny, minimal utilities for wayland
+	pkgver = r49.cc30d69
+	pkgrel = 1
+	url = https://github.com/spaceavenue/rusty-wl-utils
+	arch = x86_64
+	arch = aarch64
+	makedepends = cargo
+	makedepends = rust-nightly
+	source = rusty-wl-utils::git+https://github.com/spaceavenue/rusty-wl-utils.git
+	sha256sums = SKIP
+
+pkgname = rusty-wl-utils

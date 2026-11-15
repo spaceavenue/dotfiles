@@ -1,0 +1,67 @@
+_pkgname=coreutils
+pkgname=uutils-$_pkgname-custom
+pkgver=0.12.0
+pkgrel=1
+pkgdesc='Cross-platform Rust rewrite of the GNU coreutils - drop-in replacement'
+
+arch=('x86_64')
+url='https://uutils.github.io/'
+_url='https://github.com/uutils/coreutils'
+license=('MIT')
+
+depends=(glibc libgcc oniguruma)
+makedepends=(rust)
+
+provides=('coreutils')
+conflicts=('coreutils')
+
+source=(${pkgname}-${pkgver}.tar.gz::${_url}/archive/refs/tags/${pkgver}.tar.gz)
+b2sums=('bdb49cfe10b216522b8cb6b5ef7b85427d2b24cb923a7dcd137f024eda062a073796e62e03df0353c45398c856b46737cba77a82ab5784678ed86da0a4faa8d7')
+
+export RUSTONIG_DYNAMIC_LIBONIG=1
+
+build() {
+  cd ${_pkgname}-${pkgver}
+  cargo build --release --features unix,feat_external_libstdbuf
+  cargo build --release --bin uudoc --features uudoc,unix --no-default-features
+}
+
+package() {
+  cd ${_pkgname}-${pkgver}
+
+  local utils=('[' b2sum base32 base64 basename basenc cat chgrp chmod chown chroot cksum comm cp csplit cut \
+	  date dd df dir dircolors dirname du echo env expand expr factor false fmt fold groups head hostid \
+	  id install join link ln logname ls md5sum mkdir mkfifo mknod mktemp mv nice nl nohup nproc numfmt \
+	  od paste pathchk pinky pr printenv printf ptx pwd readlink realpath rm rmdir \
+	  seq sha1sum sha224sum sha256sum sha384sum sha512sum shred shuf sleep sort split stat stdbuf stty sum sync \
+	  tac tail tee test timeout touch tr true truncate tsort tty uname unexpand uniq unlink users \
+	  vdir wc who whoami yes)
+
+  install -d "$pkgdir"/usr/share/man/man1
+  install -d "$pkgdir"/usr/share/bash-completion/completions
+  install -d "$pkgdir"/usr/share/zsh/site-functions
+  install -d "$pkgdir"/usr/share/fish/vendor_completions.d
+
+  pushd target/release
+
+  install -Dm755 coreutils "$pkgdir"/usr/bin/coreutils
+
+  if [ -f deps/libstdbuf.so ]; then
+	install -Dm755 deps/libstdbuf.so "$pkgdir"/usr/lib/coreutils/libstdbuf.so
+  fi
+
+  for util in "${utils[@]}"; do
+    ln -sf coreutils "$pkgdir"/usr/bin/"$util"
+
+    ./uudoc manpage "$util" > "$pkgdir"/usr/share/man/man1/"$util".1
+    ./uudoc completion "$util" bash > "$pkgdir"/usr/share/bash-completion/completions/"$util"
+    ./uudoc completion "$util" zsh > "$pkgdir"/usr/share/zsh/site-functions/_"$util"
+    ./uudoc completion "$util" fish > "$pkgdir"/usr/share/fish/vendor_completions.d/"$util".fish
+  done
+
+  ./uudoc manpage coreutils > "$pkgdir"/usr/share/man/man1/coreutils.1
+
+  popd
+
+  install -Dm 644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+}

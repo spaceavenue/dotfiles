@@ -1,0 +1,252 @@
+diff --git a/meson.build b/meson.build
+index 47f051b..79a3965 100644
+--- a/meson.build
++++ b/meson.build
+@@ -153,6 +153,7 @@ foreach backend : [
+   ['libjxl', 'dependency', 'libjxl', [], ['image/jxl']],
+   ['libwebp', 'dependency', 'libwebpdemux', [], ['image/webp']],
+   ['qoi', 'header', 'qoi.h', [], ['image/qoi']],
++  ['qoz', 'dependency', 'qoz', [], ['image/qoz']],
+ ]
+   _backend_name = backend[0]
+   _dep_type = backend[1]
+diff --git a/meson_options.txt b/meson_options.txt
+index 7f314f5..5ea2df9 100644
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -129,3 +129,11 @@ option('qoi',
+   type : 'feature',
+   description : 'provides: qoi'
+ )
++
++# qoz https://github.com/CHANGEME/qoz
++# depends: none (bundles its own zstd)
++# license: MIT
++option('qoz',
++  type : 'feature',
++  description : 'provides: qoz'
++)
+diff --git a/src/backend_qoz.c b/src/backend_qoz.c
+new file mode 100644
+index 0000000..52c700f
+--- /dev/null
++++ b/src/backend_qoz.c
+@@ -0,0 +1,195 @@
++#include "backend.h"
++#include "bitmap.h"
++#include "image.h"
++#include "log.h"
++#include "source_private.h"
++
++#include <qoz.h>
++
++#include <stdint.h>
++#include <stdio.h>
++#include <stdlib.h>
++#include <string.h>
++
++/* imv_bitmap is always 4 bytes/pixel RGBA (see bitmap.h's BYTES_PER_CHANNEL),
++ * but a .qoz file may natively be 1 (grey), 2 (grey+alpha), 3 (rgb), or 4
++ * (rgba) channels - qoz_decode() always returns pixels in the file's native
++ * channel count, so we expand to RGBA here rather than relying on the
++ * decoder to do it (unlike qoi_decode, qoz_decode has no "give me N
++ * channels" parameter).
++ */
++static void expand_to_rgba(const uint8_t *src, uint32_t width, uint32_t height,
++    uint8_t channels, uint8_t *dst)
++{
++  const size_t n = (size_t)width * (size_t)height;
++
++  switch (channels) {
++    case 4:
++      memcpy(dst, src, n * 4);
++      break;
++    case 3:
++      for (size_t i = 0; i < n; ++i) {
++        dst[i * 4 + 0] = src[i * 3 + 0];
++        dst[i * 4 + 1] = src[i * 3 + 1];
++        dst[i * 4 + 2] = src[i * 3 + 2];
++        dst[i * 4 + 3] = 255;
++      }
++      break;
++    case 2:
++      for (size_t i = 0; i < n; ++i) {
++        const uint8_t gray = src[i * 2 + 0];
++        const uint8_t alpha = src[i * 2 + 1];
++        dst[i * 4 + 0] = gray;
++        dst[i * 4 + 1] = gray;
++        dst[i * 4 + 2] = gray;
++        dst[i * 4 + 3] = alpha;
++      }
++      break;
++    case 1:
++    default:
++      for (size_t i = 0; i < n; ++i) {
++        const uint8_t gray = src[i];
++        dst[i * 4 + 0] = gray;
++        dst[i * 4 + 1] = gray;
++        dst[i * 4 + 2] = gray;
++        dst[i * 4 + 3] = 255;
++      }
++      break;
++  }
++}
++
++struct private {
++  /* Already-decoded, already-expanded-to-RGBA image data. load_first_frame
++   * makes a fresh copy of this on every call (imv_image takes ownership of
++   * whatever it's given), matching backend_qoi.c's pattern - this lets the
++   * source be asked for its first frame more than once without re-decoding
++   * from the original file bytes each time.
++   */
++  struct imv_bitmap bitmap;
++};
++
++static void free_private(void *raw_private)
++{
++  if (!raw_private) {
++    return;
++  }
++  struct private *private = raw_private;
++  imv_bitmap_free(private->bitmap);
++  free(private);
++}
++
++static void load_image(void *raw_private, struct imv_image **image, int *frametime)
++{
++  *image = NULL;
++  *frametime = 0;
++
++  struct private *private = raw_private;
++
++  struct imv_bitmap bmp = imv_bitmap_alloc(private->bitmap.width, private->bitmap.height);
++  if (!bmp.data) {
++    return;
++  }
++  memcpy(bmp.data, private->bitmap.data, imv_bitmap_size(bmp));
++
++  *image = imv_image_create_from_bitmap(bmp);
++}
++
++static const struct imv_source_vtable vtable = {
++  .load_first_frame = load_image,
++  .free = free_private
++};
++
++/* Decode already-in-memory .qoz bytes into a fresh `private`, expanding to
++ * RGBA along the way. Returns BACKEND_SUCCESS/BACKEND_UNSUPPORTED; never
++ * BACKEND_ERROR, so that other backends still get a chance to try the file
++ * if this one doesn't recognise it (e.g. bad magic).
++ */
++static enum backend_result decode_to_private(const uint8_t *data, size_t len,
++    struct private **out_priv)
++{
++  QozDesc desc;
++  uint8_t *pixels = qoz_decode(data, len, &desc);
++  if (!pixels) {
++    imv_log(IMV_DEBUG, "qoz: %s\n", qoz_last_error());
++    return BACKEND_UNSUPPORTED;
++  }
++
++  struct private *priv = calloc(1, sizeof *priv);
++  if (!priv) {
++    qoz_free(pixels, (size_t)desc.width * desc.height * desc.channels);
++    return BACKEND_UNSUPPORTED;
++  }
++
++  priv->bitmap = imv_bitmap_alloc((int32_t)desc.width, (int32_t)desc.height);
++  if (!priv->bitmap.data) {
++    qoz_free(pixels, (size_t)desc.width * desc.height * desc.channels);
++    free(priv);
++    return BACKEND_UNSUPPORTED;
++  }
++
++  expand_to_rgba(pixels, desc.width, desc.height, desc.channels, priv->bitmap.data);
++  qoz_free(pixels, (size_t)desc.width * desc.height * desc.channels);
++
++  *out_priv = priv;
++  return BACKEND_SUCCESS;
++}
++
++static enum backend_result open_memory(void *data, size_t len, struct imv_source **src)
++{
++  struct private *priv;
++  enum backend_result result = decode_to_private(data, len, &priv);
++  if (result != BACKEND_SUCCESS) {
++    return result;
++  }
++  *src = imv_source_create(&vtable, priv);
++  return BACKEND_SUCCESS;
++}
++
++static enum backend_result open_path(const char *path, struct imv_source **src)
++{
++  FILE *f = fopen(path, "rb");
++  if (!f) {
++    return BACKEND_UNSUPPORTED;
++  }
++
++  if (fseek(f, 0, SEEK_END) != 0) {
++    fclose(f);
++    return BACKEND_UNSUPPORTED;
++  }
++  const long len = ftell(f);
++  if (len < 0 || fseek(f, 0, SEEK_SET) != 0) {
++    fclose(f);
++    return BACKEND_UNSUPPORTED;
++  }
++
++  uint8_t *data = malloc((size_t)len);
++  if (!data) {
++    fclose(f);
++    return BACKEND_UNSUPPORTED;
++  }
++  const size_t n = fread(data, 1, (size_t)len, f);
++  fclose(f);
++  if (n != (size_t)len) {
++    free(data);
++    return BACKEND_UNSUPPORTED;
++  }
++
++  struct private *priv;
++  enum backend_result result = decode_to_private(data, (size_t)len, &priv);
++  free(data);
++  if (result != BACKEND_SUCCESS) {
++    return result;
++  }
++
++  *src = imv_source_create(&vtable, priv);
++  return BACKEND_SUCCESS;
++}
++
++const struct imv_backend imv_backend_qoz = {
++  .name = "qoz",
++  .description = "Zstd-compressed raw pixel tiles, optimized for very fast decoding",
++  .website = "https://github.com/CHANGEME/qoz", /* TODO: fill in your actual repo URL */
++  .license = "MIT",
++  .open_path = &open_path,
++  .open_memory = &open_memory,
++};
+diff --git a/src/backends.c b/src/backends.c
+index 6af24e5..c956024 100644
+--- a/src/backends.c
++++ b/src/backends.c
+@@ -19,6 +19,7 @@ extern const struct imv_backend imv_backend_libheif;
+ extern const struct imv_backend imv_backend_libjxl;
+ extern const struct imv_backend imv_backend_libwebp;
+ extern const struct imv_backend imv_backend_qoi;
++extern const struct imv_backend imv_backend_qoz;
+ 
+ void imv_install_backend(struct list *backends, const struct imv_backend *backend)
+ {
+@@ -78,6 +79,10 @@ struct backends *backends_create(void)
+   imv_install_backend(backends, &imv_backend_qoi);
+ #endif
+ 
++#ifdef IMV_BACKEND_QOZ
++  imv_install_backend(backends, &imv_backend_qoz);
++#endif
++
+   return (struct backends *)backends;
+ }
+ 

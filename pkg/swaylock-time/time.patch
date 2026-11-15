@@ -1,0 +1,265 @@
+From 7138a3cf93f88bf22cda7b4f15dbba7ca6801478 Mon Sep 17 00:00:00 2001
+From: spaceavenue <spaceavenue@proton.me>
+Date: Sat, 20 Jun 2026 03:03:28 +0530
+Subject: [PATCH] add support for displaying a clock
+
+---
+ include/swaylock.h |  3 ++
+ main.c             | 38 +++++++++++++++++++
+ render.c           | 93 +++++++++++++++++++++++++++++++++++++++++++++-
+ 3 files changed, 133 insertions(+), 1 deletion(-)
+
+diff --git a/include/swaylock.h b/include/swaylock.h
+index cd4e73e..773600c 100644
+--- a/include/swaylock.h
++++ b/include/swaylock.h
+@@ -69,6 +69,9 @@ struct swaylock_args {
+ 	bool daemonize;
+ 	int ready_fd;
+ 	bool indicator_idle_visible;
++	bool clock;
++	char *timestr;
++	char *datestr;
+ };
+ 
+ struct swaylock_password {
+diff --git a/main.c b/main.c
+index 9e6401f..38fb643 100644
+--- a/main.c
++++ b/main.c
+@@ -483,6 +483,9 @@ static int parse_options(int argc, char **argv, struct swaylock_state *state,
+ 		LO_TEXT_CAPS_LOCK_COLOR,
+ 		LO_TEXT_VER_COLOR,
+ 		LO_TEXT_WRONG_COLOR,
++		LO_CLOCK,
++		LO_TIMESTR,
++		LO_DATESTR,
+ 	};
+ 
+ 	static struct option long_options[] = {
+@@ -540,6 +543,9 @@ static int parse_options(int argc, char **argv, struct swaylock_state *state,
+ 		{"text-caps-lock-color", required_argument, NULL, LO_TEXT_CAPS_LOCK_COLOR},
+ 		{"text-ver-color", required_argument, NULL, LO_TEXT_VER_COLOR},
+ 		{"text-wrong-color", required_argument, NULL, LO_TEXT_WRONG_COLOR},
++		{"clock", no_argument, NULL, LO_CLOCK},
++		{"timestr", required_argument, NULL, LO_TIMESTR},
++		{"datestr", required_argument, NULL, LO_DATESTR},
+ 		{0, 0, 0, 0}
+ 	};
+ 
+@@ -662,6 +668,12 @@ static int parse_options(int argc, char **argv, struct swaylock_state *state,
+ 			"Sets the color of the text when verifying.\n"
+ 		"  --text-wrong-color <color>       "
+ 			"Sets the color of the text when invalid.\n"
++		"  --clock                          "
++			"Show time and date.\n"
++		"  --timestr                        "
++			"The format string for the time. Defaults to '%X'.\n"
++		"  --datestr                        "
++			"The format string for the date. Defaults to '%a, %x'.\n"
+ 		"\n"
+ 		"All <color> options are of the form <rrggbb[aa]>.\n";
+ 
+@@ -943,6 +955,21 @@ static int parse_options(int argc, char **argv, struct swaylock_state *state,
+ 				state->args.colors.text.wrong = parse_color(optarg);
+ 			}
+ 			break;
++		case LO_CLOCK:
++			if (state) {
++				state->args.clock = true;
++			}
++			break;
++		case LO_TIMESTR:
++			if (state) {
++				state->args.timestr = strdup(optarg);
++			}
++			break;
++		case LO_DATESTR:
++			if (state) {
++				state->args.datestr = strdup(optarg);
++			}
++			break;
+ 		default:
+ 			fprintf(stderr, "%s", usage);
+ 			return 1;
+@@ -1087,6 +1114,12 @@ void log_init(int argc, char **argv) {
+ 	swaylock_log_init(LOG_ERROR);
+ }
+ 
++static void timer_render(void *data) {
++		struct swaylock_state *state = (struct swaylock_state *)data;
++		damage_state(state);
++		loop_add_timer(state->eventloop, 1000, timer_render, state);
++}
++
+ int main(int argc, char **argv) {
+ 	log_init(argc, argv);
+ 	initialize_pw_backend(argc, argv);
+@@ -1112,6 +1145,9 @@ int main(int argc, char **argv) {
+ 		.hide_keyboard_layout = false,
+ 		.show_failed_attempts = false,
+ 		.indicator_idle_visible = false,
++		.clock = false,
++		.timestr = "%X",
++		.datestr = "%a, %x",
+ 		.ready_fd = -1,
+ 	};
+ 	wl_list_init(&state.images);
+@@ -1251,6 +1287,8 @@ int main(int argc, char **argv) {
+ 
+ 	loop_add_fd(state.eventloop, sigusr_fds[0], POLLIN, term_in, NULL);
+ 
++	loop_add_timer(state.eventloop, 1000, timer_render, &state);
++
+ 	struct sigaction sa;
+ 	sa.sa_handler = do_sigusr;
+ 	sigemptyset(&sa.sa_mask);
+diff --git a/render.c b/render.c
+index 9d67241..279d0a0 100644
+--- a/render.c
++++ b/render.c
+@@ -33,6 +33,28 @@ static void set_color_for_state(cairo_t *cairo, struct swaylock_state *state,
+ 	}
+ }
+ 
++static void timetext(struct swaylock_surface *surface, char **tstr, char **dstr) {
++	static char dbuf[256];
++	static char tbuf[256];
++
++	time_t t = time(NULL);
++	struct tm *tm = localtime(&t);
++
++	if (surface->state->args.timestr[0]) {
++		strftime(tbuf, sizeof(tbuf), surface->state->args.timestr, tm);
++		*tstr = tbuf;
++	} else {
++		*tstr = NULL;
++	}
++
++	if (surface->state->args.datestr[0]) {
++		strftime(dbuf, sizeof(dbuf), surface->state->args.datestr, tm);
++		*dstr = dbuf;
++	} else {
++		*dstr = NULL;
++	}
++}
++
+ static void surface_frame_handle_done(void *data, struct wl_callback *callback,
+ 		uint32_t time) {
+ 	struct swaylock_surface *surface = data;
+@@ -139,6 +161,8 @@ static bool render_frame(struct swaylock_surface *surface) {
+ 
+ 	char attempts[4]; // like i3lock: count no more than 999
+ 	char *text = NULL;
++	char *text_l1 = NULL;
++	char *text_l2 = NULL;
+ 	const char *layout_text = NULL;
+ 
+ 	bool draw_indicator = state->args.show_indicator &&
+@@ -166,6 +190,8 @@ static bool render_frame(struct swaylock_surface *surface) {
+ 					snprintf(attempts, sizeof(attempts), "%d", state->failed_attempts);
+ 					text = attempts;
+ 				}
++			} else if (state->args.clock) {
++				timetext(surface, &text_l1, &text_l2);
+ 			}
+ 
+ 			if (state->xkb.keymap) {
+@@ -185,6 +211,8 @@ static bool render_frame(struct swaylock_surface *surface) {
+ 				}
+ 			}
+ 		}
++		if (state->args.clock)
++			timetext(surface, &text_l1, &text_l2);
+ 	}
+ 
+ 	// Compute the size of the buffer needed
+@@ -194,7 +222,14 @@ static bool render_frame(struct swaylock_surface *surface) {
+ 	int buffer_width = buffer_diameter;
+ 	int buffer_height = buffer_diameter;
+ 
+-	if (text || layout_text) {
++	if (!text) {
++		if (text_l1 && !text_l2)
++			text = text_l1;
++		if (text_l2 && !text_l1)
++			text = text_l2;
++	}
++
++	if (text || layout_text || (text_l1 && text_l2)) {
+ 		cairo_set_antialias(state->test_cairo, CAIRO_ANTIALIAS_BEST);
+ 		configure_font_drawing(state->test_cairo, state, surface->subpixel, arc_radius);
+ 
+@@ -205,6 +240,22 @@ static bool render_frame(struct swaylock_surface *surface) {
+ 				buffer_width = extents.width;
+ 			}
+ 		}
++		if (text_l1 && text_l2) {
++			cairo_text_extents_t extents_l1, extents_l2;
++
++			cairo_text_extents(state->test_cairo, text_l1, &extents_l1);
++
++			cairo_set_font_size(state->test_cairo, arc_radius / 6.0f);
++			cairo_text_extents(state->test_cairo, text_l2, &extents_l2);
++
++			if (buffer_width < extents_l1.width)
++				buffer_width = extents_l1.width;
++			if (buffer_width < extents_l2.width)
++				buffer_width = extents_l2.width;
++
++			// Reset font sizes back to standard for anything trailing
++			configure_font_drawing(state->test_cairo, state, surface->subpixel, arc_radius);
++		}
+ 		if (layout_text) {
+ 			cairo_text_extents_t extents;
+ 			cairo_font_extents_t fe;
+@@ -296,6 +347,46 @@ static bool render_frame(struct swaylock_surface *surface) {
+ 			cairo_show_text(cairo, text);
+ 			cairo_close_path(cairo);
+ 			cairo_new_sub_path(cairo);
++		} else if (text_l1 && text_l2) {
++			cairo_text_extents_t extents_l1, extents_l2;
++			cairo_font_extents_t fe_l1, fe_l2;
++			double x_l1, y_l1, x_l2, y_l2;
++
++			/* Top */
++
++			//cairo_set_font_size(cairo, arc_radius / 3.0f);
++			cairo_text_extents(cairo, text_l1, &extents_l1);
++			cairo_font_extents(cairo, &fe_l1);
++			x_l1 = (buffer_width / 2) -
++				(extents_l1.width / 2 + extents_l1.x_bearing);
++			y_l1 = (buffer_diameter / 2) +
++				(fe_l1.height / 2 - fe_l1.descent) - arc_radius / 10.0f;
++
++			cairo_move_to(cairo, x_l1, y_l1);
++			cairo_show_text(cairo, text_l1);
++			cairo_close_path(cairo);
++			cairo_new_sub_path(cairo);
++
++			/* Bottom */
++
++			cairo_set_font_size(cairo, arc_radius / 6.0f);
++			cairo_text_extents(cairo, text_l2, &extents_l2);
++			cairo_font_extents(cairo, &fe_l2);
++			x_l2 = (buffer_width / 2) -
++				(extents_l2.width / 2 + extents_l2.x_bearing);
++			y_l2 = (buffer_diameter / 2) +
++				(fe_l2.height / 2 - fe_l2.descent) + arc_radius / 3.5f;
++
++			//cairo_set_font_size(cairo, arc_radius / 5.0f);
++			cairo_move_to(cairo, x_l2, y_l2);
++			cairo_show_text(cairo, text_l2);
++			cairo_close_path(cairo);
++			cairo_new_sub_path(cairo);
++
++			// if (new_width < extents_l1.width)
++			// 	new_width = extents_l1.width;
++			// if (new_width < extents_l2.width)
++			// 	new_width = extents_l2.width;
+ 		}
+ 
+ 		// Typing indicator: Highlight random part on keypress
+-- 
+2.55.0
+

@@ -1,0 +1,34 @@
+pkgname=rustclip
+pkgver=r10.29c9931
+pkgrel=1
+pkgdesc="Tiny, minimal utility for interacting with the Wayland clipboard"
+arch=('x86_64' 'aarch64')
+url=https://github.com/spaceavenue/$pkgname
+license=()
+makedepends=('cargo' 'rust-nightly')
+depends=('file')
+
+provides=(wl-clipboard)
+conflicts=(wl-clipboard)
+
+source=("${pkgname%-dev}::git+${url}.git")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd "$pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+build() {
+  cd "$pkgname"
+  unset RUSTFLAGS
+  cargo +nightly build --release
+}
+
+package() {
+  cd "$pkgname"
+  local utils=(wl-copy wl-paste wl-watch)
+  for util in "${utils[@]}"; do
+    install -Dm 755 "target/x86_64-unknown-linux-musl/release/"$util "$pkgdir/usr/bin/$util"
+  done
+}

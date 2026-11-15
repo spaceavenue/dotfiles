@@ -1,0 +1,28 @@
+pkgname=zed-custom
+pkgver=1.28.1
+pkgrel=1
+pkgdesc="A high-performance, multiplayer code editor from the creators of Atom and Tree-sitter (repackaged, nodejs/npm made optional)"
+arch=('x86_64')
+url="https://zed.dev"
+license=('GPL-3.0-or-later' 'AGPL-3.0-or-later' 'Apache-2.0')
+
+# keep pkgver/pkgrel in lockstep with extra/zed - this just relays the
+# official build with nodejs/npm demoted to optdepends
+depends=('alsa-lib' 'curl' 'fontconfig' 'git' 'glib2' 'glibc' 'libgcc' 'libstdc++'
+         'libxcb' 'libx11' 'libxkbcommon' 'libxkbcommon-x11' 'netcat' 'sqlite'
+         'vulkan-driver' 'vulkan-icd-loader' 'vulkan-tools' 'wayland' 'zstd')
+optdepends=('nodejs: JavaScript/TypeScript/JSON/ESLint/Prettier language servers, extensions'
+            'npm: installing extension-provided language servers')
+
+provides=("zed=$pkgver")
+conflicts=('zed')
+
+source=("https://archive.archlinux.org/packages/z/zed/zed-${pkgver}-${pkgrel}-${arch}.pkg.tar.zst")
+sha256sums=('c074490b19f5ed759fdac94b364466e9de422b7c0e6ac7da3ca7a8d1e401e182')
+
+options=(!strip !debug)
+
+package() {
+  cd "$srcdir"
+  cp -a usr "${pkgdir}"/
+}

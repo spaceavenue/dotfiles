@@ -1,0 +1,16 @@
+pkgbase = rustclip
+	pkgdesc = Tiny, minimal utility for interacting with the Wayland clipboard
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/spaceavenue/rustclip
+	arch = x86_64
+	arch = aarch64
+	makedepends = cargo
+	makedepends = rust-nightly
+	depends = file
+	provides = wl-clipboard
+	conflicts = wl-clipboard
+	source = rustclip::git+https://github.com/spaceavenue/rustclip.git
+	sha256sums = SKIP
+
+pkgname = rustclip

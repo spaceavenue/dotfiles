@@ -1,0 +1,60 @@
+pkgname=imv-custom
+_pkgname=imv
+pkgver=5.0.1.r31.g7dc0dda
+pkgrel=1
+pkgdesc='A command line image viewer intended for use with tiling window managers'
+url="https://git.sr.ht/~exec64/imv"
+arch=(x86_64 i686)
+license=('MIT')
+depends=(
+  glu
+  libheif
+  libinih
+  libjpeg-turbo
+  libnsgif
+  libnsbmp
+  libpng
+  librsvg
+  librsvg
+  libtiff
+  libwebp
+  libxkbcommon
+  pango
+  qoi
+  qoz
+)
+makedepends=(
+  asciidoc
+  cmake
+  git
+  meson
+  wayland-protocols
+)
+provides=(imv)
+conflicts=(renameutils imv)
+source=("git+$url" 'qoz.patch')
+sha256sums=('SKIP'
+            '8aa6b3045d77180144be70d607c1fd57e18be98dc6acbe9a9317b5d7b47c9b7e')
+
+pkgver() {
+  cd "${_pkgname}"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd "${_pkgname}"
+  git apply ../qoz.patch
+  sed -i "s/unicode_lib = dependency('icu-io')/unicode_lib = dependency('icu-uc')/" meson.build
+}
+
+build() {
+  cd "${_pkgname}"
+  arch-meson build -D test=disabled -D windows=wayland
+  ninja -C build
+}
+
+package() {
+  cd "${_pkgname}"
+  DESTDIR="${pkgdir}" ninja -C build install
+  install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+}

@@ -1,0 +1,23 @@
+pkgbase = obsidian-custom
+	pkgdesc = A powerful knowledge base that works on top of a local folder of plain text Markdown files
+	pkgver = 1.12.7
+	pkgrel = 3
+	url = https://obsidian.md
+	install = obsidian.install
+	arch = x86_64
+	license = LicenseRef-Obsidian
+	depends = fontconfig
+	depends = bash
+	depends = zlib
+	depends = hicolor-icon-theme
+	depends = electron
+	provides = obsidian
+	conflicts = obsidian
+	source = obsidian.tar.zst::https://archlinux.org/packages/extra/x86_64/obsidian/download
+	source = obsidian.sh
+	sha256sums = SKIP
+	sha256sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+
+pkgname = obsidian-custom

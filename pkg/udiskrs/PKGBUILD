@@ -1,0 +1,26 @@
+pkgname=udiskrs
+pkgver=r16.4d40c29
+pkgrel=1
+pkgdesc="UDisks2 mount manager"
+arch=('x86_64' 'aarch64')
+url=https://github.com/spaceavenue/$pkgname
+license=()
+makedepends=('cargo')
+depends=('udisks2')
+source=("${pkgname}::git+${url}.git")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd "$pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+build() {
+  cd ${pkgname}
+  env RUSTFLAGS="-C target-cpu=native" cargo +nightly build --release
+}
+
+package() {
+  cd ${pkgname}
+  install -Dm 755 target/release/${pkgname} "${pkgdir}/usr/bin/${pkgname}"
+}

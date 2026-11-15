@@ -1,0 +1,15 @@
+pkgbase = helix-custom
+	pkgdesc = A text editor written in rust
+	pkgver = 20260929.023219
+	pkgrel = 1
+	url = https://helix-editor.com
+	arch = x86_64
+	license = MPL-2.0
+	makedepends = cargo
+	provides = hx
+	conflicts = helix
+	options = !lto
+	source = helix.tar.gz::https://github.com/spaceavenue/helix/archive/refs/heads/custom.tar.gz
+	sha256sums = SKIP
+
+pkgname = helix-custom

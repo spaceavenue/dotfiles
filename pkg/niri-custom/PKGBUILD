@@ -1,0 +1,74 @@
+pkgname=niri-custom
+_pkgname=niri
+pkgver=26.04.r287.g589bc40
+pkgrel=1
+pkgdesc="Scrollable-tiling Wayland compositor"
+arch=(x86_64)
+url="https://github.com/spaceavenue/niri"
+license=(GPL-3.0-or-later)
+depends=(cairo glib2 libdisplay-info libinput libpipewire libxkbcommon mesa pango pixman seatd)
+makedepends=(clang rust git)
+optdepends=('fuzzel: application launcher similar to rofi drun mode'
+            'waybar: highly customizable Wayland bar'
+            'alacritty: a cross-platform OpenGL terminal emulator'
+            'mako: notification daemon for Wayland'
+            'swaybg: wallpaper tool for Wayland compositors'
+            'swaylock: screen locker for Wayland'
+            'xdg-desktop-portal-gtk: implements most of the basic functionality'
+            'xdg-desktop-portal-gnome: screencasting support'
+            'gnome-keyring: implements the secret portal, for certain apps to work'
+            'polkit-gnome: when apps need to ask for root permissions')
+provides=("${_pkgname}=${pkgver}")
+conflicts=("${_pkgname}-bin" "${_pkgname}" "${_pkgname}-git")
+# options=(!lto)
+source=("${_pkgname}::git+$url.git")
+b2sums=('SKIP')
+
+pkgver() {
+  cd "${_pkgname}"
+  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
+}
+
+prepare() {
+  cd "${_pkgname}"
+
+  # Tuning cargo
+  # Download all to src directory, not in user's CARGO_HOME
+  export CARGO_HOME="${srcdir}/${_pkgname}/.cargo"
+
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+}
+
+build() {
+  cd "${_pkgname}"
+
+  # switch to custom repo
+  git switch custom
+
+  # Tuning rust compiler
+  # Prevent warning: 'Package contains reference to $srcdir'
+  export CARGO_ENCODED_RUSTFLAGS="--remap-path-prefix=${srcdir}=/"
+
+  # Tuning cargo
+  # Use downloaded earlier from src directory, not from user's CARGO_HOME
+  export CARGO_HOME="${srcdir}/${_pkgname}/.cargo"
+
+  # Place the output in target relative to the current directory
+  export CARGO_TARGET_DIR=target
+  
+  export RUSTFLAGS="${RUSTFLAGS} -C link-arg=-flto"
+
+  cargo build --release
+
+  strip --strip-all target/release/${_pkgname}
+}
+
+package() {
+  cd "${_pkgname}"
+  install -Dm755 "target/release/${_pkgname}"                       -t "${pkgdir}/usr/bin/"
+  install -Dm755 "resources/${_pkgname}-session"                    -t "${pkgdir}/usr/bin/"
+  install -Dm644 resources/default-config.kdl							   -t "${pkgdir}/usr/share/doc/niri"
+  install -Dm644 "resources/${_pkgname}.desktop"                    -t "${pkgdir}/usr/share/wayland-sessions/"
+  install -Dm644 "resources/${_pkgname}-portals.conf"               -t "${pkgdir}/usr/share/xdg-desktop-portal/"
+  install -Dm644 "resources/${_pkgname}"{.service,-shutdown.target} -t "${pkgdir}/usr/lib/systemd/user/"
+}

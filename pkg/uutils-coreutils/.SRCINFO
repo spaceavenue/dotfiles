@@ -1,0 +1,17 @@
+pkgbase = uutils-coreutils-custom
+	pkgdesc = Cross-platform Rust rewrite of the GNU coreutils - drop-in replacement
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://uutils.github.io/
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	depends = glibc
+	depends = libgcc
+	depends = oniguruma
+	provides = coreutils
+	conflicts = coreutils
+	source = uutils-coreutils-custom-0.9.0.tar.gz::https://github.com/uutils/coreutils/archive/refs/tags/0.9.0.tar.gz
+	b2sums = 6e3f174250dbca54ce9328d01baec4c73d5192150862f079607f969a118d1cad96da63b7250ec4fb2687d0a20684c08e3369547c4fff9be153a0bca563a7675e
+
+pkgname = uutils-coreutils-custom

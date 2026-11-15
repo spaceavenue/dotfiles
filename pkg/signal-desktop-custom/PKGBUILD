@@ -1,0 +1,80 @@
+pkgname=signal-desktop-custom
+_pkgname=signal-desktop
+pkgver=8.29.0
+pkgrel=1
+pkgdesc="Signal Private Messenger for Linux"
+license=('AGPL-3.0-only')
+arch=('x86_64')
+url="https://signal.org"
+install="${_pkgname}.install"
+depends=(
+  'electron'
+  'glibc'
+  'gtk3'
+  'hicolor-icon-theme'
+  'libcups'
+  'libdrm'
+  'libgcc'
+  'libnotify'
+  'libpulse'
+  'libstdc++' 'libstdc++.so'
+  'libx11'
+  'libxcb'
+  'libxcomposite'
+  'libxdamage'
+  'libxext'
+  'libxfixes'
+  'libxrandr'
+  'mesa'
+  'nspr'
+  'nss'
+)
+makedepends=( 'asar' )
+optdepends=('xdg-desktop-portal: Screensharing with Wayland')
+provides=($_pkgname)
+conflicts=($_pkgname)
+source=(
+  "${_pkgname}.tar.zst::https://archlinux.org/packages/extra/x86_64/signal-desktop/download"
+  "${_pkgname}.sh"
+)
+sha256sums=('2145c36de9402056991adbce46798e6fc29d2f0b4d2a43c9e3ff64486d96cf8a'
+            '86ef9bb446d8b3e9e60973cb3f04af792e3c4c4617b65a5733666f09fa9e4092')
+b2sums=('6cc503d52a33fd8592943d330700e1eb76b35ae6b3be30c32f8101fab1cf0fc8fba2d1a685bc9834e0f43a57280181e224afc4a4b61ba769a611c3f3c9e33c8d'
+        '4da01e8f46515bec373a17e938fc3607754d3fc70763869a9a0152a762707437d023ff43b43c144565f7d54421d2d73ac96129fe865345aa00181dc54e9f7d1f')
+
+prepare() {
+
+  pushd usr/lib/"${_pkgname}"/resources
+
+  asar e app.asar patched-asar
+
+  sed -E \
+    -e 's/000000|191919|1e1e1e/18000f/g' \
+    -e 's/282828|373737/300028/g' \
+    -e 's/22675f|323232|3b3b3b/380030/g' \
+    -i patched-asar/stylesheets/*
+
+  asar p patched-asar app.asar --unpack *.node
+
+  rm -rf patched-asar
+
+  popd
+}
+
+package() {
+  
+  # Launcher
+  install -Dm755 "${_pkgname}.sh" "${pkgdir}/usr/bin/${_pkgname}"
+
+  # Resources
+  cd "$srcdir"/usr/lib/"${_pkgname}"/resources/
+  find . -type d -exec install -d {,"$pkgdir"/usr/lib/"$_pkgname"/}{} \;
+  find . -type f -exec install -D {,"$pkgdir"/usr/lib/"$_pkgname"/}{} \;
+  
+  # Desktop file and icons
+  cd "$srcdir"/usr/share/
+  find . -type d -exec install -d {,"$pkgdir"/usr/share/}{} \;
+  find . -type f -exec install -D {,"$pkgdir"/usr/share/}{} \;
+}
+
+# vim: ts=2 sw=2 et:

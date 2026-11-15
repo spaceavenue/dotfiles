@@ -1,0 +1,30 @@
+pkgname=rusty-wl-utils
+pkgver=r73.f7711ad
+pkgrel=1
+pkgdesc="Tiny, minimal utilities for wayland"
+arch=('x86_64' 'aarch64')
+url=https://github.com/spaceavenue/$pkgname
+license=()
+makedepends=('cargo' 'rust-nightly')
+depends=()
+source=("${pkgname}::git+${url}.git")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd "$pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+build() {
+  cd "$pkgname"
+  unset RUSTFLAGS
+  cargo +nightly build --release
+}
+
+package() {
+  cd "$pkgname"
+  local utils=(rustbg rustidle rustemp)
+  for util in "${utils[@]}"; do
+    install -Dm 755 "target/x86_64-unknown-linux-musl/release/"$util "$pkgdir/usr/bin/$util"
+  done
+}

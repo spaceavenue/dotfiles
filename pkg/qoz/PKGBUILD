@@ -1,0 +1,60 @@
+pkgbase=qoz
+pkgname=('qoz')
+# pkgname=('qoz' 'qoz-cli')
+pkgver=r24.549c7b6
+pkgrel=1
+pkgdesc="Minimal image format storing zstd-compressed raw images, optimized for decode speed"
+arch=('x86_64')
+url="https://github.com/spaceavenue/qoz"
+license=('MIT')
+makedepends=('cargo')
+options=('!lto')
+
+source=("git+${url}.git")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd "$pkgbase"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  cd "$pkgbase"
+  cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
+}
+
+build() {
+  cd "$pkgbase"
+
+  export RUSTFLAGS="-C target-cpu=native"
+  export CARGO_TARGET_DIR=target
+
+  cargo build --frozen --release --workspace
+}
+
+check() {
+  cd "$pkgbase"
+  export RUSTFLAGS="-C target-cpu=native"
+  cargo test --frozen --release --workspace
+}
+
+package_qoz() {
+  pkgdesc="C library for the QOZ image format - headers and pkg-config file"
+  depends=('gcc-libs')
+
+  cd "$pkgbase"
+  install -Dm755 target/release/libqoz.so "$pkgdir/usr/lib/libqoz.so"
+  install -Dm644 target/release/libqoz.a  "$pkgdir/usr/lib/libqoz.a"
+  install -Dm644 qoz-c/qoz.h              "$pkgdir/usr/include/qoz.h"
+  install -Dm644 qoz-c/qoz.pc             "$pkgdir/usr/lib/pkgconfig/qoz.pc"
+  install -Dm644 LICENSE                  "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
+
+package_qoz-cli() {
+  pkgdesc="Command-line converter between common image formats and .qoz"
+  depends=('dav1d' 'gcc-libs')
+
+  cd "$pkgbase"
+  install -Dm755 target/release/qoz "$pkgdir/usr/bin/qoz"
+  install -Dm644 LICENSE            "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}

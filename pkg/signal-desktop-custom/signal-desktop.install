@@ -1,0 +1,7 @@
+post_install() {
+    echo "==> NOTE: Custom flags should be put directly in: ~/.config/signal-desktop-flags.conf"
+}
+
+post_upgrade() {
+    post_install
+}

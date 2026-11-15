@@ -1,0 +1,28 @@
+pkgname=nautilus-custom
+pkgver=51.1
+pkgrel=1
+pkgdesc="Default file manager for GNOME w/o gvfs"
+arch=('x86_64')
+url="https://apps.gnome.org/Nautilus/"
+license=('GPL-3.0-or-later')
+groups=('gnome')
+
+depends=('cairo' 'dconf' 'gdk-pixbuf2' 'gexiv2' 'glib2' 'glibc' 'glycin' 'glycin-gtk4'
+         'gnome-autoar' 'gnome-desktop-4' 'graphene' 'gst-plugins-base-libs' 'gstreamer'
+         'gtk4' 'hicolor-icon-theme' 'icu' 'libadwaita' 'libcloudproviders' 'libgcc'
+         'libnautilus-extension' 'libportal' 'libportal-gtk4' 'libx11' 'localsearch'
+         'pango' 'tinysparql' 'wayland' 'xdg-user-dirs-gtk')
+optdepends=('gvfs: trash, MTP, and network (smb/sftp/afp/...) locations in the sidebar')
+
+provides=("nautilus=$pkgver")
+conflicts=('nautilus')
+
+source=("https://archive.archlinux.org/packages/n/nautilus/nautilus-${pkgver}-${pkgrel}-${arch}.pkg.tar.zst")
+sha256sums=('fd53302287620a95abb30e305843be3df1eef1365f68c4f9dac1285743037ec9')
+
+options=(!strip !debug)
+
+package() {
+  cd "$srcdir"
+  cp -a usr "${pkgdir}"/
+}
